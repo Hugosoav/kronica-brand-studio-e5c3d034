@@ -252,7 +252,7 @@ const ProjetoDetalhe = () => {
                   <motion.img
                   src={image}
                   alt={`${project.title} - Imagem ${index + 1}`}
-                  className="w-full object-contain max-h-[70vh] mx-auto"
+                  className="w-full object-contain"
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.6 }} />
                 

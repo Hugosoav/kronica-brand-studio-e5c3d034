@@ -12,10 +12,10 @@ const Projetos = () => {
         <title>Projetos — Kronica</title>
         <meta name="description" content="Portfólio de projetos de branding e design da Kronica." />
 
-        {/* Projects – aligned grid layout */}
+        {/* Projects – organic masonry layout */}
         <section className="pt-24 pb-16 md:pb-20">
           <div className="container mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+            <div className="columns-1 sm:columns-2 gap-6 sm:gap-8">
               {projects.map((project, index) => (
                 <motion.div
                   key={project.id}
@@ -27,17 +27,18 @@ const Projetos = () => {
                     delay: index * 0.12,
                     ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number],
                   }}
+                  className="break-inside-avoid mb-8 sm:mb-10"
                 >
                   <Link
                     to={`/projetos/${project.id}`}
                     className="group cursor-pointer block"
                   >
-                    <div className="relative overflow-hidden rounded-lg aspect-[4/3] bg-secondary/30">
+                    <div className="relative overflow-hidden rounded-lg">
                       <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
                       <motion.img
                         src={project.images.cover}
                         alt={project.title}
-                        className="w-full h-full object-cover"
+                        className="w-full object-contain"
                         whileHover={{ scale: 1.04 }}
                         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
                       />
