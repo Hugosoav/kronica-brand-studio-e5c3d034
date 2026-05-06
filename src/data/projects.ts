@@ -48,9 +48,6 @@ import vn03 from "@/assets/projects/vasconcelos-nogueira/vasconcelos-nogueira-03
 import vn04 from "@/assets/projects/vasconcelos-nogueira/vasconcelos-nogueira-04.jpg";
 import vn05 from "@/assets/projects/vasconcelos-nogueira/vasconcelos-nogueira-05.jpg";
 import vn06 from "@/assets/projects/vasconcelos-nogueira/vasconcelos-nogueira-06.jpg";
-import vn07 from "@/assets/projects/vasconcelos-nogueira/vasconcelos-nogueira-07.jpg";
-import vn08 from "@/assets/projects/vasconcelos-nogueira/vasconcelos-nogueira-08.jpg";
-import vn09 from "@/assets/projects/vasconcelos-nogueira/vasconcelos-nogueira-09.jpg";
 
 
 export const projects: Project[] = [
@@ -65,8 +62,8 @@ export const projects: Project[] = [
     client: "Vasconcelos & Nogueira Advogados Associados",
     services: ["Identidade Visual", "Design de Logo", "Monograma", "Papelaria", "Aplicações", "Mockups"],
     images: {
-      cover: vn04,
-      gallery: [vn02, vn01, vn03, vn05, vn07, vn04, vn09, vn06, vn08]
+      cover: vn06,
+      gallery: [vn06, vn05, vn01, vn02, vn03, vn04]
     },
     tags: ["Advocacia", "Jurídico", "Identidade Visual", "Expansão"],
     brandStory: {
