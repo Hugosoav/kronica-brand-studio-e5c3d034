@@ -14,7 +14,7 @@ const Footer = () => {
               Entre em contato
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-12">
-              Vamos criar algo extraordinário
+              Vamos criar algo<br />extraordinário
             </h2>
 
             <div className="space-y-8">
