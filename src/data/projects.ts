@@ -68,7 +68,7 @@ export const projects: Project[] = [
     category: "Identidade Visual",
     description: "Identidade visual para a Sincro, plataforma de gestão e planejamento de conteúdo com IA integrada para agências, criadores e gestores.",
     fullDescription: "Desenvolvemos a identidade visual da Sincro, uma plataforma de gestão e planejamento de conteúdo com inteligência artificial integrada que sugere temas e conteúdos profissionais. Em desenvolvimento desde 2026, a marca foi construída para conectar gestão, criatividade e IA em perfeita sincronia, traduzindo tecnologia e fluidez em uma linguagem visual contemporânea.",
-    concept: "O nome remete à sincronia, e o símbolo nasce da união de três elementos — Gestão, Criatividade e Inteligência Artificial — trabalhando juntos em movimento contínuo. As formas circulares entrelaçadas criam um ícone dinâmico que sugere fluxo, conexão e colaboração. A paleta em laranja vibrante sobre fundos escuros transmite energia, inovação e foco, enquanto a tipografia sem serifa, limpa e geométrica, reforça o caráter tecnológico e acessível da plataforma.",
+    concept: "O nome remete à sincronia, e o símbolo nasce da união de três elementos (Gestão, Criatividade e Inteligência Artificial) trabalhando juntos em movimento contínuo. As formas circulares entrelaçadas criam um ícone dinâmico que sugere fluxo, conexão e colaboração. A paleta em laranja vibrante sobre fundos escuros transmite energia, inovação e foco, enquanto a tipografia sem serifa, limpa e geométrica, reforça o caráter tecnológico e acessível da plataforma.",
     year: "2026",
     client: "Sincro",
     services: ["Identidade Visual", "Design de Logo", "Símbolo", "App Icon", "UI Mockups", "Social Media"],
@@ -78,7 +78,7 @@ export const projects: Project[] = [
     },
     tags: ["Tecnologia", "Inteligência Artificial", "SaaS", "Identidade Visual"],
     brandStory: {
-      history: "A Sincro nasce em 2026 como uma plataforma em desenvolvimento focada em agências de marketing, criadores de conteúdo e gestores. A proposta é unir planejamento, criatividade, gestão e inteligência artificial em um único fluxo inteligente — transformando ideias em conteúdo, conteúdo em estratégia e estratégia em resultados. A marca traduz essa visão em um símbolo que representa três forças operando em sincronia.",
+      history: "A Sincro nasce em 2026 como uma plataforma em desenvolvimento focada em agências de marketing, criadores de conteúdo e gestores. A proposta é unir planejamento, criatividade, gestão e inteligência artificial em um único fluxo inteligente, transformando ideias em conteúdo, conteúdo em estratégia e estratégia em resultados. A marca traduz essa visão em um símbolo que representa três forças operando em sincronia.",
       voiceTone: "O tom de voz é tecnológico, direto e inspirador. A comunicação privilegia clareza e objetividade, destacando velocidade, fluidez e inteligência. O discurso transmite inovação sem complexidade, posicionando a Sincro como uma aliada que simplifica processos e potencializa a criação.",
       values: ["Sincronia", "Inovação", "Inteligência", "Fluidez", "Colaboração"]
     }
