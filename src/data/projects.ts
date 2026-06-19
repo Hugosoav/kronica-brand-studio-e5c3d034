@@ -49,6 +49,7 @@ import vn04 from "@/assets/projects/vasconcelos-nogueira/vasconcelos-nogueira-04
 import vn05 from "@/assets/projects/vasconcelos-nogueira/vasconcelos-nogueira-05.jpg";
 import vn06 from "@/assets/projects/vasconcelos-nogueira/vasconcelos-nogueira-06.jpg";
 
+import sincroCover from "@/assets/projects/sincro/sincro-cover.jpg";
 import sincro01 from "@/assets/projects/sincro/sincro-01.jpg";
 import sincro02 from "@/assets/projects/sincro/sincro-02.jpg";
 import sincro03 from "@/assets/projects/sincro/sincro-03.jpg";
@@ -72,8 +73,8 @@ export const projects: Project[] = [
     client: "Sincro",
     services: ["Identidade Visual", "Design de Logo", "Símbolo", "App Icon", "UI Mockups", "Social Media"],
     images: {
-      cover: sincro08,
-      gallery: [sincro08, sincro07, sincro06, sincro04, sincro03, sincro02, sincro05, sincro01, sincro09]
+      cover: sincroCover,
+      gallery: [sincroCover, sincro07, sincro06, sincro04, sincro03, sincro02, sincro05, sincro01, sincro09]
     },
     tags: ["Tecnologia", "Inteligência Artificial", "SaaS", "Identidade Visual"],
     brandStory: {
