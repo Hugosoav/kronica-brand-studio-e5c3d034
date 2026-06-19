@@ -49,8 +49,39 @@ import vn04 from "@/assets/projects/vasconcelos-nogueira/vasconcelos-nogueira-04
 import vn05 from "@/assets/projects/vasconcelos-nogueira/vasconcelos-nogueira-05.jpg";
 import vn06 from "@/assets/projects/vasconcelos-nogueira/vasconcelos-nogueira-06.jpg";
 
+import sincro01 from "@/assets/projects/sincro/sincro-01.jpg";
+import sincro02 from "@/assets/projects/sincro/sincro-02.jpg";
+import sincro03 from "@/assets/projects/sincro/sincro-03.jpg";
+import sincro04 from "@/assets/projects/sincro/sincro-04.jpg";
+import sincro05 from "@/assets/projects/sincro/sincro-05.jpg";
+import sincro06 from "@/assets/projects/sincro/sincro-06.jpg";
+import sincro07 from "@/assets/projects/sincro/sincro-07.jpg";
+import sincro08 from "@/assets/projects/sincro/sincro-08.jpg";
+import sincro09 from "@/assets/projects/sincro/sincro-09.jpg";
+
 
 export const projects: Project[] = [
+  {
+    id: "sincro",
+    title: "Sincro",
+    category: "Identidade Visual",
+    description: "Identidade visual para a Sincro, plataforma de gestão e planejamento de conteúdo com IA integrada para agências, criadores e gestores.",
+    fullDescription: "Desenvolvemos a identidade visual da Sincro, uma plataforma de gestão e planejamento de conteúdo com inteligência artificial integrada que sugere temas e conteúdos profissionais. Em desenvolvimento desde 2026, a marca foi construída para conectar gestão, criatividade e IA em perfeita sincronia, traduzindo tecnologia e fluidez em uma linguagem visual contemporânea.",
+    concept: "O nome remete à sincronia, e o símbolo nasce da união de três elementos — Gestão, Criatividade e Inteligência Artificial — trabalhando juntos em movimento contínuo. As formas circulares entrelaçadas criam um ícone dinâmico que sugere fluxo, conexão e colaboração. A paleta em laranja vibrante sobre fundos escuros transmite energia, inovação e foco, enquanto a tipografia sem serifa, limpa e geométrica, reforça o caráter tecnológico e acessível da plataforma.",
+    year: "2026",
+    client: "Sincro",
+    services: ["Identidade Visual", "Design de Logo", "Símbolo", "App Icon", "UI Mockups", "Social Media"],
+    images: {
+      cover: sincro08,
+      gallery: [sincro08, sincro07, sincro06, sincro04, sincro03, sincro02, sincro05, sincro01, sincro09]
+    },
+    tags: ["Tecnologia", "Inteligência Artificial", "SaaS", "Identidade Visual"],
+    brandStory: {
+      history: "A Sincro nasce em 2026 como uma plataforma em desenvolvimento focada em agências de marketing, criadores de conteúdo e gestores. A proposta é unir planejamento, criatividade, gestão e inteligência artificial em um único fluxo inteligente — transformando ideias em conteúdo, conteúdo em estratégia e estratégia em resultados. A marca traduz essa visão em um símbolo que representa três forças operando em sincronia.",
+      voiceTone: "O tom de voz é tecnológico, direto e inspirador. A comunicação privilegia clareza e objetividade, destacando velocidade, fluidez e inteligência. O discurso transmite inovação sem complexidade, posicionando a Sincro como uma aliada que simplifica processos e potencializa a criação.",
+      values: ["Sincronia", "Inovação", "Inteligência", "Fluidez", "Colaboração"]
+    }
+  },
   {
     id: "vasconcelos-nogueira",
     title: "Vasconcelos & Nogueira",
