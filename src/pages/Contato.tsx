@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import AnimatedText from "@/components/AnimatedText";
+import QualificationForm from "@/components/QualificationForm";
 import { useSearchParams } from "react-router-dom";
 
 const Contato = () => {
@@ -140,6 +141,39 @@ const Contato = () => {
                     </div>
                   </RevealOnScroll>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Qualification Form Section */}
+          <section className="py-24 md:py-32 border-t border-border">
+            <div className="container mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-12">
+                <div>
+                  <RevealOnScroll>
+                    <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 block">
+                      Conte sobre seu projeto
+                    </span>
+                  </RevealOnScroll>
+                  <AnimatedText
+                    as="h2"
+                    className="text-3xl md:text-4xl lg:text-5xl font-light leading-[1.1] mb-6 text-foreground"
+                    splitBy="words"
+                    delay={0.1}
+                  >
+                    {"Preencha e a\nequipe retorna com\nos próximos passos"}
+                  </AnimatedText>
+                  <RevealOnScroll delay={0.2}>
+                    <p className="text-sm text-muted-foreground max-w-md">
+                      Essas informações nos ajudam a entender seu projeto antes da primeira conversa,
+                      e a já chegar com direcionamento, em vez de só uma proposta genérica.
+                    </p>
+                  </RevealOnScroll>
+                </div>
+
+                <RevealOnScroll direction="right" delay={0.15}>
+                  <QualificationForm />
+                </RevealOnScroll>
               </div>
             </div>
           </section>
