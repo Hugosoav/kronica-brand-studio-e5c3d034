@@ -53,13 +53,13 @@ const Footer = () => {
           {/* Right - Social + Tagline */}
           <div className="flex flex-col justify-between">
             <div>
-              <RevealOnScroll direction="right">
+              <RevealOnScroll direction="up">
                 <span className="text-xs uppercase tracking-[0.3em] text-background/50 mb-6 block">
                   Siga-nos
                 </span>
               </RevealOnScroll>
               <ul className="space-y-3">
-                <RevealOnScroll delay={0.1} direction="right">
+                <RevealOnScroll delay={0.1} direction="up">
                   <li>
                     <a
                       href="https://instagram.com/kronicastudio"
@@ -71,7 +71,7 @@ const Footer = () => {
                     </a>
                   </li>
                 </RevealOnScroll>
-                <RevealOnScroll delay={0.2} direction="right">
+                <RevealOnScroll delay={0.2} direction="up">
                   <li>
                     <a
                       href="https://www.linkedin.com/in/kronica-studio-4553ab3a4/"
