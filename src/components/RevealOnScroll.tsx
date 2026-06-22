@@ -16,6 +16,10 @@ const directionMap = {
   none: { y: 0, x: 0 },
 };
 
+const prefersReducedMotion =
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 const RevealOnScroll = ({
   children,
   className = "",
@@ -24,6 +28,10 @@ const RevealOnScroll = ({
   duration = 0.7,
 }: RevealOnScrollProps) => {
   const offset = directionMap[direction];
+
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div
