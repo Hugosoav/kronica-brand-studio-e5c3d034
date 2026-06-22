@@ -103,7 +103,7 @@ const Contato = () => {
                 {/* Right Column */}
                 <div className="flex flex-col justify-between">
                   <div>
-                    <RevealOnScroll direction="right">
+                    <RevealOnScroll direction="up">
                       <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 block">
                         Siga-nos
                       </span>
@@ -113,7 +113,7 @@ const Contato = () => {
                         { label: "Instagram", href: "https://instagram.com/kronicastudio" },
                         { label: "LinkedIn", href: "https://www.linkedin.com/in/kronica-studio-4553ab3a4/" },
                       ].map((link, i) => (
-                        <RevealOnScroll key={link.label} delay={0.15 * i} direction="right">
+                        <RevealOnScroll key={link.label} delay={0.15 * i} direction="up">
                           <li>
                             <a
                               href={link.href}

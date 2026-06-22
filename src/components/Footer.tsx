@@ -86,7 +86,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            <RevealOnScroll delay={0.4} direction="right">
+            <RevealOnScroll delay={0.4} direction="up">
               <div className="mt-12 md:mt-0">
                 <div className="border-t border-background/10 pt-6">
                   <p className="text-sm text-background/50 max-w-md">Estúdio de Branding e design estratégico. Nosso processo começa pela escuta, compreendendo sua visão e traduzindo em história.

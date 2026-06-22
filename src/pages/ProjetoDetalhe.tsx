@@ -115,14 +115,14 @@ const ProjetoDetalhe = () => {
                 { label: "Cliente", value: project.client || project.title },
                 { label: "Ano", value: project.year }].
                 map((item, i) =>
-                <RevealOnScroll key={item.label} delay={0.1 * i} direction="right">
+                <RevealOnScroll key={item.label} delay={0.1 * i} direction="up">
                     <div>
                       <h3 className="text-sm text-primary/50 uppercase tracking-wider mb-2">{item.label}</h3>
                       <p className="text-primary">{item.value}</p>
                     </div>
                   </RevealOnScroll>
                 )}
-                <RevealOnScroll delay={0.2} direction="right">
+                <RevealOnScroll delay={0.2} direction="up">
                   <div>
                     <h3 className="text-sm text-primary/50 uppercase tracking-wider mb-2">Serviços</h3>
                     <ul className="space-y-1">
