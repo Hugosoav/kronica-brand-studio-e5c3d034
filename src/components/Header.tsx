@@ -4,7 +4,8 @@ import { Menu, X, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import logoBranco from "@/assets/logo-branco.png";
-import { projects } from "@/data/projects";
+import { fetchProjects } from "@/lib/projectsApi";
+import { useQuery } from "@tanstack/react-query";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -78,6 +79,11 @@ const Header = () => {
   ];
 
   const isActive = (path: string) => location.pathname === path;
+
+  const { data: projects = [] } = useQuery({
+    queryKey: ["projects"],
+    queryFn: fetchProjects,
+  });
 
   const filteredProjects = projects.filter(
     (p) =>

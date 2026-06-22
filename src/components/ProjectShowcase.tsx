@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
-import { projects } from "@/data/projects";
+import { ArrowUpRight, Loader2 } from "lucide-react";
+import type { Project } from "@/data/projects";
+import { fetchProjects } from "@/lib/projectsApi";
+import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import AnimatedText from "@/components/AnimatedText";
 
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <RevealOnScroll delay={index * 0.12} direction="up">
       <Link to={`/projetos/${project.id}`} className="group block">
@@ -61,8 +63,24 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 }
 
 const ProjectShowcase = () => {
+  const { data: projects = [], isLoading } = useQuery({
+    queryKey: ["projects"],
+    queryFn: fetchProjects,
+  });
   const featuredProject = projects[0];
   const otherProjects = projects.slice(1, 5);
+
+  if (isLoading) {
+    return (
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto flex justify-center py-20">
+          <Loader2 className="animate-spin text-muted-foreground" />
+        </div>
+      </section>
+    );
+  }
+
+  if (!featuredProject) return null;
 
   return (
     <section className="py-16 md:py-24">

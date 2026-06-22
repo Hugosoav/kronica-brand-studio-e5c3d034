@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { projects } from "@/data/projects";
+import { fetchProjects } from "@/lib/projectsApi";
+import { useQuery } from "@tanstack/react-query";
 import PageTransition from "@/components/PageTransition";
 import { motion } from "framer-motion";
+import { Loader2 } from "lucide-react";
 
 const Projetos = () => {
+  const { data: projects = [], isLoading } = useQuery({
+    queryKey: ["projects"],
+    queryFn: fetchProjects,
+  });
 
   return (
     <PageTransition>
@@ -15,6 +21,11 @@ const Projetos = () => {
         {/* Projects – aligned grid layout */}
         <section className="pt-24 pb-16 md:pb-20">
           <div className="container mx-auto">
+            {isLoading ? (
+              <div className="flex justify-center py-20">
+                <Loader2 className="animate-spin text-muted-foreground" />
+              </div>
+            ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
               {projects.map((project, index) => (
                 <motion.div
@@ -56,6 +67,7 @@ const Projetos = () => {
                 </motion.div>
               ))}
             </div>
+            )}
           </div>
         </section>
       </Layout>

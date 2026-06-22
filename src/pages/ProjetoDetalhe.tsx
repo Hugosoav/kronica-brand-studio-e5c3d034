@@ -1,8 +1,9 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronDown, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
-import { getProjectById, projects } from "@/data/projects";
+import { fetchProjects } from "@/lib/projectsApi";
+import { useQuery } from "@tanstack/react-query";
 import PageTransition from "@/components/PageTransition";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import AnimatedText from "@/components/AnimatedText";
@@ -12,8 +13,24 @@ import { useState } from "react";
 const ProjetoDetalhe = () => {
   const { id } = useParams<{id: string;}>();
   const navigate = useNavigate();
-  const project = getProjectById(id || "");
   const [brandStoryOpen, setBrandStoryOpen] = useState(false);
+
+  const { data: projects = [], isLoading } = useQuery({
+    queryKey: ["projects"],
+    queryFn: fetchProjects,
+  });
+
+  const project = projects.find((p) => p.id === id);
+
+  if (isLoading) {
+    return (
+      <Layout>
+        <div className="min-h-screen flex items-center justify-center">
+          <Loader2 className="animate-spin text-muted-foreground" />
+        </div>
+      </Layout>
+    );
+  }
 
   if (!project) {
     return (
