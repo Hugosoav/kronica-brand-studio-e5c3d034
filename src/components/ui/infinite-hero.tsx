@@ -2,117 +2,14 @@
 
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
-import { useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChevronDown, X } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
 import ShaderHeroBackground from "./shader-hero-background";
-
-const serviceOptions = [
-{ label: "Tudo", value: "" },
-{ label: "Identidade Visual", value: "Identidade Visual" },
-{ label: "Branding", value: "Branding" },
-{ label: "Rebranding", value: "Rebranding" },
-{ label: "Social Media", value: "Social Media" },
-{ label: "Impressos", value: "Impressos" }];
-
-
-const industryOptions = [
-{ label: "Todos", value: "" },
-{ label: "Artes e Cultura", value: "Artes e Cultura" },
-{ label: "Cívico e Setor Público", value: "Cívico e Setor Público" },
-{ label: "Marcas de Consumo", value: "Marcas de Consumo" },
-{ label: "Educação", value: "Educação" },
-{ label: "Entretenimento", value: "Entretenimento" },
-{ label: "Moda e Beleza", value: "Moda e Beleza" },
-{ label: "Alimentos e Bebidas", value: "Alimentos e Bebidas" },
-{ label: "Saúde", value: "Saúde" },
-{ label: "Hotelaria e Viagens", value: "Hotelaria e Viagens" },
-{ label: "Manufatura e Indústria", value: "Manufatura e Indústria" },
-{ label: "Serviços Profissionais", value: "Serviços Profissionais" },
-{ label: "Publicação e Editoração", value: "Publicação e Editoração" },
-{ label: "Mercado Imobiliário", value: "Mercado Imobiliário" },
-{ label: "Tecnologia", value: "Tecnologia" }];
-
-
 
 interface InfiniteHeroProps {
   title?: string;
   subtitle?: string;
-}
-
-interface DropdownProps {
-  options: {label: string;value: string;}[];
-  value: string;
-  onChange: (value: string) => void;
-  isOpen: boolean;
-  onToggle: () => void;
-  onClose: () => void;
-}
-
-function Dropdown({ options, value, onChange, isOpen, onToggle, onClose }: DropdownProps) {
-  const selectedLabel = options.find((o) => o.value === value)?.label || options[0].label;
-
-  return (
-    <div className="relative">
-      <button
-        onClick={onToggle}
-        className="inline-flex items-center gap-1 font-medium text-foreground hover:opacity-70 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]">
-
-        {selectedLabel}
-        <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
-      </button>
-      
-      {isOpen && createPortal(
-        <>
-          <div
-            className="fixed inset-0 z-[9998] bg-background/80 backdrop-blur-sm"
-            onClick={onClose}
-            style={{ animation: 'fadeIn 0.2s ease-out' }} />
-
-          <div
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[9999] w-[90vw] max-w-2xl max-h-[80vh] bg-background border border-border rounded-2xl shadow-2xl p-4 sm:p-6 flex flex-col"
-            style={{
-              animation: 'popupIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards'
-            }}>
-
-            <div className="flex items-center justify-between mb-4 sm:mb-6 shrink-0">
-              <h3 className="text-base sm:text-lg font-medium text-foreground">Selecione uma opção</h3>
-              <button
-                onClick={onClose}
-                className="p-2 hover:bg-muted rounded-full transition-all duration-200 hover:scale-110 hover:rotate-90 active:scale-95">
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-            <div className="overflow-y-auto overscroll-contain -mx-1 px-1">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
-                {options.map((option, index) =>
-                  <button
-                    key={option.value}
-                    onClick={() => {
-                      onChange(option.value);
-                      onClose();
-                    }}
-                    className={`text-left px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm rounded-lg border transition-all duration-200 hover:scale-[1.03] hover:shadow-md active:scale-[0.97] ${
-                      value === option.value ?
-                      'bg-foreground text-background border-foreground font-medium shadow-lg' :
-                      'border-border hover:border-foreground/50 hover:bg-muted'}`
-                    }
-                    style={{
-                      animation: `slideUp 0.3s ease-out ${index * 0.03}s both`
-                    }}>
-                    {option.label}
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-        </>,
-        document.body
-      )}
-    </div>);
-
 }
 
 export default function InfiniteHero({
@@ -124,50 +21,8 @@ export default function InfiniteHero({
   const pRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-
-  const [selectedService, setSelectedService] = useState("");
-  const [selectedIndustry, setSelectedIndustry] = useState("");
-  const [serviceOpen, setServiceOpen] = useState(false);
-  const [industryOpen, setIndustryOpen] = useState(false);
   const { theme } = useTheme();
   const isDark = theme === "dark";
-
-  const navigateToContact = (service: string, industry: string) => {
-    const params = new URLSearchParams();
-    if (service) params.set("service", service);
-    if (industry) params.set("industry", industry);
-    const query = params.toString();
-    navigate(`/contato${query ? `?${query}` : ""}`);
-  };
-
-  const handleServiceChange = (value: string) => {
-    setSelectedService(value);
-    if (value && selectedIndustry) {
-      navigateToContact(value, selectedIndustry);
-    } else if (value && !selectedIndustry) {
-      setServiceOpen(false);
-      setIndustryOpen(true);
-    }
-  };
-
-  const handleIndustryChange = (value: string) => {
-    setSelectedIndustry(value);
-    if (value && selectedService) {
-      navigateToContact(selectedService, value);
-    } else if (value && !selectedService) {
-      setIndustryOpen(false);
-      setServiceOpen(true);
-    }
-  };
-
-  const handleBarClick = () => {
-    if (selectedService || selectedIndustry) {
-      navigateToContact(selectedService, selectedIndustry);
-    } else {
-      navigate("/projetos");
-    }
-  };
-
 
   useGSAP(
     () => {
@@ -264,44 +119,17 @@ export default function InfiniteHero({
           </p>
 
           <div ref={ctaRef} className="mt-2 sm:mt-4 flex flex-col items-center gap-6 w-full max-w-3xl">
-            {/* Search Bar with Dropdowns */}
-            <div
-              onClick={handleBarClick}
-              className={`inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 backdrop-blur-md rounded-full cursor-pointer transition-colors flex-wrap justify-center ${
+            {/* CTA Button */}
+            <button
+              onClick={() => navigate("/contato")}
+              className={`inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 backdrop-blur-md rounded-full cursor-pointer transition-colors flex-wrap justify-center text-sm sm:text-base font-medium tracking-wide ${
               isDark ?
-              "bg-white/10 hover:bg-white/20 border border-white/10" :
-              "bg-black/10 hover:bg-black/15 border border-black/10"}`
+              "bg-white/10 hover:bg-white/20 border border-white/10 text-white" :
+              "bg-black/10 hover:bg-black/15 border border-black/10 text-black"}`
               }>
 
-              <span className={`text-sm sm:text-base ${isDark ? "text-white/60" : "text-black/50"}`}>Criamos</span>
-              <div onClick={(e) => e.stopPropagation()}>
-                <Dropdown
-                  options={serviceOptions}
-                  value={selectedService}
-                  onChange={handleServiceChange}
-                  isOpen={serviceOpen}
-                  onToggle={() => {
-                    setServiceOpen(!serviceOpen);
-                    setIndustryOpen(false);
-                  }}
-                  onClose={() => setServiceOpen(false)} />
-
-              </div>
-              <span className={`text-sm sm:text-base ${isDark ? "text-white/60" : "text-black/50"}`}>para</span>
-              <div onClick={(e) => e.stopPropagation()}>
-                <Dropdown
-                  options={industryOptions}
-                  value={selectedIndustry}
-                  onChange={handleIndustryChange}
-                  isOpen={industryOpen}
-                  onToggle={() => {
-                    setIndustryOpen(!industryOpen);
-                    setServiceOpen(false);
-                  }}
-                  onClose={() => setIndustryOpen(false)} />
-
-              </div>
-            </div>
+              SOLICITE UMA PROPOSTA
+            </button>
           </div>
         </div>
       </div>
