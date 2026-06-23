@@ -27,7 +27,6 @@ interface FormState {
   produtosServicos: string;
   problema: string;
   faturamentoMensal: string;
-  faixaInvestimento: string;
   prazo: string;
 }
 
@@ -42,7 +41,6 @@ const initialState: FormState = {
   produtosServicos: "",
   problema: "",
   faturamentoMensal: "",
-  faixaInvestimento: "",
   prazo: "",
 };
 
@@ -80,7 +78,6 @@ const QualificationForm = () => {
           "produtos ou serviços": form.produtosServicos,
           "empresa e desafios": form.problema,
           "faturamento mensal": form.faturamentoMensal,
-          "faixa de investimento": form.faixaInvestimento,
           "prazo desejado": form.prazo,
         }),
       });
@@ -274,45 +271,24 @@ const QualificationForm = () => {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="faixaInvestimento" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Faixa de investimento prevista
+          <Label htmlFor="prazo" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            Prazo desejado
           </Label>
           <Select
-            value={form.faixaInvestimento}
-            onValueChange={(value) => handleChange("faixaInvestimento", value)}
+            value={form.prazo}
+            onValueChange={(value) => handleChange("prazo", value)}
           >
-            <SelectTrigger id="faixaInvestimento">
+            <SelectTrigger id="prazo">
               <SelectValue placeholder="Selecione" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="ate-2k">Até R$ 2.000</SelectItem>
-              <SelectItem value="2k-5k">R$ 2.000 a R$ 5.000</SelectItem>
-              <SelectItem value="5k-10k">R$ 5.000 a R$ 10.000</SelectItem>
-              <SelectItem value="mais-10k">Acima de R$ 10.000</SelectItem>
-              <SelectItem value="nao-defini">Ainda não defini</SelectItem>
+              <SelectItem value="urgente">O quanto antes</SelectItem>
+              <SelectItem value="1-mes">Dentro de 1 mês</SelectItem>
+              <SelectItem value="1-3-meses">1 a 3 meses</SelectItem>
+              <SelectItem value="sem-pressa">Sem prazo definido</SelectItem>
             </SelectContent>
           </Select>
         </div>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="prazo" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          Prazo desejado
-        </Label>
-        <Select
-          value={form.prazo}
-          onValueChange={(value) => handleChange("prazo", value)}
-        >
-          <SelectTrigger id="prazo">
-            <SelectValue placeholder="Selecione" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="urgente">O quanto antes</SelectItem>
-            <SelectItem value="1-mes">Dentro de 1 mês</SelectItem>
-            <SelectItem value="1-3-meses">1 a 3 meses</SelectItem>
-            <SelectItem value="sem-pressa">Sem prazo definido</SelectItem>
-          </SelectContent>
-        </Select>
       </div>
 
       <Button type="submit" size="lg" disabled={isSubmitting} className="w-full md:w-auto">
