@@ -35,8 +35,41 @@ const Contato = () => {
             content="A equipe responde com próximos passos, prazos e direcionamento. Entre em contato com a Kronica."
           />
 
-          {/* Contact Section */}
+          {/* Qualification Form Section */}
           <section className="flex-1 flex items-center py-24 md:py-32">
+            <div className="container mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-12">
+                <div>
+                  <RevealOnScroll>
+                    <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 block">
+                      Conte sobre seu projeto
+                    </span>
+                  </RevealOnScroll>
+                  <AnimatedText
+                    as="h1"
+                    className="text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] mb-6 text-foreground"
+                    splitBy="words"
+                    delay={0.1}
+                  >
+                    {"Preencha e a\nequipe retorna com\nos próximos passos"}
+                  </AnimatedText>
+                  <RevealOnScroll delay={0.2}>
+                    <p className="text-sm text-muted-foreground max-w-md">
+                      Essas informações nos ajudam a entender seu projeto antes da primeira conversa,
+                      e a já chegar com direcionamento, em vez de só uma proposta genérica.
+                    </p>
+                  </RevealOnScroll>
+                </div>
+
+                <RevealOnScroll direction="right" delay={0.15}>
+                  <QualificationForm />
+                </RevealOnScroll>
+              </div>
+            </div>
+          </section>
+
+          {/* Contact Section */}
+          <section className="flex-1 flex items-center py-24 md:py-32 border-t border-border">
             <div className="container mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-12">
                 {/* Left Column */}
@@ -47,8 +80,8 @@ const Contato = () => {
                     </span>
                   </RevealOnScroll>
                   <AnimatedText
-                    as="h1"
-                    className="text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] mb-16 text-foreground"
+                    as="h2"
+                    className="text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] mb-16 text-foreground"
                     splitBy="words"
                     delay={0.1}
                   >
@@ -141,39 +174,6 @@ const Contato = () => {
                     </div>
                   </RevealOnScroll>
                 </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Qualification Form Section */}
-          <section className="py-24 md:py-32 border-t border-border">
-            <div className="container mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-12">
-                <div>
-                  <RevealOnScroll>
-                    <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 block">
-                      Conte sobre seu projeto
-                    </span>
-                  </RevealOnScroll>
-                  <AnimatedText
-                    as="h2"
-                    className="text-3xl md:text-4xl lg:text-5xl font-light leading-[1.1] mb-6 text-foreground"
-                    splitBy="words"
-                    delay={0.1}
-                  >
-                    {"Preencha e a\nequipe retorna com\nos próximos passos"}
-                  </AnimatedText>
-                  <RevealOnScroll delay={0.2}>
-                    <p className="text-sm text-muted-foreground max-w-md">
-                      Essas informações nos ajudam a entender seu projeto antes da primeira conversa,
-                      e a já chegar com direcionamento, em vez de só uma proposta genérica.
-                    </p>
-                  </RevealOnScroll>
-                </div>
-
-                <RevealOnScroll direction="right" delay={0.15}>
-                  <QualificationForm />
-                </RevealOnScroll>
               </div>
             </div>
           </section>
