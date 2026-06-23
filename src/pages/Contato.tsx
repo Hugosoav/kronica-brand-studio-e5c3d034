@@ -51,12 +51,12 @@ const Contato = () => {
                     splitBy="words"
                     delay={0.1}
                   >
-                    {"Preencha e a\nequipe retorna com\nos próximos passos"}
+                    Formulário para orçamento
                   </AnimatedText>
                   <RevealOnScroll delay={0.2}>
                     <p className="text-sm text-muted-foreground max-w-md">
-                      Essas informações nos ajudam a entender seu projeto antes da primeira conversa,
-                      e a já chegar com direcionamento, em vez de só uma proposta genérica.
+                      Essas informações nos ajudam a entender a maturidade do seu negócio e o tipo de
+                      projeto para um melhor direcionamento antes da primeira conversa.
                     </p>
                   </RevealOnScroll>
                 </div>

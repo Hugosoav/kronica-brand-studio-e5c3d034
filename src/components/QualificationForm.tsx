@@ -21,8 +21,12 @@ interface FormState {
   email: string;
   whatsapp: string;
   empresa: string;
+  instagram: string;
   tempoDeMercado: string;
+  numeroFuncionarios: string;
+  produtosServicos: string;
   problema: string;
+  faturamentoMensal: string;
   faixaInvestimento: string;
   prazo: string;
 }
@@ -32,8 +36,12 @@ const initialState: FormState = {
   email: "",
   whatsapp: "",
   empresa: "",
+  instagram: "",
   tempoDeMercado: "",
+  numeroFuncionarios: "",
+  produtosServicos: "",
   problema: "",
+  faturamentoMensal: "",
   faixaInvestimento: "",
   prazo: "",
 };
@@ -66,8 +74,12 @@ const QualificationForm = () => {
           email: form.email,
           whatsapp: form.whatsapp,
           empresa: form.empresa,
+          instagram: form.instagram,
           "tempo de mercado": form.tempoDeMercado,
-          "problema / objetivo": form.problema,
+          "número de funcionários": form.numeroFuncionarios,
+          "produtos ou serviços": form.produtosServicos,
+          "empresa e desafios": form.problema,
+          "faturamento mensal": form.faturamentoMensal,
           "faixa de investimento": form.faixaInvestimento,
           "prazo desejado": form.prazo,
         }),
@@ -153,43 +165,114 @@ const QualificationForm = () => {
         </div>
       </div>
 
-      {/* Qualificação — sobre o negócio, não sobre orçamento */}
       <div className="space-y-2">
-        <Label htmlFor="tempoDeMercado" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          Há quanto tempo sua empresa existe?
+        <Label htmlFor="instagram" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          Instagram da sua empresa (se houver)
         </Label>
-        <Select
-          value={form.tempoDeMercado}
-          onValueChange={(value) => handleChange("tempoDeMercado", value)}
-        >
-          <SelectTrigger id="tempoDeMercado">
-            <SelectValue placeholder="Selecione" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="ainda-nao-abri">Ainda não abri / vou abrir</SelectItem>
-            <SelectItem value="menos-1-ano">Menos de 1 ano</SelectItem>
-            <SelectItem value="1-3-anos">1 a 3 anos</SelectItem>
-            <SelectItem value="3-10-anos">3 a 10 anos</SelectItem>
-            <SelectItem value="mais-10-anos">Mais de 10 anos</SelectItem>
-          </SelectContent>
-        </Select>
+        <Input
+          id="instagram"
+          value={form.instagram}
+          onChange={(e) => handleChange("instagram", e.target.value)}
+          placeholder="@suaempresa"
+        />
+      </div>
+
+      {/* Qualificação — sobre o negócio, não sobre orçamento */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <Label htmlFor="tempoDeMercado" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            Há quanto tempo sua empresa existe?
+          </Label>
+          <Select
+            value={form.tempoDeMercado}
+            onValueChange={(value) => handleChange("tempoDeMercado", value)}
+          >
+            <SelectTrigger id="tempoDeMercado">
+              <SelectValue placeholder="Selecione" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="ainda-nao-abri">Ainda não abri / vou abrir</SelectItem>
+              <SelectItem value="menos-1-ano">Menos de 1 ano</SelectItem>
+              <SelectItem value="1-3-anos">1 a 3 anos</SelectItem>
+              <SelectItem value="3-10-anos">3 a 10 anos</SelectItem>
+              <SelectItem value="mais-10-anos">Mais de 10 anos</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="numeroFuncionarios" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            Quantos funcionários sua empresa possui atualmente?
+          </Label>
+          <Select
+            value={form.numeroFuncionarios}
+            onValueChange={(value) => handleChange("numeroFuncionarios", value)}
+          >
+            <SelectTrigger id="numeroFuncionarios">
+              <SelectValue placeholder="Selecione" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="so-eu">Só eu</SelectItem>
+              <SelectItem value="2-5">2 a 5</SelectItem>
+              <SelectItem value="6-15">6 a 15</SelectItem>
+              <SelectItem value="16-50">16 a 50</SelectItem>
+              <SelectItem value="mais-50">Mais de 50</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="produtosServicos" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          Quais produtos ou serviços sua empresa oferece?
+        </Label>
+        <Textarea
+          id="produtosServicos"
+          required
+          value={form.produtosServicos}
+          onChange={(e) => handleChange("produtosServicos", e.target.value)}
+          placeholder="Ex: consultoria financeira para pequenas empresas, venda de equipamentos..."
+          className="min-h-[80px]"
+        />
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="problema" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          O que está acontecendo hoje que te fez buscar branding?
+          Fale um pouco sobre a sua empresa e os principais desafios que enfrentam hoje
         </Label>
         <Textarea
           id="problema"
           required
           value={form.problema}
           onChange={(e) => handleChange("problema", e.target.value)}
-          placeholder="Ex: minha marca não parece profissional, estou lançando um negócio novo, perco clientes pra concorrência..."
+          placeholder="Ex: somos uma clínica em expansão, mas nossa marca não transmite a credibilidade que temos hoje..."
           className="min-h-[100px]"
         />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <Label htmlFor="faturamentoMensal" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            Qual faturamento mensal da sua empresa?
+          </Label>
+          <Select
+            value={form.faturamentoMensal}
+            onValueChange={(value) => handleChange("faturamentoMensal", value)}
+          >
+            <SelectTrigger id="faturamentoMensal">
+              <SelectValue placeholder="Selecione" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="ainda-nao-fatura">Ainda não fatura</SelectItem>
+              <SelectItem value="ate-20k">Até R$ 20.000</SelectItem>
+              <SelectItem value="20k-50k">R$ 20.000 a R$ 50.000</SelectItem>
+              <SelectItem value="50k-150k">R$ 50.000 a R$ 150.000</SelectItem>
+              <SelectItem value="mais-150k">Acima de R$ 150.000</SelectItem>
+              <SelectItem value="prefiro-nao-informar">Prefiro não informar</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
         <div className="space-y-2">
           <Label htmlFor="faixaInvestimento" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
             Faixa de investimento prevista
@@ -210,25 +293,26 @@ const QualificationForm = () => {
             </SelectContent>
           </Select>
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="prazo" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Prazo desejado
-          </Label>
-          <Select
-            value={form.prazo}
-            onValueChange={(value) => handleChange("prazo", value)}
-          >
-            <SelectTrigger id="prazo">
-              <SelectValue placeholder="Selecione" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="urgente">O quanto antes</SelectItem>
-              <SelectItem value="1-mes">Dentro de 1 mês</SelectItem>
-              <SelectItem value="1-3-meses">1 a 3 meses</SelectItem>
-              <SelectItem value="sem-pressa">Sem prazo definido</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="prazo" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          Prazo desejado
+        </Label>
+        <Select
+          value={form.prazo}
+          onValueChange={(value) => handleChange("prazo", value)}
+        >
+          <SelectTrigger id="prazo">
+            <SelectValue placeholder="Selecione" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="urgente">O quanto antes</SelectItem>
+            <SelectItem value="1-mes">Dentro de 1 mês</SelectItem>
+            <SelectItem value="1-3-meses">1 a 3 meses</SelectItem>
+            <SelectItem value="sem-pressa">Sem prazo definido</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       <Button type="submit" size="lg" disabled={isSubmitting} className="w-full md:w-auto">
