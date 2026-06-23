@@ -22,7 +22,7 @@ const Contato = () => {
           {/* Qualification Form Section */}
           <section className="py-24 md:py-32">
             <div className="container mx-auto">
-              <div className="max-w-3xl mb-12 md:mb-16">
+              <div className="mb-12 md:mb-16">
                 <RevealOnScroll>
                   <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 block">
                     Conte sobre seu projeto
@@ -30,7 +30,7 @@ const Contato = () => {
                 </RevealOnScroll>
                 <AnimatedText
                   as="h1"
-                  className="text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] mb-6 text-foreground"
+                  className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light leading-[1.1] mb-6 text-foreground whitespace-normal lg:whitespace-nowrap"
                   splitBy="words"
                   delay={0.1}
                 >
@@ -45,9 +45,7 @@ const Contato = () => {
               </div>
 
               <RevealOnScroll delay={0.15}>
-                <div className="max-w-3xl">
-                  <QualificationForm />
-                </div>
+                <QualificationForm />
               </RevealOnScroll>
             </div>
           </section>
