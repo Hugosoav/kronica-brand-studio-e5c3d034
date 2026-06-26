@@ -68,26 +68,40 @@ function rowToProject(row: ProjectRow): Project {
 }
 
 export async function fetchProjects(): Promise<Project[]> {
-  const { data, error } = await supabase
-    .from("projects")
-    .select("*")
-    .order("sort_order", { ascending: true })
-    .order("created_at", { ascending: false });
+  if (!isSupabaseConfigured) return staticProjects;
 
-  if (error) throw error;
-  return (data as ProjectRow[]).map(rowToProject);
+  try {
+    const { data, error } = await supabase
+      .from("projects")
+      .select("*")
+      .order("sort_order", { ascending: true })
+      .order("created_at", { ascending: false });
+
+    if (error) throw error;
+    return (data as ProjectRow[]).map(rowToProject);
+  } catch (err) {
+    console.error("Falha ao buscar projetos, usando dados locais.", err);
+    return staticProjects;
+  }
 }
 
 export async function fetchProjectById(id: string): Promise<Project | null> {
-  const { data, error } = await supabase
-    .from("projects")
-    .select("*")
-    .eq("id", id)
-    .maybeSingle();
+  if (!isSupabaseConfigured) return getStaticProjectById(id) ?? null;
 
-  if (error) throw error;
-  if (!data) return null;
-  return rowToProject(data as ProjectRow);
+  try {
+    const { data, error } = await supabase
+      .from("projects")
+      .select("*")
+      .eq("id", id)
+      .maybeSingle();
+
+    if (error) throw error;
+    if (!data) return getStaticProjectById(id) ?? null;
+    return rowToProject(data as ProjectRow);
+  } catch (err) {
+    console.error("Falha ao buscar projeto, usando dados locais.", err);
+    return getStaticProjectById(id) ?? null;
+  }
 }
 
 export async function upsertProject(input: ProjectInput) {
