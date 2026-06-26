@@ -1,5 +1,6 @@
-import { supabase } from "@/lib/supabase";
+import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 import type { Project } from "@/data/projects";
+import { projects as staticProjects, getProjectById as getStaticProjectById } from "@/data/projects";
 
 interface ProjectRow {
   id: string;
