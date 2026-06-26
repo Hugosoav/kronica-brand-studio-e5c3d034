@@ -18,8 +18,8 @@ const Sobre = lazy(() => import("./pages/Sobre"));
 const Contato = lazy(() => import("./pages/Contato"));
 const Projetos = lazy(() => import("./pages/Projetos"));
 const ProjetoDetalhe = lazy(() => import("./pages/ProjetoDetalhe"));
-const Newsletter = lazy(() => import("./pages/Newsletter"));
-const NewsletterPost = lazy(() => import("./pages/NewsletterPost"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const AdminLogin = lazy(() => import("./pages/admin/AdminLogin"));
 const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
@@ -50,8 +50,8 @@ function AnimatedRoutes() {
           <Route path="/projetos" element={<Projetos />} />
           <Route path="/projetos/:id" element={<ProjetoDetalhe />} />
           <Route path="/contato" element={<Contato />} />
-          <Route path="/newsletter" element={<Newsletter />} />
-          <Route path="/newsletter/:slug" element={<NewsletterPost />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route
             path="/admin"

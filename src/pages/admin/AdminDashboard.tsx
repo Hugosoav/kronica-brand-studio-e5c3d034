@@ -63,7 +63,7 @@ const AdminDashboard = () => {
             <p className="text-sm text-muted-foreground">Gerenciar projetos do portfólio</p>
           </div>
           <div className="flex items-center gap-3">
-            <Link to="/newsletter" target="_blank">
+            <Link to="/blog" target="_blank">
               <Button variant="outline" size="sm">
                 <ExternalLink className="size-4" />
                 Ver site
@@ -71,7 +71,7 @@ const AdminDashboard = () => {
             </Link>
             <Link to="/admin/posts">
               <Button variant="outline" size="sm">
-                Newsletter / Blog
+                Blog
               </Button>
             </Link>
             <Button variant="ghost" size="sm" onClick={signOut}>

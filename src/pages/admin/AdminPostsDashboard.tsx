@@ -62,7 +62,7 @@ const AdminPostsDashboard = () => {
 
         <div className="flex items-center justify-between mb-10">
           <div>
-            <h1 className="text-2xl font-light text-foreground">Newsletter / Blog</h1>
+            <h1 className="text-2xl font-light text-foreground">Blog</h1>
             <p className="text-sm text-muted-foreground">Gerenciar artigos publicados e rascunhos</p>
           </div>
           <div className="flex items-center gap-3">

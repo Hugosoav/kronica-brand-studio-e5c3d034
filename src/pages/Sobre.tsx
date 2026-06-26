@@ -12,6 +12,13 @@ const Sobre = () => {
         <meta
           name="description"
           content="A Kronica é um estúdio de design que desenvolve soluções visuais do físico ao digital, com clareza estratégica e alto nível de refinamento." />
+        <link rel="canonical" href="https://kronica.com.br/sobre" />
+        <meta property="og:title" content="Sobre a Kronica" />
+        <meta
+          property="og:description"
+          content="A Kronica é um estúdio de design que desenvolve soluções visuais do físico ao digital, com clareza estratégica e alto nível de refinamento." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://kronica.com.br/sobre" />
         
 
         {/* About Section */}

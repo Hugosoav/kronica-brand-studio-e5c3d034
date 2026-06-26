@@ -56,6 +56,12 @@ const ProjetoDetalhe = () => {
       <Layout>
         <title>{`${project.title} — Kronica`}</title>
         <meta name="description" content={project.description} />
+        <link rel="canonical" href={`https://kronica.com.br/projetos/${project.id}`} />
+        <meta property="og:title" content={`${project.title} — Kronica`} />
+        <meta property="og:description" content={project.description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`https://kronica.com.br/projetos/${project.id}`} />
+        {project.images.cover && <meta property="og:image" content={project.images.cover} />}
 
         {/* Hero */}
         <section className="pt-24 pb-12">
@@ -269,6 +275,8 @@ const ProjetoDetalhe = () => {
                   <motion.img
                   src={image}
                   alt={`${project.title} - Imagem ${index + 1}`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full object-contain"
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.6 }} />

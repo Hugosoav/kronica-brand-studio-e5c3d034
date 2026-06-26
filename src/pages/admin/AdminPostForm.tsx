@@ -171,7 +171,7 @@ const AdminPostForm = () => {
 
           <div className="space-y-2">
             <Label htmlFor="slug" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              URL — kronica.com.br/newsletter/{form.slug || "..."}
+              URL — kronica.com.br/blog/{form.slug || "..."}
             </Label>
             <Input
               id="slug"

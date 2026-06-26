@@ -14,7 +14,7 @@ function formatDate(iso: string | null) {
   return new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
 }
 
-const NewsletterPost = () => {
+const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
 
   const { data: post, isLoading } = useQuery({
@@ -22,6 +22,22 @@ const NewsletterPost = () => {
     queryFn: () => fetchPublishedPostBySlug(slug || ""),
     enabled: Boolean(slug),
   });
+
+  const canonicalUrl = `https://kronica.com.br/blog/${slug ?? ""}`;
+
+  const articleSchema = post
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: post.title,
+        description: post.excerpt,
+        image: post.coverImage ?? undefined,
+        datePublished: post.publishedAt ?? undefined,
+        author: { "@type": "Organization", name: "Kronica" },
+        publisher: { "@type": "Organization", name: "Kronica" },
+        mainEntityOfPage: canonicalUrl,
+      }
+    : null;
 
   return (
     <PageTransition>
@@ -31,8 +47,17 @@ const NewsletterPost = () => {
         <main className="flex-1 pt-16">
           {post && (
             <>
-              <title>{post.title} — Newsletter Kronica</title>
+              <title>{post.title} — Blog Kronica</title>
               <meta name="description" content={post.excerpt} />
+              <link rel="canonical" href={canonicalUrl} />
+              <meta property="og:title" content={`${post.title} — Blog Kronica`} />
+              <meta property="og:description" content={post.excerpt} />
+              <meta property="og:type" content="article" />
+              <meta property="og:url" content={canonicalUrl} />
+              {post.coverImage && <meta property="og:image" content={post.coverImage} />}
+              {articleSchema && (
+                <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
+              )}
             </>
           )}
 
@@ -45,7 +70,7 @@ const NewsletterPost = () => {
               <div className="text-center">
                 <h1 className="text-2xl font-semibold mb-4">Artigo não encontrado</h1>
                 <Button asChild>
-                  <Link to="/newsletter">Voltar para a newsletter</Link>
+                  <Link to="/blog">Voltar para o blog</Link>
                 </Button>
               </div>
             </div>
@@ -54,7 +79,7 @@ const NewsletterPost = () => {
               <div className="container mx-auto">
                 <div className="max-w-2xl mx-auto">
                   <Link
-                    to="/newsletter"
+                    to="/blog"
                     className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-10"
                   >
                     <ArrowLeft className="size-4" />
@@ -79,6 +104,7 @@ const NewsletterPost = () => {
                         <img
                           src={post.coverImage}
                           alt={post.title}
+                          decoding="async"
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -101,4 +127,4 @@ const NewsletterPost = () => {
   );
 };
 
-export default NewsletterPost;
+export default BlogPost;

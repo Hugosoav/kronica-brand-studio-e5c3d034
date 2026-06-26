@@ -14,7 +14,7 @@ function formatDate(iso: string | null) {
   return new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
 }
 
-const Newsletter = () => {
+const Blog = () => {
   const { data: posts = [], isLoading } = useQuery({
     queryKey: ["posts", "published"],
     queryFn: fetchPublishedPosts,
@@ -26,18 +26,26 @@ const Newsletter = () => {
         <div className="fixed inset-0 -z-10 bg-background" />
         <Header />
         <main className="flex-1 pt-16">
-          <title>Newsletter — Kronica</title>
+          <title>Blog — Kronica</title>
           <meta
             name="description"
-            content="Reflexões sobre branding, design e o mundo das marcas, direto da equipe Kronica."
+            content="Reflexões, processos e referências sobre branding e design — direto da equipe Kronica."
           />
+          <link rel="canonical" href="https://kronica.com.br/blog" />
+          <meta property="og:title" content="Blog — Kronica" />
+          <meta
+            property="og:description"
+            content="Reflexões, processos e referências sobre branding e design — direto da equipe Kronica."
+          />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://kronica.com.br/blog" />
 
           <section className="py-24 md:py-32">
             <div className="container mx-auto">
               <div className="max-w-3xl mb-16">
                 <RevealOnScroll>
                   <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 block">
-                    Newsletter Kronica
+                    Blog Kronica
                   </span>
                 </RevealOnScroll>
                 <AnimatedText
@@ -50,8 +58,7 @@ const Newsletter = () => {
                 </AnimatedText>
                 <RevealOnScroll delay={0.2}>
                   <p className="text-sm md:text-base text-muted-foreground max-w-2xl">
-                    Reflexões, processos e referências sobre branding e design — direto da equipe
-                    Kronica para quem vive esse universo.
+                    Reflexões, processos e referências sobre branding e design
                   </p>
                 </RevealOnScroll>
               </div>
@@ -71,12 +78,14 @@ const Newsletter = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.05 }}
                     >
-                      <Link to={`/newsletter/${post.slug}`} className="group block">
+                      <Link to={`/blog/${post.slug}`} className="group block">
                         {post.coverImage && (
                           <div className="aspect-[4/3] overflow-hidden rounded-lg bg-secondary/30 mb-4">
                             <img
                               src={post.coverImage}
                               alt={post.title}
+                              loading="lazy"
+                              decoding="async"
                               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             />
                           </div>
@@ -102,4 +111,4 @@ const Newsletter = () => {
   );
 };
 
-export default Newsletter;
+export default Blog;

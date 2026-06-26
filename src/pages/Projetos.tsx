@@ -17,6 +17,11 @@ const Projetos = () => {
       <Layout>
         <title>Projetos — Kronica</title>
         <meta name="description" content="Portfólio de projetos de branding e design da Kronica." />
+        <link rel="canonical" href="https://kronica.com.br/projetos" />
+        <meta property="og:title" content="Projetos — Kronica" />
+        <meta property="og:description" content="Portfólio de projetos de branding e design da Kronica." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://kronica.com.br/projetos" />
 
         {/* Projects – aligned grid layout */}
         <section className="pt-24 pb-16 md:pb-20">
@@ -49,6 +54,8 @@ const Projetos = () => {
                       <motion.img
                         src={project.images.cover}
                         alt={project.title}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover"
                         whileHover={{ scale: 1.04 }}
                         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
