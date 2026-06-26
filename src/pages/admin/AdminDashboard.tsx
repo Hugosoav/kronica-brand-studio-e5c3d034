@@ -63,10 +63,15 @@ const AdminDashboard = () => {
             <p className="text-sm text-muted-foreground">Gerenciar projetos do portfólio</p>
           </div>
           <div className="flex items-center gap-3">
-            <Link to="/projetos" target="_blank">
+            <Link to="/newsletter" target="_blank">
               <Button variant="outline" size="sm">
                 <ExternalLink className="size-4" />
                 Ver site
+              </Button>
+            </Link>
+            <Link to="/admin/posts">
+              <Button variant="outline" size="sm">
+                Newsletter / Blog
               </Button>
             </Link>
             <Button variant="ghost" size="sm" onClick={signOut}>
