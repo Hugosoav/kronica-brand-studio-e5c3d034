@@ -23,31 +23,28 @@ const Sobre = () => {
         {/* Founder Section */}
         <section className="py-20 md:py-32 lg:py-40">
           <div className="container mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-start">
 
               {/* Left — Foto + Nome */}
-              <div>
-                <RevealOnScroll direction="up">
-                  <div className="aspect-[4/5] w-full max-w-sm overflow-hidden rounded-lg bg-secondary/30 mb-8">
-                    <img
-                      src="/hugo-soave.jpg"
-                      alt="Hugo Soave — CEO Founder da Kronica Studio"
-                      loading="eager"
-                      decoding="async"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </RevealOnScroll>
-                <RevealOnScroll delay={0.1}>
-                  <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2 block">
-                    CEO Founder
-                  </span>
-                  <h2 className="text-2xl font-light text-foreground">Hugo Soave</h2>
-                </RevealOnScroll>
-              </div>
+              <RevealOnScroll direction="up">
+                <div className="w-full overflow-hidden rounded-lg bg-secondary/30 mb-6">
+                  <img
+                    src="/hugo-soave.jpg"
+                    alt="Hugo Soave — CEO Founder da Kronica Studio"
+                    loading="eager"
+                    decoding="async"
+                    className="w-full h-full object-cover object-top"
+                    style={{ aspectRatio: "4/5" }}
+                  />
+                </div>
+                <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2 block">
+                  CEO Founder
+                </span>
+                <h2 className="text-2xl font-light text-foreground">Hugo Soave</h2>
+              </RevealOnScroll>
 
               {/* Right — Bio + Abordagem */}
-              <div>
+              <div className="md:sticky md:top-24">
                 <RevealOnScroll>
                   <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 block">
                     Sobre o estúdio
