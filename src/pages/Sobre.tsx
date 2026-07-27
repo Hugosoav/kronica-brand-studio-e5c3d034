@@ -61,20 +61,20 @@ const Sobre = () => {
                 <div className="space-y-5 text-sm md:text-base text-muted-foreground leading-relaxed mb-14">
                   <RevealOnScroll delay={0.15}>
                     <p>
-                      Me chamo Hugo e sou o CEO Founder da Kronica Studio. Tenho 23 anos,
-                      bachareado em Design Gráfico pela FAESA, atuo há 5 anos no mercado de marcas.
-                      Nesse período, passei por agências de comunicação e marketing até fundar o meu
-                      próprio estúdio. Hoje, meu foco é na criação e gestão de marcas, unindo
-                      estratégia e criatividade para gerar impacto real.
+                      A Kronica é um estúdio de branding movido pela convicção de que grandes marcas
+                      não surgem prontas. Elas são construídas ao longo do tempo, capítulo após
+                      capítulo. Trabalhamos para transformar estratégia em identidade, identidade em
+                      percepção e percepção em reconhecimento, desenvolvendo marcas que permanecem
+                      coerentes à medida que evoluem.
                     </p>
                   </RevealOnScroll>
                   <RevealOnScroll delay={0.25}>
                     <p>
-                      A Kronica é um estúdio de design especializado na criação e gestão de marcas,
-                      fundada por mim em 2026. O estúdio surgiu da premissa de que grandes marcas são
-                      construídas e moldadas ao longo do tempo. A Kronica busca valorizar o branding
-                      completo da empresa — da Identidade Visual à ativação e posicionamento da marca
-                      no digital.
+                      Toda empresa conta uma história, queira ou não. Algumas são esquecidas logo no
+                      primeiro capítulo. Outras conquistam espaço porque existe intenção por trás da
+                      forma como se apresentam, se comunicam e são lembradas. A Kronica existe para
+                      escrever narrativas que resistem ao tempo. Unimos estratégia e design para que
+                      a história de uma marca não seja apenas contada, mas reconhecida.
                     </p>
                   </RevealOnScroll>
                 </div>

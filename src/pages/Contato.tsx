@@ -34,7 +34,7 @@ const Contato = () => {
                   splitBy="words"
                   delay={0.1}
                 >
-                  Formulário para orçamento
+                  Formulário para proposta
                 </AnimatedText>
                 <RevealOnScroll delay={0.2}>
                   <p className="text-sm md:text-base text-muted-foreground max-w-2xl">
