@@ -128,7 +128,7 @@ const Header = () => {
                     <Link
                       key={link.href}
                       to={link.href}
-                      className="relative text-xs font-normal uppercase tracking-[0.2em] transition-all duration-300 group py-1 overflow-hidden"
+                      className="relative text-xs font-medium uppercase tracking-[0.2em] transition-all duration-300 group py-1 overflow-hidden"
                     >
                       <span className="flex flex-col h-[1.2em] overflow-hidden">
                         <motion.span
