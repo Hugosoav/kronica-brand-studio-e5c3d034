@@ -11,25 +11,25 @@ const solucoes = [
   {
     numero: "01",
     title: "Branding",
-    desc: "Construção completa da marca do zero. Começamos pelo posicionamento estratégico — quem é a marca, para quem ela fala, e como quer ser lembrada — e traduzimos isso em um sistema visual coeso, com identidade, tom de voz e presença consistente em todos os pontos de contato.",
+    desc: "Construção completa da marca do zero. Começamos pelo posicionamento estratégico, quem é a marca, para quem ela fala e como quer ser lembrada, e traduzimos isso em um sistema visual coeso, com identidade, tom de voz e presença consistente em todos os pontos de contato.",
     tags: ["Posicionamento", "Naming", "Identidade Visual", "Sistema de Marca", "Brandbook"],
   },
   {
     numero: "02",
     title: "Rebranding",
-    desc: "Atualização e reposicionamento de marcas existentes para novos momentos de negócio. Seja uma expansão, mudança de público ou simplesmente uma marca que ficou para trás no tempo — revisamos o que precisa ser preservado e o que precisa evoluir, sem perder a essência.",
+    desc: "Atualização e reposicionamento de marcas existentes para novos momentos de negócio. Seja uma expansão, mudança de público ou simplesmente uma marca que ficou para trás no tempo, revisamos o que precisa ser preservado e o que precisa evoluir, sem perder a essência.",
     tags: ["Diagnóstico", "Evolução de Marca", "Redesign", "Transição Visual", "Consistência"],
   },
   {
     numero: "03",
     title: "Consultoria de Marca",
-    desc: "Para empresas que já têm uma marca estabelecida mas sentem que algo não está funcionando. Fazemos um diagnóstico estratégico profundo — analisamos percepção, consistência, concorrência e oportunidades — e entregamos um plano claro de direção.",
+    desc: "Para empresas que já têm uma marca estabelecida mas sentem que algo não está funcionando. Fazemos um diagnóstico estratégico profundo, analisamos percepção, consistência, concorrência e oportunidades, e entregamos um plano claro de direção.",
     tags: ["Diagnóstico", "Auditoria de Marca", "Direção Estratégica", "Posicionamento", "Plano de Ação"],
   },
   {
     numero: "04",
     title: "Identidade Visual",
-    desc: "Criação de sistemas visuais coerentes e duradouros. Desenvolvemos símbolo, tipografia, paleta de cores, padrões e aplicações que funcionam juntos — do cartão de visitas ao Instagram, da embalagem ao ambiente físico. Design que comunica antes mesmo de ser lido.",
+    desc: "Criação de sistemas visuais coerentes e duradouros. Desenvolvemos símbolo, tipografia, paleta de cores, padrões e aplicações que funcionam juntos, do cartão de visitas ao Instagram, da embalagem ao ambiente físico. Design que comunica antes mesmo de ser lido.",
     tags: ["Logo", "Símbolo", "Tipografia", "Paleta de Cores", "Aplicações", "Social Media"],
   },
 ];

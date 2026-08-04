@@ -8,10 +8,10 @@ import Lenis from "@studio-freight/lenis";
 export function useSmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 0.75,
-      easing: (t) => 1 - Math.pow(1 - t, 2.5), // ease out quad suave — responsivo mas sem travamento
+      duration: 1.1,
+      easing: (t) => t === 1 ? 1 : 1 - Math.pow(2, -8 * t), // ease out expo suave, sem corte abrupto
       smoothWheel: true,
-      wheelMultiplier: 1.0,
+      wheelMultiplier: 0.85,
     });
 
     function raf(time: number) {
