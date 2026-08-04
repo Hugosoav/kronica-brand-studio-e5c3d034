@@ -9,6 +9,7 @@ import { AuthProvider } from "@/hooks/use-auth";
 import { AnimatePresence } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import RequireAuth from "@/components/RequireAuth";
+import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import Index from "./pages/Index";
 
 // Páginas carregadas sob demanda (code splitting), pra não pesar o
@@ -41,6 +42,7 @@ function PageFallback() {
 
 function AnimatedRoutes() {
   const location = useLocation();
+  useSmoothScroll();
   return (
     <AnimatePresence mode="wait">
       <Suspense fallback={<PageFallback />}>
