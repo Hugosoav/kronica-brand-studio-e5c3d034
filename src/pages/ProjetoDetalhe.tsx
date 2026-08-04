@@ -259,30 +259,44 @@ const ProjetoDetalhe = () => {
               <h2 className="text-2xl font-semibold mb-8">Galeria</h2>
             </RevealOnScroll>
             <div className="grid grid-cols-1 gap-6">
-              {project.images.gallery.map((image, index) =>
-              <motion.div
-                key={index}
-                className="overflow-hidden rounded-lg"
-                initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{
-                  duration: 0.7,
-                  delay: index * 0.08,
-                  ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number]
-                }}>
-                
-                  <motion.img
-                  src={image}
-                  alt={`${project.title} - Imagem ${index + 1}`}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full object-contain"
-                  whileHover={{ scale: 1.03 }}
-                  transition={{ duration: 0.6 }} />
-                
-                </motion.div>
-              )}
+              {project.images.gallery.map((item, index) => {
+                const isVideo = /\.(mp4|webm|mov|ogg)(\?|$)/i.test(item);
+                return (
+                  <motion.div
+                    key={index}
+                    className="overflow-hidden rounded-lg"
+                    initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
+                    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{
+                      duration: 0.7,
+                      delay: index * 0.08,
+                      ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number]
+                    }}
+                  >
+                    {isVideo ? (
+                      <video
+                        src={item}
+                        controls
+                        playsInline
+                        preload="metadata"
+                        className="w-full rounded-lg"
+                        style={{ maxHeight: "80vh" }}
+                      />
+                    ) : (
+                      <motion.img
+                        src={item}
+                        alt={`${project.title} - Imagem ${index + 1}`}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full object-contain"
+                        whileHover={{ scale: 1.03 }}
+                        transition={{ duration: 0.6 }}
+                      />
+                    )}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>

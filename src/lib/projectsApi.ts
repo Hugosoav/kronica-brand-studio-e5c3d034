@@ -150,7 +150,7 @@ export async function uploadProjectImage(
     .upload(path, file, {
       cacheControl: "31536000",
       upsert: false,
-      contentType: file.type,
+      contentType: file.type || "application/octet-stream",
     });
 
   if (error) throw error;
