@@ -79,6 +79,41 @@ const Sobre = () => {
                   </RevealOnScroll>
                 </div>
 
+                {/* Soluções */}
+                <RevealOnScroll direction="up" delay={0.05}>
+                  <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 block">
+                    Nossas Soluções
+                  </span>
+                </RevealOnScroll>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-14">
+                  {[
+                    {
+                      title: "Branding",
+                      desc: "Construção completa da marca do zero — posicionamento, identidade e sistema visual.",
+                    },
+                    {
+                      title: "Rebranding",
+                      desc: "Atualização e reposicionamento de marcas existentes para novos momentos de negócio.",
+                    },
+                    {
+                      title: "Consultoria de Marca",
+                      desc: "Diagnóstico estratégico para marcas que precisam de direção, clareza e consistência.",
+                    },
+                    {
+                      title: "Identidade Visual",
+                      desc: "Criação de sistemas visuais coerentes — tipografia, paleta, símbolo e aplicações.",
+                    },
+                  ].map((item, i) => (
+                    <RevealOnScroll key={item.title} delay={0.1 * i} direction="up">
+                      <div className="border border-border rounded-lg p-5 hover:border-foreground/30 transition-colors duration-300">
+                        <h3 className="text-sm font-medium text-foreground mb-2">{item.title}</h3>
+                        <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                      </div>
+                    </RevealOnScroll>
+                  ))}
+                </div>
+
                 {/* Abordagem */}
                 <RevealOnScroll direction="up" delay={0.1}>
                   <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 block">

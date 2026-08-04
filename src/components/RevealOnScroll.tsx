@@ -25,7 +25,7 @@ const RevealOnScroll = ({
   className = "",
   delay = 0,
   direction = "up",
-  duration = 0.7,
+  duration = 1.0,
 }: RevealOnScrollProps) => {
   const offset = directionMap[direction];
 
@@ -52,7 +52,7 @@ const RevealOnScroll = ({
       transition={{
         duration,
         delay,
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: [0.16, 1, 0.3, 1],
       }}
     >
       {children}
