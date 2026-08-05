@@ -58,7 +58,7 @@ const Blog = () => {
                 </AnimatedText>
                 <RevealOnScroll delay={0.2}>
                   <p className="text-sm md:text-base text-muted-foreground max-w-2xl">
-                    Reflexões, processos e referências sobre branding e design
+                    Reflexões, processos e referências sobre branding e design.
                   </p>
                 </RevealOnScroll>
               </div>

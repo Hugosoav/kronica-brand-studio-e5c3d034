@@ -50,7 +50,6 @@ const Projetos = () => {
                     className="group cursor-pointer block"
                   >
                     <div className="relative overflow-hidden rounded-lg aspect-[4/3] bg-secondary/30">
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
                       <motion.img
                         src={project.images.cover}
                         alt={project.title}
@@ -60,15 +59,20 @@ const Projetos = () => {
                         whileHover={{ scale: 1.04 }}
                         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
                       />
-                    </div>
-                    <div className="flex items-center justify-between mt-4 px-1">
-                      <div>
-                        <h3 className="text-base font-semibold text-foreground group-hover:text-muted-foreground transition-colors">
-                          {project.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground">{project.category}</p>
+                      {/* Overlay sempre visível na parte inferior */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                      {/* Info dentro do card */}
+                      <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5 flex items-end justify-between">
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.2em] text-white/60 mb-1">
+                            {project.category}
+                          </p>
+                          <h3 className="text-base md:text-lg font-medium text-white leading-tight">
+                            {project.title}
+                          </h3>
+                        </div>
+                        <span className="text-xs text-white/50 shrink-0 ml-3">{project.year}</span>
                       </div>
-                      <span className="text-sm text-muted-foreground">{project.year}</span>
                     </div>
                   </Link>
                 </motion.div>

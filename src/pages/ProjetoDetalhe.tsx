@@ -92,9 +92,11 @@ const ProjetoDetalhe = () => {
                 {project.title}
               </AnimatedText>
               <RevealOnScroll delay={0.3}>
-                <p className="text-xl text-primary/70 leading-relaxed">
-                  {project.fullDescription}
-                </p>
+                <div className="text-xl text-primary/70 leading-relaxed space-y-4">
+                  {project.fullDescription.split(/\n\n+/).map((para, i) => (
+                    <p key={i}>{para.trim()}</p>
+                  ))}
+                </div>
               </RevealOnScroll>
             </div>
           </div>
@@ -128,9 +130,11 @@ const ProjetoDetalhe = () => {
                   <h2 className="text-2xl font-semibold mb-6">Conceito</h2>
                 </RevealOnScroll>
                 <RevealOnScroll delay={0.15}>
-                  <p className="text-primary/70 leading-relaxed text-lg">
-                    {project.concept}
-                  </p>
+                  <div className="text-primary/70 leading-relaxed text-lg space-y-4">
+                    {project.concept.split(/\n\n+/).map((para, i) => (
+                      <p key={i}>{para.trim()}</p>
+                    ))}
+                  </div>
                 </RevealOnScroll>
               </div>
               <div className="space-y-8">
