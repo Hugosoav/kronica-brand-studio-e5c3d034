@@ -8,12 +8,12 @@ const Index = () => {
     <PageTransition>
       <Layout>
         {/* SEO */}
-        <title>Kronica — Branding e Design Estratégico</title>
-        <meta name="description" content="A equipe da Kronica cria identidades e sistemas visuais com clareza, consistência e estética, do posicionamento à aplicação." />
+        <title>Kronica — Marcas no Tempo</title>
+        <meta name="description" content="Construímos marcas. Porque marcas são moldadas pelo tempo. A Kronica une estratégia e design para criar identidades que evoluem com os negócios." />
 
         {/* Hero Section */}
-        <InfiniteHero 
-          title="CONSTRUA SUA HISTÓRIA"
+        <InfiniteHero
+          title="MARCAS NO TEMPO"
           subtitle="Kronica Studio"
         />
 

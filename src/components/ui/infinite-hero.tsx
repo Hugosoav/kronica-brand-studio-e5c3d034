@@ -13,7 +13,7 @@ interface InfiniteHeroProps {
 }
 
 export default function InfiniteHero({
-  title = "Marcas que contam histórias",
+  title = "MARCAS NO TEMPO",
   subtitle = "Kronica Studio"
 }: InfiniteHeroProps) {
   const rootRef = useRef<HTMLDivElement>(null);

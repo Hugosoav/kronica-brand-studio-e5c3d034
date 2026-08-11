@@ -16,7 +16,7 @@ const Contato = () => {
           <title>Contato — Fale com a Kronica</title>
           <meta
             name="description"
-            content="A equipe responde com próximos passos, prazos e direcionamento. Entre em contato com a Kronica."
+            content="Fale com a Kronica. Construímos marcas moldadas pelo tempo — estratégia, identidade visual e sistemas de marca para negócios que querem durar."
           />
 
           {/* Qualification Form Section */}

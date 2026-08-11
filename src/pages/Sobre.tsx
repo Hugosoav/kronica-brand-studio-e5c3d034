@@ -121,12 +121,12 @@ const Sobre = () => {
         <title>Sobre a Kronica</title>
         <meta
           name="description"
-          content="A Kronica é um estúdio de design especializado na criação e gestão de marcas, fundado por Hugo Soave em 2026." />
+          content="A Kronica constrói marcas moldadas pelo tempo. Fundada por Hugo Soave, o estúdio une estratégia e design para criar sistemas de identidade que evoluem com os negócios." />
         <link rel="canonical" href="https://kronica.com.br/sobre" />
         <meta property="og:title" content="Sobre a Kronica" />
         <meta
           property="og:description"
-          content="A Kronica é um estúdio de design especializado na criação e gestão de marcas, fundado por Hugo Soave em 2026." />
+          content="A Kronica constrói marcas moldadas pelo tempo. Fundada por Hugo Soave, o estúdio une estratégia e design para criar sistemas de identidade que evoluem com os negócios." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kronica.com.br/sobre" />
 
@@ -172,19 +172,21 @@ const Sobre = () => {
                   <RevealOnScroll delay={0.15}>
                     <p>
                       A Kronica é um estúdio de branding movido pela convicção de que grandes marcas
-                      não surgem prontas. Elas são construídas ao longo do tempo, capítulo após
-                      capítulo. Trabalhamos para transformar estratégia em identidade, identidade em
-                      percepção e percepção em reconhecimento, desenvolvendo marcas que permanecem
-                      coerentes à medida que evoluem.
+                      não surgem prontas. Elas são construídas ao longo do tempo, camada sobre camada,
+                      decisão sobre decisão. Trabalhamos para transformar estratégia em identidade,
+                      identidade em percepção e percepção em reconhecimento.
                     </p>
                   </RevealOnScroll>
                   <RevealOnScroll delay={0.25}>
                     <p>
-                      Toda empresa conta uma história, queira ou não. Algumas são esquecidas logo no
-                      primeiro capítulo. Outras conquistam espaço porque existe intenção por trás da
-                      forma como se apresentam, se comunicam e são lembradas. A Kronica existe para
-                      escrever narrativas que resistem ao tempo. Unimos estratégia e design para que
-                      a história de uma marca não seja apenas contada, mas reconhecida.
+                      Uma marca não é definida apenas pelo que ela é hoje. É definida pelo que se
+                      torna com o tempo. Nós construímos os fundamentos. Criamos sistemas. Damos forma
+                      ao presente. E deixamos espaço para o futuro.
+                    </p>
+                  </RevealOnScroll>
+                  <RevealOnScroll delay={0.35}>
+                    <p>
+                      Marcas não são feitas de uma vez. São construídas ao longo do tempo.
                     </p>
                   </RevealOnScroll>
                 </div>

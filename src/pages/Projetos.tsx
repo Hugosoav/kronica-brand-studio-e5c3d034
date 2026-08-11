@@ -16,7 +16,7 @@ const Projetos = () => {
     <PageTransition>
       <Layout>
         <title>Projetos — Kronica</title>
-        <meta name="description" content="Portfólio de projetos de branding e design da Kronica." />
+        <meta name="description" content="Portfólio da Kronica — marcas construídas ao longo do tempo, com estratégia, identidade e sistemas visuais que evoluem com os negócios." />
         <link rel="canonical" href="https://kronica.com.br/projetos" />
         <meta property="og:title" content="Projetos — Kronica" />
         <meta property="og:description" content="Portfólio de projetos de branding e design da Kronica." />
