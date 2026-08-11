@@ -89,7 +89,7 @@ const Footer = () => {
             <RevealOnScroll delay={0.4} direction="up">
               <div className="mt-12 md:mt-0">
                 <div className="border-t border-background/10 pt-6">
-                  <p className="text-sm text-background/50 max-w-md">Construímos marcas. Porque marcas são moldadas pelo tempo.</p>
+                  <p className="text-sm text-background/50 max-w-md">Nós construímos os fundamentos. Criamos sistemas. Damos forma ao presente. E deixamos espaço para o futuro.</p>
                 </div>
               </div>
             </RevealOnScroll>

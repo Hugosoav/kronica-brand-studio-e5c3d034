@@ -171,22 +171,18 @@ const Sobre = () => {
                 <div className="space-y-5 text-sm md:text-base text-muted-foreground leading-relaxed mb-14">
                   <RevealOnScroll delay={0.15}>
                     <p>
-                      A Kronica é um estúdio de branding movido pela convicção de que grandes marcas
-                      não surgem prontas. Elas são construídas ao longo do tempo, camada sobre camada,
-                      decisão sobre decisão. Trabalhamos para transformar estratégia em identidade,
-                      identidade em percepção e percepção em reconhecimento.
+                      Acreditamos que marcas são moldadas pelo tempo. Elas não nascem prontas: evoluem,
+                      acumulam significado e se transformam junto com os negócios que representam. Por
+                      isso, não buscamos criar algo apenas atual ou visualmente relevante. Buscamos
+                      construir marcas que tenham força para permanecer, mudar e continuar fazendo sentido.
                     </p>
                   </RevealOnScroll>
                   <RevealOnScroll delay={0.25}>
                     <p>
-                      Uma marca não é definida apenas pelo que ela é hoje. É definida pelo que se
-                      torna com o tempo. Nós construímos os fundamentos. Criamos sistemas. Damos forma
-                      ao presente. E deixamos espaço para o futuro.
-                    </p>
-                  </RevealOnScroll>
-                  <RevealOnScroll delay={0.35}>
-                    <p>
-                      Marcas não são feitas de uma vez. São construídas ao longo do tempo.
+                      Existimos para negócios que estão em movimento. Da estratégia à identidade,
+                      transformamos ideias, posicionamentos e ambições em marcas com clareza, presença
+                      e consistência. Não criamos apenas o que uma empresa precisa ser hoje, mas os
+                      fundamentos para aquilo que ela pode se tornar amanhã.
                     </p>
                   </RevealOnScroll>
                 </div>

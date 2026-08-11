@@ -263,7 +263,7 @@ const ProjetoDetalhe = () => {
               <h2 className="text-2xl font-semibold mb-8">Galeria</h2>
             </RevealOnScroll>
             <div className="grid grid-cols-1 gap-6">
-              {project.images.gallery.map((item, index) => {
+              {project.images.gallery.slice(1).map((item, index) => {
                 const isVideo = /\.(mp4|webm|mov|ogg)(\?|$)/i.test(item);
                 return (
                   <motion.div
