@@ -49,7 +49,7 @@ const SolucaoItem = ({ item, index }: { item: typeof solucoes[0]; index: number 
               {item.numero}
             </span>
             <span
-              className={`text-2xl md:text-4xl lg:text-5xl font-light transition-colors duration-300 ${
+              className={`text-xl sm:text-2xl md:text-4xl lg:text-5xl font-light transition-colors duration-300 ${
                 open ? "text-foreground" : "text-foreground/70 group-hover:text-foreground"
               }`}
             >
@@ -85,7 +85,7 @@ const SolucaoItem = ({ item, index }: { item: typeof solucoes[0]; index: number 
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden"
             >
-              <div className="pl-12 md:pl-20 pb-8 md:pb-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+              <div className="pl-8 sm:pl-12 md:pl-20 pb-8 md:pb-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                   {item.desc}
                 </p>

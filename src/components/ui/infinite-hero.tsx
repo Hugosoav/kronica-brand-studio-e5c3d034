@@ -90,7 +90,7 @@ export default function InfiniteHero({
         <div className="flex flex-col items-center gap-4 sm:gap-6">
           <h1
             ref={h1Ref}
-            className="tracking-[-0.02em] text-[clamp(3rem,13vw,8rem)] py-2 font-light"
+            className="tracking-[-0.02em] text-[clamp(2.2rem,12vw,8rem)] py-2 font-light"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
               backgroundImage: isDark ?
