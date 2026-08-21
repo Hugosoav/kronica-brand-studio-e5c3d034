@@ -48,13 +48,13 @@
 
   .dark {
     /* Kronica Color Palette - Dark Theme */
-    --background: 0 0% 7%; /* #111111 */
+    --background: 0 0% 6%; /* #0f0f0f */
     --foreground: 0 0% 95%; /* #F1F1F1 */
 
-    --card: 0 0% 12%; /* Slightly lighter than background */
+    --card: 0 0% 10%; /* slightly lighter than #0f0f0f */
     --card-foreground: 0 0% 95%; /* #F1F1F1 */
 
-    --popover: 0 0% 12%;
+    --popover: 0 0% 10%;
     --popover-foreground: 0 0% 95%;
 
     --primary: 0 0% 95%; /* #F1F1F1 */

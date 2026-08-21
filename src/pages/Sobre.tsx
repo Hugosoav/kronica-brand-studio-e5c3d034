@@ -10,27 +10,27 @@ import { ArrowUpRight } from "lucide-react";
 const solucoes = [
   {
     numero: "01",
-    title: "Branding",
-    desc: "Construção completa da marca do zero. Começamos pelo posicionamento estratégico, quem é a marca, para quem ela fala e como quer ser lembrada, e traduzimos isso em um sistema visual coeso, com identidade, tom de voz e presença consistente em todos os pontos de contato.",
-    tags: ["Posicionamento", "Naming", "Identidade Visual", "Sistema de Marca", "Brandbook"],
+    title: "Gestão de Marca (Branding)",
+    desc: "Um modelo de gestão que cria valor para sua marca e potencializa os resultados do seu negócio. Estruturamos estratégia, posicionamento, comunicação e identidade para transformar a marca em um ativo estratégico do negócio, fortalecendo sua percepção, diferenciação e capacidade de gerar valor no mercado.",
+    tags: ["Posicionamento", "Identidade Visual", "Sistema de Marca", "Brandbook", "Estratégia de Comunicação"],
   },
   {
     numero: "02",
     title: "Rebranding",
-    desc: "Atualização e reposicionamento de marcas existentes para novos momentos de negócio. Seja uma expansão, mudança de público ou simplesmente uma marca que ficou para trás no tempo, revisamos o que precisa ser preservado e o que precisa evoluir, sem perder a essência.",
-    tags: ["Diagnóstico", "Evolução de Marca", "Redesign", "Transição Visual", "Consistência"],
+    desc: "Uma evolução estratégica para marcas que precisam acompanhar o crescimento do negócio. Analisamos o momento atual da empresa, identificamos o que precisa mudar e reconstruímos os principais pontos da marca para aumentar sua relevância, percepção de valor e competitividade.",
+    tags: ["Diagnóstico", "Evolução de Marca", "Redesign", "Transição Visual", "Competitividade"],
   },
   {
     numero: "03",
     title: "Consultoria de Marca",
-    desc: "Para empresas que já têm uma marca estabelecida mas sentem que algo não está funcionando. Fazemos um diagnóstico estratégico profundo, analisamos percepção, consistência, concorrência e oportunidades, e entregamos um plano claro de direção.",
+    desc: "Direcionamento estratégico para transformar uma marca em uma vantagem competitiva. Diagnosticamos o cenário atual, identificamos oportunidades e definimos caminhos claros para posicionamento, comunicação e gestão, apoiando decisões que fortalecem a marca e contribuem para os objetivos do negócio.",
     tags: ["Diagnóstico", "Auditoria de Marca", "Direção Estratégica", "Posicionamento", "Plano de Ação"],
   },
   {
     numero: "04",
-    title: "Identidade Visual",
-    desc: "Criação de sistemas visuais coerentes e duradouros. Desenvolvemos símbolo, tipografia, paleta de cores, padrões e aplicações que funcionam juntos, do cartão de visitas ao Instagram, da embalagem ao ambiente físico. Design que comunica antes mesmo de ser lido.",
-    tags: ["Logo", "Símbolo", "Tipografia", "Paleta de Cores", "Aplicações", "Social Media"],
+    title: "Identidade Visual & Verbal",
+    desc: "A expressão que transforma o posicionamento da sua empresa em percepção de valor. Desenvolvemos os sistemas visual e verbal da marca para garantir consistência em todos os pontos de contato, criando uma presença reconhecível, profissional e alinhada ao nível de negócio que a empresa deseja alcançar.",
+    tags: ["Logo", "Símbolo", "Tipografia", "Paleta de Cores", "Tom de Voz", "Aplicações"],
   },
 ];
 
@@ -171,18 +171,25 @@ const Sobre = () => {
                 <div className="space-y-5 text-sm md:text-base text-muted-foreground leading-relaxed mb-14">
                   <RevealOnScroll delay={0.15}>
                     <p>
-                      Acreditamos que marcas são moldadas pelo tempo. Elas não nascem prontas: evoluem,
-                      acumulam significado e se transformam junto com os negócios que representam. Por
-                      isso, não buscamos criar algo apenas atual ou visualmente relevante. Buscamos
-                      construir marcas que tenham força para permanecer, mudar e continuar fazendo sentido.
+                      A Kronica é um estúdio de design multidisciplinar independente. Nosso trabalho
+                      abrange branding, consultoria de marca, estratégia, posicionamento e identidades
+                      visuais. Atuamos na construção e evolução de marcas, conectando design e
+                      estratégia aos objetivos de cada negócio.
                     </p>
                   </RevealOnScroll>
-                  <RevealOnScroll delay={0.25}>
+                  <RevealOnScroll delay={0.22}>
                     <p>
-                      Existimos para negócios que estão em movimento. Da estratégia à identidade,
-                      transformamos ideias, posicionamentos e ambições em marcas com clareza, presença
-                      e consistência. Não criamos apenas o que uma empresa precisa ser hoje, mas os
-                      fundamentos para aquilo que ela pode se tornar amanhã.
+                      Grandes negócios são construídos sobre grandes marcas. Por isso, desenvolvemos
+                      soluções que ajudam empresas a comunicar seu valor e fortalecer seu
+                      posicionamento para criar uma presença consistente no mercado.
+                    </p>
+                  </RevealOnScroll>
+                  <RevealOnScroll delay={0.30}>
+                    <p>
+                      Trabalhamos ao lado de empreendedores e empresas em diferentes momentos de
+                      crescimento. Da criação de uma nova marca ao reposicionamento de negócios já
+                      estabelecidos, transformamos desafios e oportunidades em marcas relevantes e
+                      preparadas para se destacarem no mercado.
                     </p>
                   </RevealOnScroll>
                 </div>
