@@ -166,7 +166,7 @@ const ImageUploader = ({ projectId, images, onChange, label, multiple = true }: 
           {uploading ? "Enviando..." : "Enviar fotos ou vídeos"}
         </Button>
         <p className="text-xs text-muted-foreground mt-2">
-          Aceita imagens e vídeos (.mp4, .webm, .mov). A primeira mídia é usada como capa.
+          Aceita imagens (.jpg, .png, .gif), vídeos (.mp4, .webm, .mov). A primeira mídia é usada como capa.
         </p>
       </div>
     </div>

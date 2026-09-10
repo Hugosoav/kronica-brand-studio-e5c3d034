@@ -10,7 +10,7 @@ import { ArrowUpRight } from "lucide-react";
 const solucoes = [
   {
     numero: "01",
-    title: "Gestão de Marca (Branding)",
+    title: "Branding",
     desc: "Um modelo de gestão que cria valor para sua marca e potencializa os resultados do seu negócio. Estruturamos estratégia, posicionamento, comunicação e identidade para transformar a marca em um ativo estratégico do negócio, fortalecendo sua percepção, diferenciação e capacidade de gerar valor no mercado.",
     tags: ["Posicionamento", "Identidade Visual", "Sistema de Marca", "Brandbook", "Estratégia de Comunicação"],
   },
