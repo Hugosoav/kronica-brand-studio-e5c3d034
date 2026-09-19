@@ -32,8 +32,13 @@ const solucoes = [
     desc: "A expressão que transforma o posicionamento da sua empresa em percepção de valor. Desenvolvemos os sistemas visual e verbal da marca para garantir consistência em todos os pontos de contato, criando uma presença reconhecível, profissional e alinhada ao nível de negócio que a empresa deseja alcançar.",
     tags: ["Logo", "Símbolo", "Tipografia", "Paleta de Cores", "Tom de Voz", "Aplicações"],
   },
+  {
+    numero: "05",
+    title: "Social Media",
+    desc: "Gestão mensal do perfil da marca no Instagram com foco em crescimento orgânico e consistência de comunicação. Desenvolvemos o planejamento editorial, produzimos o conteúdo visual e verbal e realizamos as postagens mensais, mantendo a marca ativa, coerente e presente no digital. Modelo de contrato recorrente com duração mínima de 6 meses, renovável conforme os resultados e objetivos do negócio.",
+    tags: ["Planejamento Editorial", "Produção de Conteúdo", "Gestão de Instagram", "Crescimento Orgânico", "Identidade Visual Aplicada"],
+  },
 ];
-
 const SolucaoItem = ({ item, index }: { item: typeof solucoes[0]; index: number }) => {
   const [open, setOpen] = useState(false);
 
