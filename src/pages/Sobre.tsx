@@ -35,7 +35,7 @@ const solucoes = [
   {
     numero: "05",
     title: "Social Media",
-    desc: "Gestão mensal do perfil da marca no Instagram com foco em crescimento orgânico e consistência de comunicação. Desenvolvemos o planejamento editorial, produzimos o conteúdo visual e verbal e realizamos as postagens mensais, mantendo a marca ativa, coerente e presente no digital. Modelo de contrato recorrente com duração mínima de 6 meses, renovável conforme os resultados e objetivos do negócio.",
+    desc: "Gestão mensal do perfil da marca no Instagram com foco em crescimento orgânico e consistência de comunicação. Desenvolvemos o planejamento editorial, produzimos o conteúdo visual e verbal e realizamos as postagens mensais, mantendo a marca ativa, coerente e presente no digital.",
     tags: ["Planejamento Editorial", "Produção de Conteúdo", "Gestão de Instagram", "Crescimento Orgânico", "Identidade Visual Aplicada"],
   },
 ];
