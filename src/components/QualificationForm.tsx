@@ -25,7 +25,6 @@ interface FormState {
   tempoDeMercado: string;
   numeroFuncionarios: string;
   produtosServicos: string;
-  problema: string;
   faturamentoMensal: string;
   prazo: string;
 }
@@ -39,7 +38,6 @@ const initialState: FormState = {
   tempoDeMercado: "",
   numeroFuncionarios: "",
   produtosServicos: "",
-  problema: "",
   faturamentoMensal: "",
   prazo: "",
 };
@@ -76,7 +74,6 @@ const QualificationForm = () => {
           "tempo de mercado": form.tempoDeMercado,
           "número de funcionários": form.numeroFuncionarios,
           "produtos ou serviços": form.produtosServicos,
-          "empresa e desafios": form.problema,
           "faturamento mensal": form.faturamentoMensal,
           "prazo desejado": form.prazo,
         }),
@@ -233,20 +230,6 @@ const QualificationForm = () => {
         />
       </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="problema" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          Fale um pouco sobre a sua empresa e os principais desafios que enfrentam hoje
-        </Label>
-        <Textarea
-          id="problema"
-          required
-          value={form.problema}
-          onChange={(e) => handleChange("problema", e.target.value)}
-          placeholder="Ex: somos uma clínica em expansão, mas nossa marca não transmite a credibilidade que temos hoje..."
-          className="min-h-[100px]"
-        />
-      </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <Label htmlFor="faturamentoMensal" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
@@ -261,8 +244,8 @@ const QualificationForm = () => {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="ainda-nao-fatura">Ainda não fatura</SelectItem>
-              <SelectItem value="ate-20k">Até R$ 20.000</SelectItem>
-              <SelectItem value="20k-50k">R$ 20.000 a R$ 50.000</SelectItem>
+              <SelectItem value="ate-20k">Até R$ 10.000</SelectItem>
+              <SelectItem value="20k-50k">R$ 10.000 a R$ 20.000</SelectItem>
               <SelectItem value="50k-150k">R$ 50.000 a R$ 150.000</SelectItem>
               <SelectItem value="mais-150k">Acima de R$ 150.000</SelectItem>
               <SelectItem value="prefiro-nao-informar">Prefiro não informar</SelectItem>
