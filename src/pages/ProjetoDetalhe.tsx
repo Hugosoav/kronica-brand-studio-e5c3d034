@@ -1,5 +1,5 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ChevronDown, Loader2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import { fetchProjects } from "@/lib/projectsApi";
@@ -7,12 +7,14 @@ import { useQuery } from "@tanstack/react-query";
 import PageTransition from "@/components/PageTransition";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import AnimatedText from "@/components/AnimatedText";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { useLocale } from "@/hooks/use-locale";
 
 const ProjetoDetalhe = () => {
   const { id } = useParams<{id: string;}>();
   const navigate = useNavigate();
+  const { t } = useLocale();
+  const p = t.projetos;
   const [brandStoryOpen, setBrandStoryOpen] = useState(false);
 
   const { data: projects = [], isLoading } = useQuery({
@@ -37,9 +39,9 @@ const ProjetoDetalhe = () => {
       <Layout>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-2xl font-semibold mb-4">Projeto não encontrado</h1>
+            <h1 className="text-2xl font-semibold mb-4">{p.notFound}</h1>
             <Button asChild>
-              <Link to="/projetos">Voltar aos projetos</Link>
+              <Link to="/projetos">{p.backToProjects}</Link>
             </Button>
           </div>
         </div>
@@ -73,7 +75,7 @@ const ProjetoDetalhe = () => {
                 className="mb-8 -ml-4 text-primary/60 hover:text-primary">
                 
                 <ArrowLeft size={18} className="mr-2" />
-                Voltar
+                {p.back}
               </Button>
             </RevealOnScroll>
 
@@ -139,8 +141,8 @@ const ProjetoDetalhe = () => {
               </div>
               <div className="space-y-8">
                 {[
-                { label: "Cliente", value: project.client || project.title },
-                { label: "Ano", value: project.year }].
+                { label: p.client, value: project.client || project.title },
+                { label: p.year, value: project.year }].
                 map((item, i) =>
                 <RevealOnScroll key={item.label} delay={0.1 * i} direction="up">
                     <div>
@@ -151,7 +153,7 @@ const ProjetoDetalhe = () => {
                 )}
                 <RevealOnScroll delay={0.2} direction="up">
                   <div>
-                    <h3 className="text-sm text-primary/50 uppercase tracking-wider mb-2">Serviços</h3>
+                    <h3 className="text-sm text-primary/50 uppercase tracking-wider mb-2">{p.services}</h3>
                     <ul className="space-y-1">
                       {project.services.map((service, index) =>
                       <li key={index} className="text-primary/80">{service}</li>
@@ -260,7 +262,7 @@ const ProjetoDetalhe = () => {
         <section className="pb-16">
           <div className="container mx-auto">
             <RevealOnScroll>
-              <h2 className="text-2xl font-semibold mb-8">Galeria</h2>
+              <h2 className="text-2xl font-semibold mb-8">{p.gallery}</h2>
             </RevealOnScroll>
             <div className="grid grid-cols-1 gap-6">
               {project.images.gallery.slice(1).map((item, index) => {

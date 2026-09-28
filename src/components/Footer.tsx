@@ -1,8 +1,10 @@
 import { useTheme } from "@/hooks/use-theme";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import { useLocale } from "@/hooks/use-locale";
 
 const Footer = () => {
   const { theme } = useTheme();
+  const { t } = useLocale();
 
   return (
     <footer className="bg-foreground text-background py-16 md:py-24">
@@ -89,7 +91,7 @@ const Footer = () => {
             <RevealOnScroll delay={0.4} direction="up">
               <div className="mt-12 md:mt-0">
                 <div className="border-t border-background/10 pt-6">
-                  <p className="text-sm text-background/50 max-w-md">Nós construímos os fundamentos. Criamos sistemas. Damos forma ao presente. E deixamos espaço para o futuro.</p>
+                  <p className="text-sm text-background/50 max-w-md">{t.footer.tagline}</p>
                 </div>
               </div>
             </RevealOnScroll>

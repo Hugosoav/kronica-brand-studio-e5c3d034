@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/hooks/use-theme";
+import { useLocale } from "@/hooks/use-locale";
 import ShaderHeroBackground from "./shader-hero-background";
 
 interface InfiniteHeroProps {
@@ -23,6 +24,7 @@ export default function InfiniteHero({
   const navigate = useNavigate();
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const { t } = useLocale();
 
   useGSAP(
     () => {
@@ -128,7 +130,7 @@ export default function InfiniteHero({
               "bg-black/10 hover:bg-black/15 border border-black/10 text-black"}`
               }>
 
-              SOLICITE UMA PROPOSTA
+              {t.cta.toUpperCase()}
             </button>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/hooks/use-locale";
 import {
   Select,
   SelectContent,
@@ -45,6 +46,9 @@ const initialState: FormState = {
 const QualificationForm = () => {
   const [form, setForm] = useState<FormState>(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { t } = useLocale();
+  const f = t.contato.fields;
+  const ct = t.contato;
   const { toast } = useToast();
 
   const handleChange = (field: keyof FormState, value: string) => {
@@ -83,8 +87,8 @@ const QualificationForm = () => {
 
       if (result.success) {
         toast({
-          title: "Recebemos seu projeto!",
-          description: "Vamos analisar e retornar em breve com os próximos passos.",
+          title: ct.successTitle,
+          description: ct.successDesc,
         });
         setForm(initialState);
       } else {
@@ -92,8 +96,8 @@ const QualificationForm = () => {
       }
     } catch (error) {
       toast({
-        title: "Algo deu errado",
-        description: "Não conseguimos enviar seu formulário. Tente novamente ou fale com a gente pelo WhatsApp.",
+        title: ct.errorTitle,
+        description: ct.errorDesc,
         variant: "destructive",
       });
     } finally {
@@ -107,110 +111,69 @@ const QualificationForm = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <Label htmlFor="nome" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Nome
+            {f.nome}
           </Label>
-          <Input
-            id="nome"
-            required
-            value={form.nome}
-            onChange={(e) => handleChange("nome", e.target.value)}
-            placeholder="Seu nome"
-          />
+          <Input id="nome" required value={form.nome} onChange={(e) => handleChange("nome", e.target.value)} placeholder={f.nome} />
         </div>
         <div className="space-y-2">
           <Label htmlFor="email" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Email
+            {f.email}
           </Label>
-          <Input
-            id="email"
-            type="email"
-            required
-            value={form.email}
-            onChange={(e) => handleChange("email", e.target.value)}
-            placeholder="seu@email.com"
-          />
+          <Input id="email" type="email" required value={form.email} onChange={(e) => handleChange("email", e.target.value)} placeholder="seu@email.com" />
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <Label htmlFor="whatsapp" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            WhatsApp
+            {f.whatsapp}
           </Label>
-          <Input
-            id="whatsapp"
-            required
-            value={form.whatsapp}
-            onChange={(e) => handleChange("whatsapp", e.target.value)}
-            placeholder="(00) 00000-0000"
-          />
+          <Input id="whatsapp" required value={form.whatsapp} onChange={(e) => handleChange("whatsapp", e.target.value)} placeholder="(00) 00000-0000" />
         </div>
         <div className="space-y-2">
           <Label htmlFor="empresa" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Nome da empresa
+            {f.empresa}
           </Label>
-          <Input
-            id="empresa"
-            required
-            value={form.empresa}
-            onChange={(e) => handleChange("empresa", e.target.value)}
-            placeholder="Nome do seu negócio"
-          />
+          <Input id="empresa" required value={form.empresa} onChange={(e) => handleChange("empresa", e.target.value)} placeholder={f.empresa} />
         </div>
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="instagram" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          Instagram da sua empresa (se houver)
+          {f.instagram}
         </Label>
-        <Input
-          id="instagram"
-          value={form.instagram}
-          onChange={(e) => handleChange("instagram", e.target.value)}
-          placeholder="@suaempresa"
-        />
+        <Input id="instagram" value={form.instagram} onChange={(e) => handleChange("instagram", e.target.value)} placeholder="@suaempresa" />
       </div>
 
-      {/* Qualificação — sobre o negócio, não sobre orçamento */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <Label htmlFor="tempoDeMercado" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Há quanto tempo sua empresa existe?
+            {f.tempoDeMercado}
           </Label>
-          <Select
-            value={form.tempoDeMercado}
-            onValueChange={(value) => handleChange("tempoDeMercado", value)}
-          >
+          <Select value={form.tempoDeMercado} onValueChange={(value) => handleChange("tempoDeMercado", value)}>
             <SelectTrigger id="tempoDeMercado">
-              <SelectValue placeholder="Selecione" />
+              <SelectValue placeholder={f.selectPlaceholder} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="ainda-nao-abri">Ainda não abri / vou abrir</SelectItem>
-              <SelectItem value="menos-1-ano">Menos de 1 ano</SelectItem>
-              <SelectItem value="1-3-anos">1 a 3 anos</SelectItem>
-              <SelectItem value="3-10-anos">3 a 10 anos</SelectItem>
-              <SelectItem value="mais-10-anos">Mais de 10 anos</SelectItem>
+              {f.tempoOptions.map((opt) => (
+                <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
 
         <div className="space-y-2">
           <Label htmlFor="numeroFuncionarios" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Quantos funcionários sua empresa possui atualmente?
+            {f.numeroFuncionarios}
           </Label>
-          <Select
-            value={form.numeroFuncionarios}
-            onValueChange={(value) => handleChange("numeroFuncionarios", value)}
-          >
+          <Select value={form.numeroFuncionarios} onValueChange={(value) => handleChange("numeroFuncionarios", value)}>
             <SelectTrigger id="numeroFuncionarios">
-              <SelectValue placeholder="Selecione" />
+              <SelectValue placeholder={f.selectPlaceholder} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="so-eu">Só eu</SelectItem>
-              <SelectItem value="2-5">2 a 5</SelectItem>
-              <SelectItem value="6-15">6 a 15</SelectItem>
-              <SelectItem value="16-50">16 a 50</SelectItem>
-              <SelectItem value="mais-50">Mais de 50</SelectItem>
+              {f.funcionariosOptions.map((opt) => (
+                <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
@@ -218,14 +181,14 @@ const QualificationForm = () => {
 
       <div className="space-y-2">
         <Label htmlFor="produtosServicos" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          Quais produtos ou serviços sua empresa oferece?
+          {f.produtosServicos}
         </Label>
         <Textarea
           id="produtosServicos"
           required
           value={form.produtosServicos}
           onChange={(e) => handleChange("produtosServicos", e.target.value)}
-          placeholder="Ex: consultoria financeira para pequenas empresas, venda de equipamentos..."
+          placeholder={f.produtosPlaceholder}
           className="min-h-[80px]"
         />
       </div>
@@ -233,42 +196,32 @@ const QualificationForm = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <Label htmlFor="faturamentoMensal" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Qual faturamento mensal da sua empresa?
+            {f.faturamentoMensal}
           </Label>
-          <Select
-            value={form.faturamentoMensal}
-            onValueChange={(value) => handleChange("faturamentoMensal", value)}
-          >
+          <Select value={form.faturamentoMensal} onValueChange={(value) => handleChange("faturamentoMensal", value)}>
             <SelectTrigger id="faturamentoMensal">
-              <SelectValue placeholder="Selecione" />
+              <SelectValue placeholder={f.selectPlaceholder} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="ainda-nao-fatura">Ainda não fatura</SelectItem>
-              <SelectItem value="ate-20k">Até R$ 10.000</SelectItem>
-              <SelectItem value="20k-50k">R$ 10.000 a R$ 20.000</SelectItem>
-              <SelectItem value="50k-150k">R$ 50.000 a R$ 150.000</SelectItem>
-              <SelectItem value="mais-150k">Acima de R$ 150.000</SelectItem>
-              <SelectItem value="prefiro-nao-informar">Prefiro não informar</SelectItem>
+              {f.faturamentoOptions.map((opt) => (
+                <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
 
         <div className="space-y-2">
           <Label htmlFor="prazo" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Prazo desejado
+            {f.prazo}
           </Label>
-          <Select
-            value={form.prazo}
-            onValueChange={(value) => handleChange("prazo", value)}
-          >
+          <Select value={form.prazo} onValueChange={(value) => handleChange("prazo", value)}>
             <SelectTrigger id="prazo">
-              <SelectValue placeholder="Selecione" />
+              <SelectValue placeholder={f.selectPlaceholder} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="urgente">O quanto antes</SelectItem>
-              <SelectItem value="1-mes">Dentro de 1 mês</SelectItem>
-              <SelectItem value="1-3-meses">1 a 3 meses</SelectItem>
-              <SelectItem value="sem-pressa">Sem prazo definido</SelectItem>
+              {f.prazoOptions.map((opt) => (
+                <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
@@ -278,10 +231,10 @@ const QualificationForm = () => {
         {isSubmitting ? (
           <>
             <Loader2 className="animate-spin" />
-            Enviando...
+            {ct.sending}
           </>
         ) : (
-          "Enviar projeto"
+          ct.send
         )}
       </Button>
     </form>

@@ -5,20 +5,23 @@ import { useQuery } from "@tanstack/react-query";
 import PageTransition from "@/components/PageTransition";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
+import { useLocale } from "@/hooks/use-locale";
 
 const Projetos = () => {
   const { data: projects = [], isLoading } = useQuery({
     queryKey: ["projects"],
     queryFn: fetchProjects,
   });
+  const { t } = useLocale();
+  const p = t.projetos;
 
   return (
     <PageTransition>
       <Layout>
-        <title>Projetos — Kronica</title>
+        <title>{p.pageTitle}</title>
         <meta name="description" content="Portfólio da Kronica — marcas construídas ao longo do tempo, com estratégia, identidade e sistemas visuais que evoluem com os negócios." />
         <link rel="canonical" href="https://kronica.com.br/projetos" />
-        <meta property="og:title" content="Projetos — Kronica" />
+        <meta property="og:title" content={p.pageTitle} />
         <meta property="og:description" content="Portfólio de projetos de branding e design da Kronica." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kronica.com.br/projetos" />

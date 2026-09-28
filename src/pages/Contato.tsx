@@ -4,8 +4,11 @@ import PageTransition from "@/components/PageTransition";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import AnimatedText from "@/components/AnimatedText";
 import QualificationForm from "@/components/QualificationForm";
+import { useLocale } from "@/hooks/use-locale";
 
 const Contato = () => {
+  const { t } = useLocale();
+  const c = t.contato;
   return (
     <PageTransition>
       <div className="min-h-screen flex flex-col relative">
@@ -25,7 +28,7 @@ const Contato = () => {
               <div className="mb-12 md:mb-16">
                 <RevealOnScroll>
                   <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 block">
-                    Conte sobre seu projeto
+                    {c.eyebrow}
                   </span>
                 </RevealOnScroll>
                 <AnimatedText
@@ -34,12 +37,11 @@ const Contato = () => {
                   splitBy="words"
                   delay={0.1}
                 >
-                  Formulário para contato
+                  {c.title}
                 </AnimatedText>
                 <RevealOnScroll delay={0.2}>
                   <p className="text-sm md:text-base text-muted-foreground max-w-2xl">
-                    Essas informações nos ajudam a entender a maturidade do seu negócio e o tipo de
-                    projeto para um melhor direcionamento antes da primeira conversa.
+                    {c.subtitle}
                   </p>
                 </RevealOnScroll>
               </div>

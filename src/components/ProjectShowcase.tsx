@@ -5,6 +5,7 @@ import { fetchProjects } from "@/lib/projectsApi";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import { useLocale } from "@/hooks/use-locale";
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
@@ -64,6 +65,8 @@ const ProjectShowcase = () => {
     queryKey: ["projects"],
     queryFn: fetchProjects,
   });
+  const { t } = useLocale();
+  const p = t.projetos;
 
   const showcaseProjects = projects.slice(0, 4);
 
@@ -87,14 +90,14 @@ const ProjectShowcase = () => {
           <div className="mb-10 pb-6 border-b border-border/30 flex items-start justify-between">
             <div>
               <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2 block">
-                Portfólio
+                {p.portfolio}
               </span>
             </div>
             <Link
               to="/projetos"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 group"
             >
-              Ver todos
+              {p.seeAll}
               <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </Link>
           </div>
@@ -114,7 +117,7 @@ const ProjectShowcase = () => {
               to="/projetos"
               className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-full hover:bg-foreground hover:text-background hover:border-foreground transition-all duration-300"
             >
-              <span className="text-sm">Explorar portfólio completo</span>
+              <span className="text-sm">{p.exploreAll}</span>
             </Link>
           </div>
         </RevealOnScroll>

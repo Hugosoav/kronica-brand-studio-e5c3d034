@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "@/hooks/use-theme";
 import { AuthProvider } from "@/hooks/use-auth";
+import { LocaleProvider } from "@/hooks/use-locale";
 import { AnimatePresence } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import RequireAuth from "@/components/RequireAuth";
@@ -127,9 +128,11 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <AuthProvider>
-            <AnimatedRoutes />
-          </AuthProvider>
+          <LocaleProvider>
+            <AuthProvider>
+              <AnimatedRoutes />
+            </AuthProvider>
+          </LocaleProvider>
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>

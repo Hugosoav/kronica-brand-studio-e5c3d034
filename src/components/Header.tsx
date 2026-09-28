@@ -1,18 +1,21 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, Search } from "lucide-react";
+import { Menu, X, Search, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import logoBranco from "@/assets/logo-branco.png";
 import { fetchProjects } from "@/lib/projectsApi";
 import { useQuery } from "@tanstack/react-query";
+import { useLocale } from "@/hooks/use-locale";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [langOpen, setLangOpen] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const { locale, setLocale, t } = useLocale();
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -72,10 +75,10 @@ const Header = () => {
   }, [location.pathname]);
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/sobre", label: "Sobre" },
-    { href: "/projetos", label: "Projetos" },
-    { href: "/contato", label: "Contato" },
+    { href: "/", label: t.nav.home },
+    { href: "/sobre", label: t.nav.sobre },
+    { href: "/projetos", label: t.nav.projetos },
+    { href: "/contato", label: t.nav.contato },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -228,7 +231,44 @@ const Header = () => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2 }}
+                  className="flex items-center gap-1"
                 >
+                    {/* Language switcher */}
+                    <div className="relative">
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        onClick={() => setLangOpen((o) => !o)}
+                        aria-label="Selecionar idioma"
+                        className="flex items-center gap-1 text-xs font-medium"
+                      >
+                        <Globe size={16} />
+                        <span>{locale.toUpperCase()}</span>
+                      </Button>
+                      <AnimatePresence>
+                        {langOpen && (
+                          <motion.div
+                            key="lang-dropdown"
+                            initial={{ opacity: 0, y: -4, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -4, scale: 0.95 }}
+                            transition={{ duration: 0.15 }}
+                            className="absolute right-0 top-full mt-1 bg-background/95 backdrop-blur-xl border border-border/30 rounded-lg overflow-hidden shadow-lg z-50 min-w-[100px]"
+                          >
+                            {(["pt", "en"] as const).map((lang) => (
+                              <button
+                                key={lang}
+                                onClick={() => { setLocale(lang); setLangOpen(false); }}
+                                className={`w-full text-left px-4 py-2.5 text-xs hover:bg-muted/40 transition-colors ${locale === lang ? "text-foreground font-medium" : "text-muted-foreground"}`}
+                              >
+                                {lang === "pt" ? "Português" : "English"}
+                              </button>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+
                     <Button
                       size="sm"
                       variant="ghost"
