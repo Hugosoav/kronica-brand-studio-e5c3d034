@@ -287,6 +287,16 @@ const Header = () => {
             <Button
               size="sm"
               variant="ghost"
+              onClick={() => setLocale(locale === "pt" ? "en" : "pt")}
+              aria-label="Trocar idioma"
+              className="flex items-center gap-1 text-xs font-medium"
+            >
+              <Globe size={15} />
+              <span>{locale.toUpperCase()}</span>
+            </Button>
+            <Button
+              size="sm"
+              variant="ghost"
               onClick={() => setSearchOpen(!searchOpen)}
               aria-label="Buscar projetos"
             >
@@ -397,6 +407,23 @@ const Header = () => {
                     </Link>
                   </motion.div>
                 ))}
+
+                <motion.div
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: navLinks.length * 0.08, duration: 0.3 }}
+                  className="border-t border-border/30 mt-2 pt-4 flex gap-3"
+                >
+                  {(["pt", "en"] as const).map((lang) => (
+                    <button
+                      key={lang}
+                      onClick={() => { setLocale(lang); setIsMenuOpen(false); }}
+                      className={`text-xs uppercase tracking-[0.15em] py-1 transition-colors ${locale === lang ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"}`}
+                    >
+                      {lang === "pt" ? "Português" : "English"}
+                    </button>
+                  ))}
+                </motion.div>
               </div>
             </motion.div>
           )}
