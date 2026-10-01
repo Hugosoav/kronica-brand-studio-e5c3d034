@@ -75,7 +75,7 @@ const Projetos = () => {
                           </h3>
                         </div>
                         <div className="flex flex-col items-end gap-1">
-                          <div className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-1 text-white text-[10px] uppercase tracking-[0.15em]">
+                          <div className="md:opacity-0 group-hover:opacity-100 md:translate-y-2 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-1 text-white text-[10px] uppercase tracking-[0.15em]">
                             <span>{t.projetos.viewProject ?? "Ver projeto"}</span>
                             <ArrowUpRight className="w-3 h-3" />
                           </div>

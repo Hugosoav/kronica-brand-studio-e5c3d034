@@ -41,7 +41,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                     {project.title}
                   </h3>
                 </div>
-                <div className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-1.5 text-white text-xs uppercase tracking-[0.15em] shrink-0 ml-4">
+                <div className="md:opacity-0 group-hover:opacity-100 md:translate-y-2 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-1.5 text-white text-xs uppercase tracking-[0.15em] shrink-0 ml-4">
                   <span>{t.projetos.viewProject ?? "Ver projeto"}</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </div>
