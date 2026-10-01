@@ -22,41 +22,30 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             whileHover={{ scale: 1.06 }}
             transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70 group-hover:opacity-30 transition-opacity duration-500" />
 
-          <div className="absolute inset-0 flex items-end p-5 md:p-6">
+          {/* Blur hover overlay */}
+          <div className="absolute inset-0 backdrop-blur-[3px] bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-center justify-center">
+            <div className="flex items-center gap-2 text-white text-sm uppercase tracking-[0.2em] translate-y-2 group-hover:translate-y-0 transition-transform duration-400">
+              <span>{t.projetos.viewProject ?? "Ver projeto"}</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </div>
+          </div>
+
+          <div className="absolute inset-0 flex items-end p-5 md:p-6 pointer-events-none">
             <div className="w-full">
-              <div className="flex items-end justify-between">
-                <div>
-                  <motion.span
-                    className="text-[10px] uppercase tracking-[0.2em] text-white/60 mb-1 block"
-                    initial={{ opacity: 0, y: 8 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.15 + index * 0.08 }}
-                  >
-                    {project.category}
-                  </motion.span>
-                  <h3 className="text-lg md:text-xl font-light text-white">
-                    {project.title}
-                  </h3>
-                </div>
-                <div className="md:opacity-0 group-hover:opacity-100 md:translate-y-2 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-1.5 text-white text-xs uppercase tracking-[0.15em] shrink-0 ml-4">
-                  <span>{t.projetos.viewProject ?? "Ver projeto"}</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </div>
-              </div>
-
-              <div className="flex gap-2 mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
-                {project.tags.slice(0, 2).map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[10px] uppercase tracking-wider px-2 py-1 bg-white/10 backdrop-blur-sm rounded-full text-white/80"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              <motion.span
+                className="text-[10px] uppercase tracking-[0.2em] text-white/60 mb-1 block"
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.15 + index * 0.08 }}
+              >
+                {project.category}
+              </motion.span>
+              <h3 className="text-lg md:text-xl font-light text-white">
+                {project.title}
+              </h3>
             </div>
           </div>
         </div>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Layout from "@/components/Layout";
 import InfiniteHero from "@/components/ui/infinite-hero";
 import ProjectShowcase from "@/components/ProjectShowcase";
@@ -6,6 +7,58 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import { useLocale } from "@/hooks/use-locale";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+type Step = { numero: string; name: string; subtitle: string; desc: string };
+
+const MetodoStep = ({ step, index }: { step: Step; index: number }) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <RevealOnScroll direction="up" delay={index * 0.07}>
+      <div className="border-t border-border/30 last:border-b last:border-border/30">
+        <button
+          onClick={() => setOpen((prev) => !prev)}
+          className="w-full flex items-center justify-between py-7 md:py-9 text-left group"
+        >
+          <div className="flex items-center gap-6 md:gap-10">
+            <span className="text-xs text-muted-foreground/50 font-mono w-5 shrink-0">{step.numero}</span>
+            <div>
+              <p className="text-xl md:text-3xl font-light text-foreground/70 group-hover:text-foreground transition-colors duration-300">{step.name}</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground/60 mt-0.5">{step.subtitle}</p>
+            </div>
+          </div>
+          <motion.div
+            animate={{ rotate: open ? 45 : 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="shrink-0 ml-6"
+          >
+            <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full border flex items-center justify-center transition-colors duration-300 ${open ? "border-foreground bg-foreground text-background" : "border-border text-muted-foreground group-hover:border-foreground/40"}`}>
+              <ArrowUpRight className="w-4 h-4" />
+            </div>
+          </motion.div>
+        </button>
+
+        <AnimatePresence initial={false}>
+          {open && (
+            <motion.div
+              key="content"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden"
+            >
+              <div className="pl-11 md:pl-[3.75rem] pb-8 md:pb-10">
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-2xl">{step.desc}</p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </RevealOnScroll>
+  );
+};
 
 const Index = () => {
   const { t } = useLocale();
@@ -19,33 +72,24 @@ const Index = () => {
         <InfiniteHero title={t.hero.title} subtitle={t.hero.subtitle} />
         <ProjectShowcase />
 
-        {/* Seção Método */}
-        <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32">
-          <div className="max-w-5xl mx-auto">
+        {/* Seção Metodologia */}
+        <section className="py-24 md:py-32">
+          <div className="container mx-auto">
             <RevealOnScroll direction="up">
               <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4 block">{m.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-16 md:mb-20">{m.title}</h2>
             </RevealOnScroll>
 
-            <div className="space-y-0 divide-y divide-border/30">
+            <div>
               {m.steps.map((step, i) => (
-                <RevealOnScroll key={step.numero} direction="up" delay={i * 0.07}>
-                  <div className="grid grid-cols-[auto_1fr] md:grid-cols-[3rem_1fr_2fr] gap-x-8 gap-y-2 py-10 md:py-12 group">
-                    <span className="text-xs text-muted-foreground/50 font-mono pt-1">{step.numero}</span>
-                    <div>
-                      <p className="text-base md:text-lg font-light text-foreground mb-0.5">{step.name}</p>
-                      <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground/60">{step.subtitle}</p>
-                    </div>
-                    <p className="col-start-2 md:col-start-3 text-sm text-muted-foreground leading-relaxed mt-3 md:mt-0">{step.desc}</p>
-                  </div>
-                </RevealOnScroll>
+                <MetodoStep key={step.numero} step={step} index={i} />
               ))}
             </div>
 
             <RevealOnScroll direction="up" className="mt-16 md:mt-20 text-center">
               <Link
                 to="/sobre"
-                className="inline-flex items-center gap-2 border border-foreground/30 hover:border-foreground text-sm text-foreground px-8 py-3.5 rounded-full transition-all duration-300 hover:bg-foreground hover:text-background group"
+                className="inline-flex items-center gap-2 border border-foreground/30 hover:border-foreground text-base text-foreground px-10 py-4 rounded-full transition-all duration-300 hover:bg-foreground hover:text-background group"
               >
                 {m.ctaLabel}
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

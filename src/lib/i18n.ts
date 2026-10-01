@@ -37,7 +37,7 @@ export const translations = {
     },
     metodo: {
       eyebrow: "Como trabalhamos",
-      title: "Método",
+      title: "Metodologia",
       steps: [
         { numero: "1", name: "Imersão", subtitle: "Diagnóstico estratégico", desc: "Estudo do briefing, pesquisa de mercado, análise da concorrência e entendimento profundo do negócio e do público-alvo." },
         { numero: "2", name: "Estratégia", subtitle: "Estratégia de marca", desc: "Definição de atributos, DNA e personalidade da marca, missão, visão e valores, posicionamento frente à concorrência." },
@@ -126,7 +126,7 @@ export const translations = {
     },
     metodo: {
       eyebrow: "How we work",
-      title: "Method",
+      title: "Methodology",
       steps: [
         { numero: "1", name: "Immersion", subtitle: "Strategic diagnosis", desc: "Brief analysis, market research, competitor review and an in-depth understanding of the business and its target audience." },
         { numero: "2", name: "Strategy", subtitle: "Brand strategy", desc: "Definition of brand attributes, DNA and personality, mission, vision and values, and positioning relative to competitors." },

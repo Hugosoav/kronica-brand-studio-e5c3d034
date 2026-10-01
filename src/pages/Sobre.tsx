@@ -182,7 +182,7 @@ const Sobre = () => {
             <RevealOnScroll direction="up" className="mt-16 md:mt-20 text-center">
               <Link
                 to="/contato"
-                className="inline-flex items-center gap-2 border border-foreground/30 hover:border-foreground text-sm text-foreground px-8 py-3.5 rounded-full transition-all duration-300 hover:bg-foreground hover:text-background group"
+                className="inline-flex items-center gap-2 border border-foreground/30 hover:border-foreground text-base text-foreground px-10 py-4 rounded-full transition-all duration-300 hover:bg-foreground hover:text-background group"
               >
                 {s.ctaLabel}
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
