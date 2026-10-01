@@ -8,6 +8,7 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import { useLocale } from "@/hooks/use-locale";
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const { t } = useLocale();
   return (
     <RevealOnScroll delay={index * 0.1} direction="up">
       <Link to={`/projetos/${project.id}`} className="group block">
@@ -39,6 +40,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   <h3 className="text-lg md:text-xl font-light text-white">
                     {project.title}
                   </h3>
+                </div>
+                <div className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-1.5 text-white text-xs uppercase tracking-[0.15em] shrink-0 ml-4">
+                  <span>{t.projetos.viewProject ?? "Ver projeto"}</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
                 </div>
               </div>
 

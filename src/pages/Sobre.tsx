@@ -97,8 +97,9 @@ const Sobre = () => {
                 <div className="w-full overflow-hidden rounded-lg bg-secondary/30 mb-6">
                   <img src="/hugo-soave.jpg" alt="Hugo Soave" loading="eager" decoding="async" className="w-full h-full object-cover object-top" style={{ aspectRatio: "4/5" }} />
                 </div>
-                <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2 block">{s.ceoFounder}</span>
-                <h2 className="text-2xl font-light text-foreground">Hugo Soave</h2>
+                <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-1 block">{s.ceoFounder}</span>
+                <h2 className="text-2xl font-light text-foreground mb-4">Hugo Soave</h2>
+                <p className="text-sm text-muted-foreground leading-relaxed">{s.hugoBio}</p>
               </RevealOnScroll>
 
               <div className="md:sticky md:top-24">
@@ -177,6 +178,16 @@ const Sobre = () => {
                 <SolucaoItem key={item.title} item={item} index={i} deliveriesLabel={s.deliveries} />
               ))}
             </div>
+
+            <RevealOnScroll direction="up" className="mt-16 md:mt-20 text-center">
+              <Link
+                to="/contato"
+                className="inline-flex items-center gap-2 border border-foreground/30 hover:border-foreground text-sm text-foreground px-8 py-3.5 rounded-full transition-all duration-300 hover:bg-foreground hover:text-background group"
+              >
+                {s.ctaLabel}
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </Link>
+            </RevealOnScroll>
           </div>
         </section>
       </Layout>

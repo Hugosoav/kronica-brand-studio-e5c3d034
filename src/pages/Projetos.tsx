@@ -4,7 +4,7 @@ import { fetchProjects } from "@/lib/projectsApi";
 import { useQuery } from "@tanstack/react-query";
 import PageTransition from "@/components/PageTransition";
 import { motion } from "framer-motion";
-import { Loader2 } from "lucide-react";
+import { Loader2, ArrowUpRight } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 
 const Projetos = () => {
@@ -74,7 +74,13 @@ const Projetos = () => {
                             {project.title}
                           </h3>
                         </div>
-                        <span className="text-xs text-white/50 shrink-0 ml-3">{project.year}</span>
+                        <div className="flex flex-col items-end gap-1">
+                          <div className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-1 text-white text-[10px] uppercase tracking-[0.15em]">
+                            <span>{t.projetos.viewProject ?? "Ver projeto"}</span>
+                            <ArrowUpRight className="w-3 h-3" />
+                          </div>
+                          <span className="text-xs text-white/50 shrink-0">{project.year}</span>
+                        </div>
                       </div>
                     </div>
                   </Link>
