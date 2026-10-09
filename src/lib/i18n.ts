@@ -33,7 +33,7 @@ export const translations = {
         { numero: "05", title: "Social Media", desc: "Gestão mensal do perfil da marca no Instagram com foco em crescimento orgânico e consistência de comunicação. Desenvolvemos o planejamento editorial, produzimos o conteúdo visual e verbal e realizamos as postagens mensais, mantendo a marca ativa, coerente e presente no digital.", tags: ["Planejamento Editorial", "Produção de Conteúdo", "Gestão de Instagram", "Crescimento Orgânico", "Identidade Visual Aplicada"] },
       ],
       ctaLabel: "Solicite uma proposta",
-      hugoBio: "5 anos de experiência em branding. Integrou a equipe de comunicação da OAB-ES e passou por agências de publicidade e marketing, desenvolvendo identidades visuais completas e peças on e off-line. Hoje conduz pessoalmente os projetos da Kronica, da estratégia à entrega.",
+      hugoBio: "5 anos de experiência em branding. Integrou a equipe de comunicação da OAB-ES e passou por agências de publicidade e marketing, desenvolvendo identidades visuais completas e peças on e off-line. Hoje conduz pessoalmente os projetos da Kronica.",
     },
     metodo: {
       eyebrow: "Como trabalhamos",
@@ -139,7 +139,7 @@ export const translations = {
         { numero: "05", title: "Social Media", desc: "Monthly management of the brand's Instagram profile focused on organic growth and communication consistency. We develop the editorial plan, produce visual and verbal content and handle monthly posts, keeping the brand active, coherent and present in the digital space.", tags: ["Editorial Planning", "Content Production", "Instagram Management", "Organic Growth", "Applied Visual Identity"] },
       ],
       ctaLabel: "Request a proposal",
-      hugoBio: "5 years of experience in branding. He was part of the communications team at OAB-ES (the Brazilian Bar Association, Espírito Santo chapter) and worked at advertising and marketing agencies, developing complete visual identities and online and offline pieces. Today he personally leads every Kronica project, from strategy to delivery.",
+      hugoBio: "5 years of experience in branding. He was part of the communications team at OAB-ES (the Brazilian Bar Association, Espírito Santo chapter) and worked at advertising and marketing agencies, developing complete visual identities and online and offline pieces. Today he personally leads every Kronica project.",
     },
     metodo: {
       eyebrow: "How we work",
