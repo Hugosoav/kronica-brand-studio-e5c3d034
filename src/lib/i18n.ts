@@ -3,7 +3,7 @@ export type Locale = "pt" | "en";
 export const translations = {
   pt: {
     nav: { home: "Home", sobre: "Sobre", projetos: "Projetos", contato: "Contato" },
-    hero: { title: "MARCAS NO TEMPO", subtitle: "Branding estratégico para empresas no Brasil e nos EUA" },
+    hero: { title: "MARCAS NO TEMPO", subtitle: "Kronica Studio" },
     footer: { tagline: "Nós construímos os fundamentos. Criamos sistemas. Damos forma ao presente. E deixamos espaço para o futuro.", contact: "Contato", followUs: "Siga-nos" },
     cta: "Solicite uma proposta",
     projetos: {
@@ -15,7 +15,7 @@ export const translations = {
     },
     sobre: {
       pageTitle: "Sobre a Kronica", eyebrow: "Sobre o estúdio", title: "Kronica Studio",
-      bio1: "A Kronica é um estúdio independente de branding estratégico, com clientes no Brasil e nos Estados Unidos. Nosso trabalho abrange branding, consultoria de marca, estratégia, posicionamento e identidades visuais. Atuamos na construção e evolução de marcas, conectando design e estratégia aos objetivos de cada negócio.",
+      bio1: "A Kronica é um estúdio independente de branding estratégico. Nosso trabalho abrange branding, consultoria de marca, estratégia, posicionamento e identidades visuais. Atuamos na construção e evolução de marcas, conectando design e estratégia aos objetivos de cada negócio.",
       bio2: "Grandes negócios são construídos sobre grandes marcas. Por isso, desenvolvemos soluções que ajudam empresas a comunicar seu valor e fortalecer seu posicionamento para criar uma presença consistente no mercado.",
       bio3: "Trabalhamos ao lado de empreendedores e empresas em diferentes momentos de crescimento. Da criação de uma nova marca ao reposicionamento de negócios já estabelecidos, transformamos desafios e oportunidades em marcas relevantes e preparadas para se destacarem no mercado.",
       ceoFounder: "Fundador", approach: "Abordagem",
@@ -33,7 +33,7 @@ export const translations = {
         { numero: "05", title: "Social Media", desc: "Gestão mensal do perfil da marca no Instagram com foco em crescimento orgânico e consistência de comunicação. Desenvolvemos o planejamento editorial, produzimos o conteúdo visual e verbal e realizamos as postagens mensais, mantendo a marca ativa, coerente e presente no digital.", tags: ["Planejamento Editorial", "Produção de Conteúdo", "Gestão de Instagram", "Crescimento Orgânico", "Identidade Visual Aplicada"] },
       ],
       ctaLabel: "Solicite uma proposta",
-      hugoBio: "5 anos de experiência em branding. Integrou a equipe de comunicação da OAB-ES e passou por agências de publicidade e marketing, desenvolvendo identidades visuais completas e peças on e off-line. Hoje conduz pessoalmente os projetos da Kronica, da estratégia à entrega, para empresas no Brasil e nos Estados Unidos. Formado em Design Gráfico pela FAESA.",
+      hugoBio: "5 anos de experiência em branding. Integrou a equipe de comunicação da OAB-ES e passou por agências de publicidade e marketing, desenvolvendo identidades visuais completas e peças on e off-line. Hoje conduz pessoalmente os projetos da Kronica, da estratégia à entrega.",
     },
     metodo: {
       eyebrow: "Como trabalhamos",
@@ -109,7 +109,7 @@ export const translations = {
   },
   en: {
     nav: { home: "Home", sobre: "About", projetos: "Work", contato: "Contact" },
-    hero: { title: "BRANDS OVER TIME", subtitle: "Strategic branding for companies in Brazil and the US" },
+    hero: { title: "BRANDS OVER TIME", subtitle: "Kronica Studio" },
     footer: { tagline: "We build the foundations. We create systems. We shape the present. And we leave room for the future.", contact: "Contact", followUs: "Follow us" },
     cta: "Request a proposal",
     projetos: {
@@ -121,7 +121,7 @@ export const translations = {
     },
     sobre: {
       pageTitle: "About — Kronica", eyebrow: "About the studio", title: "Kronica Studio",
-      bio1: "Kronica is an independent strategic branding studio, with clients in Brazil and the United States. Our work spans branding, brand consultancy, strategy, positioning and visual identities. We build and evolve brands by connecting design and strategy to the goals of each business.",
+      bio1: "Kronica is an independent strategic branding studio. Our work spans branding, brand consultancy, strategy, positioning and visual identities. We build and evolve brands by connecting design and strategy to the goals of each business.",
       bio2: "Great businesses are built on great brands. That is why we develop solutions that help companies communicate their value and strengthen their positioning to create a consistent presence in the market.",
       bio3: "We work alongside entrepreneurs and companies at different stages of growth. From building a new brand to repositioning established businesses, we turn challenges and opportunities into relevant brands prepared to stand out in the market.",
       ceoFounder: "Founder", approach: "Approach",
@@ -139,7 +139,7 @@ export const translations = {
         { numero: "05", title: "Social Media", desc: "Monthly management of the brand's Instagram profile focused on organic growth and communication consistency. We develop the editorial plan, produce visual and verbal content and handle monthly posts, keeping the brand active, coherent and present in the digital space.", tags: ["Editorial Planning", "Content Production", "Instagram Management", "Organic Growth", "Applied Visual Identity"] },
       ],
       ctaLabel: "Request a proposal",
-      hugoBio: "5 years of experience in branding. He was part of the communications team at OAB-ES (the Brazilian Bar Association, Espírito Santo chapter) and worked at advertising and marketing agencies, developing complete visual identities and online and offline pieces. Today he personally leads every Kronica project, from strategy to delivery, for companies in Brazil and the United States. Graphic Design degree from FAESA.",
+      hugoBio: "5 years of experience in branding. He was part of the communications team at OAB-ES (the Brazilian Bar Association, Espírito Santo chapter) and worked at advertising and marketing agencies, developing complete visual identities and online and offline pieces. Today he personally leads every Kronica project, from strategy to delivery.",
     },
     metodo: {
       eyebrow: "How we work",
