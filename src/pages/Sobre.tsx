@@ -20,7 +20,7 @@ const Sobre = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kronica.com.br/sobre" />
 
-        <section className="py-20 md:py-32 lg:py-40">
+        <section className="pt-12 md:pt-16 pb-16 md:pb-24">
           <div className="container mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-start">
 

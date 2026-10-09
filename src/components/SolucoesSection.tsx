@@ -79,9 +79,9 @@ const SolucoesSection = ({ withTopBorder = true }: { withTopBorder?: boolean }) 
   const s = t.sobre;
 
   return (
-    <section className={`py-16 md:py-24 ${withTopBorder ? "border-t border-border" : ""}`}>
+    <section className={`py-12 md:py-16 ${withTopBorder ? "border-t border-border" : ""}`}>
       <div className="container mx-auto">
-        <div className="flex items-end justify-between mb-12 md:mb-16">
+        <div className="flex items-end justify-between mb-10 md:mb-12">
           <div>
             <RevealOnScroll>
               <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4 block">{s.whatWeDo}</span>

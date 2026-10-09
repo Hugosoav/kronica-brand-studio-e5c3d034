@@ -27,7 +27,7 @@ const Projetos = () => {
         <meta property="og:url" content="https://kronica.com.br/projetos" />
 
         {/* Projects – aligned grid layout */}
-        <section className="pt-24 pb-16 md:pb-20">
+        <section className="pt-12 md:pt-16 pb-16 md:pb-20">
           <div className="container mx-auto">
             {isLoading ? (
               <div className="flex justify-center py-20">

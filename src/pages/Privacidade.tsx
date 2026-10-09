@@ -156,7 +156,7 @@ const Privacidade = () => {
       <Layout>
         <title>{`${c.titulo} | Kronica`}</title>
         <meta name="robots" content="noindex" />
-        <section className="py-24 md:py-32">
+        <section className="pt-12 md:pt-16 pb-24 md:pb-32">
           <div className="container mx-auto max-w-3xl">
             <RevealOnScroll>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-4">{c.titulo}</h1>
