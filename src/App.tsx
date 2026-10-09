@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,6 +11,8 @@ import { AnimatePresence } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import RequireAuth from "@/components/RequireAuth";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
+import CookieConsent from "@/components/CookieConsent";
+import { trackPageView } from "@/lib/meta-pixel";
 import Index from "./pages/Index";
 
 // Páginas carregadas sob demanda (code splitting), pra não pesar o
@@ -21,6 +23,7 @@ const Contato = lazy(() => import("./pages/Contato"));
 const Projetos = lazy(() => import("./pages/Projetos"));
 const ProjetoDetalhe = lazy(() => import("./pages/ProjetoDetalhe"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Privacidade = lazy(() => import("./pages/Privacidade"));
 const AdminLogin = lazy(() => import("./pages/admin/AdminLogin"));
 const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
 const AdminProjectForm = lazy(() => import("./pages/admin/AdminProjectForm"));
@@ -42,6 +45,12 @@ function PageFallback() {
 function AnimatedRoutes() {
   const location = useLocation();
   useSmoothScroll();
+
+  // Pixel da Meta: registra cada página vista (só envia se houver consentimento)
+  useEffect(() => {
+    trackPageView();
+  }, [location.pathname]);
+
   return (
     <AnimatePresence mode="wait">
       <Suspense fallback={<PageFallback />}>
@@ -51,6 +60,7 @@ function AnimatedRoutes() {
           <Route path="/projetos" element={<Projetos />} />
           <Route path="/projetos/:id" element={<ProjetoDetalhe />} />
           <Route path="/contato" element={<Contato />} />
+          <Route path="/privacidade" element={<Privacidade />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route
             path="/admin"
@@ -133,6 +143,7 @@ const App = () => (
           <LocaleProvider>
             <AuthProvider>
               <AnimatedRoutes />
+              <CookieConsent />
             </AuthProvider>
           </LocaleProvider>
         </BrowserRouter>

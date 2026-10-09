@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { trackEvent } from "@/lib/meta-pixel";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -22,6 +24,11 @@ const ProjetoDetalhe = () => {
   });
 
   const project = projects.find((p) => p.id === id);
+
+  // Pixel da Meta: visita a um projeto do portfólio (só envia se houver consentimento)
+  useEffect(() => {
+    if (project) trackEvent("ViewContent", { content_name: project.title, content_type: "project" });
+  }, [project?.id]);
 
   if (isLoading) {
     return (
