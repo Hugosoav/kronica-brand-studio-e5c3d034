@@ -105,6 +105,8 @@ export async function fetchProjectById(id: string): Promise<Project | null> {
 }
 
 export async function upsertProject(input: ProjectInput) {
+  // sort_order só é enviado quando informado; assim, editar um projeto
+  // não altera a posição dele no portfólio
   const { error } = await supabase.from("projects").upsert({
     id: input.id,
     title: input.title,
@@ -121,10 +123,39 @@ export async function upsertProject(input: ProjectInput) {
     brand_history: input.brandHistory ?? null,
     brand_voice_tone: input.brandVoiceTone ?? null,
     brand_values: input.brandValues ?? null,
-    sort_order: input.sortOrder ?? 0,
+    ...(input.sortOrder !== undefined ? { sort_order: input.sortOrder } : {}),
   });
 
   if (error) throw error;
+}
+
+/**
+ * Posição para um projeto novo entrar no começo da lista:
+ * uma unidade antes do primeiro projeto atual.
+ */
+export async function getSortOrderForNewProject(): Promise<number> {
+  const { data, error } = await supabase
+    .from("projects")
+    .select("sort_order")
+    .order("sort_order", { ascending: true })
+    .limit(1);
+  if (error) throw error;
+  const first = (data as { sort_order: number }[] | null)?.[0];
+  return first ? first.sort_order - 1 : 0;
+}
+
+/**
+ * Salva a ordem do portfólio: o primeiro id da lista recebe a posição 0,
+ * o segundo a 1, e assim por diante.
+ */
+export async function saveProjectOrder(ids: string[]) {
+  const results = await Promise.all(
+    ids.map((id, index) =>
+      supabase.from("projects").update({ sort_order: index }).eq("id", id)
+    )
+  );
+  const failed = results.find((r) => r.error);
+  if (failed?.error) throw failed.error;
 }
 
 export async function deleteProject(id: string) {
