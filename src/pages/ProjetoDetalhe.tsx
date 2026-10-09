@@ -72,7 +72,7 @@ const ProjetoDetalhe = () => {
         {project.images.cover && <meta property="og:image" content={project.images.cover} />}
 
         {/* Hero */}
-        <section className="pt-24 pb-12">
+        <section className="pt-12 md:pt-16 pb-12">
           <div className="container mx-auto">
             <RevealOnScroll>
               <Button

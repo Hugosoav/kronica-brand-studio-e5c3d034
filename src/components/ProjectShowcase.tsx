@@ -66,7 +66,7 @@ const ProjectShowcase = () => {
 
   if (isLoading) {
     return (
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto flex justify-center py-20">
           <Loader2 className="animate-spin text-muted-foreground" />
         </div>
@@ -77,7 +77,7 @@ const ProjectShowcase = () => {
   if (showcaseProjects.length === 0) return null;
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-12 md:py-16">
       <div className="container mx-auto">
         {/* Cabeçalho da seção */}
         <RevealOnScroll>

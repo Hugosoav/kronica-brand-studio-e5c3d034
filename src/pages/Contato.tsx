@@ -23,7 +23,7 @@ const Contato = () => {
           />
 
           {/* Qualification Form Section */}
-          <section className="py-24 md:py-32">
+          <section className="pt-12 md:pt-16 pb-24 md:pb-32">
             <div className="container mx-auto">
               <div className="mb-12 md:mb-16">
                 <RevealOnScroll>

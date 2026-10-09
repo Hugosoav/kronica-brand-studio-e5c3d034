@@ -80,7 +80,7 @@ const Index = () => {
         <SolucoesSection withTopBorder={false} />
 
         {/* Seção Fundador + números (resumo da página Sobre) */}
-        <section className="py-16 md:py-24">
+        <section className="py-12 md:py-16">
           <div className="container mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-center">
               <RevealOnScroll direction="up">
@@ -130,11 +130,11 @@ const Index = () => {
         </section>
 
         {/* Seção Metodologia */}
-        <section className="py-24 md:py-32">
+        <section className="py-12 md:py-16">
           <div className="container mx-auto">
             <RevealOnScroll direction="up">
               <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4 block">{m.eyebrow}</span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-16 md:mb-20">{m.title}</h2>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-10 md:mb-12">{m.title}</h2>
             </RevealOnScroll>
 
             <div>
@@ -146,7 +146,7 @@ const Index = () => {
         </section>
 
         {/* Chamada final */}
-        <section className="py-24 md:py-32">
+        <section className="py-16 md:py-20">
           <div className="container mx-auto text-center max-w-3xl">
             <AnimatedText as="h2" className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-6" splitBy="words">
               {h.ctaTitle}
