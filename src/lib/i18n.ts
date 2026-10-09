@@ -139,7 +139,7 @@ export const translations = {
         { numero: "05", title: "Social Media", desc: "Monthly management of the brand's Instagram profile focused on organic growth and communication consistency. We develop the editorial plan, produce visual and verbal content and handle monthly posts, keeping the brand active, coherent and present in the digital space.", tags: ["Editorial Planning", "Content Production", "Instagram Management", "Organic Growth", "Applied Visual Identity"] },
       ],
       ctaLabel: "Request a proposal",
-      hugoBio: "5 years of experience in branding. He was part of the communications team at OAB-ES (the Brazilian Bar Association, Espírito Santo chapter) and worked at advertising and marketing agencies, developing complete visual identities and online and offline pieces. Today he personally leads every Kronica project.",
+      hugoBio: "5 years of experience in branding. He was part of the communications team at OAB-ES and worked at advertising and marketing agencies, developing complete visual identities and online and offline pieces. Today he personally leads every Kronica project.",
     },
     metodo: {
       eyebrow: "How we work",
