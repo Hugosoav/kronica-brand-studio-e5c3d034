@@ -73,12 +73,13 @@ const SolucaoItem = ({
   );
 };
 
-const SolucoesSection = () => {
+// withTopBorder: linha acima da seção (mantida no Sobre, removida na home)
+const SolucoesSection = ({ withTopBorder = true }: { withTopBorder?: boolean }) => {
   const { t } = useLocale();
   const s = t.sobre;
 
   return (
-    <section className="py-16 md:py-24 border-t border-border">
+    <section className={`py-16 md:py-24 ${withTopBorder ? "border-t border-border" : ""}`}>
       <div className="container mx-auto">
         <div className="flex items-end justify-between mb-12 md:mb-16">
           <div>

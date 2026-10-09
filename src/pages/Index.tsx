@@ -77,10 +77,10 @@ const Index = () => {
         <ProjectShowcase />
 
         {/* Seção Soluções (mesma da página Sobre) */}
-        <SolucoesSection />
+        <SolucoesSection withTopBorder={false} />
 
         {/* Seção Fundador + números (resumo da página Sobre) */}
-        <section className="py-16 md:py-24 border-t border-border">
+        <section className="py-16 md:py-24">
           <div className="container mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-center">
               <RevealOnScroll direction="up">
@@ -146,7 +146,7 @@ const Index = () => {
         </section>
 
         {/* Chamada final */}
-        <section className="py-24 md:py-32 border-t border-border">
+        <section className="py-24 md:py-32">
           <div className="container mx-auto text-center max-w-3xl">
             <AnimatedText as="h2" className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-6" splitBy="words">
               {h.ctaTitle}
