@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { fetchProjectById, upsertProject } from "@/lib/projectsApi";
+import { fetchProjectById, upsertProject, getSortOrderForNewProject } from "@/lib/projectsApi";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -120,6 +120,8 @@ const AdminProjectForm = () => {
         brandValues: form.brandValuesText
           ? form.brandValuesText.split(",").map((s) => s.trim()).filter(Boolean)
           : undefined,
+        // Projeto novo entra no começo da lista; na edição, a posição é mantida
+        sortOrder: isEditing ? undefined : await getSortOrderForNewProject(),
       });
       toast({ title: isEditing ? "Projeto atualizado" : "Projeto criado" });
       navigate("/admin");
