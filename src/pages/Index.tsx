@@ -79,22 +79,6 @@ const Index = () => {
         {/* Seção Soluções (mesma da página Sobre) */}
         <SolucoesSection />
 
-        {/* Seção Metodologia */}
-        <section className="py-24 md:py-32">
-          <div className="container mx-auto">
-            <RevealOnScroll direction="up">
-              <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4 block">{m.eyebrow}</span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-16 md:mb-20">{m.title}</h2>
-            </RevealOnScroll>
-
-            <div>
-              {m.steps.map((step, i) => (
-                <MetodoStep key={step.numero} step={step} index={i} />
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Seção Fundador + números (resumo da página Sobre) */}
         <section className="py-16 md:py-24 border-t border-border">
           <div className="container mx-auto">
@@ -141,6 +125,22 @@ const Index = () => {
                   </Link>
                 </RevealOnScroll>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Seção Metodologia */}
+        <section className="py-24 md:py-32">
+          <div className="container mx-auto">
+            <RevealOnScroll direction="up">
+              <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4 block">{m.eyebrow}</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-16 md:mb-20">{m.title}</h2>
+            </RevealOnScroll>
+
+            <div>
+              {m.steps.map((step, i) => (
+                <MetodoStep key={step.numero} step={step} index={i} />
+              ))}
             </div>
           </div>
         </section>
