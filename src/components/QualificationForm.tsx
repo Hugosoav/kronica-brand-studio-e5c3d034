@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -50,7 +50,7 @@ const initialState: FormState = {
 const QualificationForm = () => {
   const [form, setForm] = useState<FormState>(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const f = t.contato.fields;
   const ct = t.contato;
   const { toast } = useToast();
@@ -64,7 +64,13 @@ const QualificationForm = () => {
     });
   };
 
-  const usaDolar = form.pais === "eua" || form.pais === "outro";
+  // Inglês: sempre em dólar. Português: real, ou dólar se a empresa atua fora do Brasil
+  // Ao trocar o idioma, a moeda pode mudar; limpa o faturamento já escolhido
+  useEffect(() => {
+    setForm((prev) => ({ ...prev, faturamentoMensal: "" }));
+  }, [locale]);
+
+  const usaDolar = locale === "en" || form.pais === "eua" || form.pais === "outro";
   const faturamentoOptions = usaDolar ? f.faturamentoOptionsUsd : f.faturamentoOptions;
 
   const handleSubmit = async (e: React.FormEvent) => {
