@@ -3,7 +3,7 @@ export type Locale = "pt" | "en";
 export const translations = {
   pt: {
     nav: { home: "Home", sobre: "Sobre", projetos: "Projetos", contato: "Contato" },
-    hero: { title: "MARCAS NO TEMPO", subtitle: "Kronica Studio" },
+    hero: { title: "MARCAS NO TEMPO", subtitle: "Branding estratégico para empresas no Brasil e nos EUA" },
     footer: { tagline: "Nós construímos os fundamentos. Criamos sistemas. Damos forma ao presente. E deixamos espaço para o futuro.", contact: "Contato", followUs: "Siga-nos" },
     cta: "Solicite uma proposta",
     projetos: {
@@ -15,12 +15,12 @@ export const translations = {
     },
     sobre: {
       pageTitle: "Sobre a Kronica", eyebrow: "Sobre o estúdio", title: "Kronica Studio",
-      bio1: "A Kronica é um estúdio de design multidisciplinar independente. Nosso trabalho abrange branding, consultoria de marca, estratégia, posicionamento e identidades visuais. Atuamos na construção e evolução de marcas, conectando design e estratégia aos objetivos de cada negócio.",
+      bio1: "A Kronica é um estúdio independente de branding estratégico, com clientes no Brasil e nos Estados Unidos. Nosso trabalho abrange branding, consultoria de marca, estratégia, posicionamento e identidades visuais. Atuamos na construção e evolução de marcas, conectando design e estratégia aos objetivos de cada negócio.",
       bio2: "Grandes negócios são construídos sobre grandes marcas. Por isso, desenvolvemos soluções que ajudam empresas a comunicar seu valor e fortalecer seu posicionamento para criar uma presença consistente no mercado.",
       bio3: "Trabalhamos ao lado de empreendedores e empresas em diferentes momentos de crescimento. Da criação de uma nova marca ao reposicionamento de negócios já estabelecidos, transformamos desafios e oportunidades em marcas relevantes e preparadas para se destacarem no mercado.",
-      ceoFounder: "CEO Founder", approach: "Abordagem",
+      ceoFounder: "Fundador", approach: "Abordagem",
       strategy: "Estratégia", strategyDesc: "Diagnóstico aprofundado de contexto, mercado e posicionamento",
-      collaboration: "Colaboração", collaborationDesc: "Parceria próxima com clientes durante as etapas do processo",
+      collaboration: "Processo guiado", collaborationDesc: "Etapas claras e validações nos momentos certos do projeto, com acompanhamento próximo do início à entrega",
       refinement: "Refinamento", refinementDesc: "Soluções visuais contemporâneas com alto nível de acabamento",
       founded: "Fundação", experience: "Experiência", years: "5 anos",
       whatWeDo: "O que fazemos", solutions: "Nossas soluções",
@@ -33,7 +33,7 @@ export const translations = {
         { numero: "05", title: "Social Media", desc: "Gestão mensal do perfil da marca no Instagram com foco em crescimento orgânico e consistência de comunicação. Desenvolvemos o planejamento editorial, produzimos o conteúdo visual e verbal e realizamos as postagens mensais, mantendo a marca ativa, coerente e presente no digital.", tags: ["Planejamento Editorial", "Produção de Conteúdo", "Gestão de Instagram", "Crescimento Orgânico", "Identidade Visual Aplicada"] },
       ],
       ctaLabel: "Solicite uma proposta",
-      hugoBio: "Possui bacharelado em Design Gráfico pela FAESA (Faculdades Integradas Espírito-Santenses). Com 5 anos de experiência no mercado de branding, já integrou a equipe de comunicação da OAB-ES e passou por agências de publicidade e marketing. Nessas experiências, desenvolveu peças ON e OFF, além de identidades visuais completas e profissionais.",
+      hugoBio: "5 anos de experiência em branding. Integrou a equipe de comunicação da OAB-ES e passou por agências de publicidade e marketing, desenvolvendo identidades visuais completas e peças on e off-line. Hoje conduz pessoalmente os projetos da Kronica, da estratégia à entrega, para empresas no Brasil e nos Estados Unidos. Formado em Design Gráfico pela FAESA.",
     },
     metodo: {
       eyebrow: "Como trabalhamos",
@@ -50,13 +50,22 @@ export const translations = {
     contato: {
       eyebrow: "Conte sobre seu projeto",
       title: "Formulário para contato",
-      pageTitle: "Projetos — Kronica",
+      pageTitle: "Contato | Kronica",
       subtitle: "Essas informações nos ajudam a entender a maturidade do seu negócio e o tipo de projeto para um melhor direcionamento antes da primeira conversa.",
       send: "Enviar projeto", sending: "Enviando...",
       successTitle: "Recebemos seu projeto!", successDesc: "Vamos analisar e retornar em breve com os próximos passos.",
-      errorTitle: "Algo deu errado", errorDesc: "Não conseguimos enviar seu formulário. Tente novamente ou fale com a gente pelo WhatsApp.",
+      errorTitle: "Algo deu errado", errorDesc: "Não conseguimos enviar seu formulário. Tente novamente ou fale com a gente pelo Instagram @kronicastudio.",
       fields: {
-        nome: "Nome", email: "Email", whatsapp: "WhatsApp", empresa: "Nome da empresa",
+        nome: "Nome", email: "Email", whatsapp: "WhatsApp ou Telegram (com código do país)", whatsappPlaceholder: "+55 27 99999-9999",
+        canal: "Por onde prefere que entremos em contato?",
+        canalOptions: [
+          { value: "whatsapp", label: "WhatsApp" }, { value: "telegram", label: "Telegram" }, { value: "email", label: "E-mail" },
+        ],
+        pais: "Onde sua empresa atua?",
+        paisOptions: [
+          { value: "brasil", label: "Brasil" }, { value: "eua", label: "Estados Unidos" }, { value: "outro", label: "Outro país" },
+        ],
+        empresa: "Nome da empresa",
         instagram: "Instagram da sua empresa (se houver)",
         tempoDeMercado: "Há quanto tempo sua empresa existe?", selectPlaceholder: "Selecione",
         tempoOptions: [
@@ -82,6 +91,14 @@ export const translations = {
           { value: "mais-150k", label: "Acima de R$ 50.000" },
           { value: "prefiro-nao-informar", label: "Prefiro não informar" },
         ],
+        faturamentoOptionsUsd: [
+          { value: "ainda-nao-fatura", label: "Ainda não fatura" },
+          { value: "ate-10k-usd", label: "Até US$ 10.000" },
+          { value: "10k-30k-usd", label: "US$ 10.000 a US$ 30.000" },
+          { value: "30k-100k-usd", label: "US$ 30.000 a US$ 100.000" },
+          { value: "mais-100k-usd", label: "Acima de US$ 100.000" },
+          { value: "prefiro-nao-informar", label: "Prefiro não informar" },
+        ],
         prazo: "Prazo desejado",
         prazoOptions: [
           { value: "urgente", label: "O quanto antes" }, { value: "1-mes", label: "Dentro de 1 mês" },
@@ -92,7 +109,7 @@ export const translations = {
   },
   en: {
     nav: { home: "Home", sobre: "About", projetos: "Work", contato: "Contact" },
-    hero: { title: "BRANDS OVER TIME", subtitle: "Kronica Studio" },
+    hero: { title: "BRANDS OVER TIME", subtitle: "Strategic branding for companies in Brazil and the US" },
     footer: { tagline: "We build the foundations. We create systems. We shape the present. And we leave room for the future.", contact: "Contact", followUs: "Follow us" },
     cta: "Request a proposal",
     projetos: {
@@ -104,12 +121,12 @@ export const translations = {
     },
     sobre: {
       pageTitle: "About — Kronica", eyebrow: "About the studio", title: "Kronica Studio",
-      bio1: "Kronica is an independent multidisciplinary design studio. Our work spans branding, brand consultancy, strategy, positioning and visual identities. We build and evolve brands by connecting design and strategy to the goals of each business.",
+      bio1: "Kronica is an independent strategic branding studio, with clients in Brazil and the United States. Our work spans branding, brand consultancy, strategy, positioning and visual identities. We build and evolve brands by connecting design and strategy to the goals of each business.",
       bio2: "Great businesses are built on great brands. That is why we develop solutions that help companies communicate their value and strengthen their positioning to create a consistent presence in the market.",
       bio3: "We work alongside entrepreneurs and companies at different stages of growth. From building a new brand to repositioning established businesses, we turn challenges and opportunities into relevant brands prepared to stand out in the market.",
-      ceoFounder: "CEO Founder", approach: "Approach",
+      ceoFounder: "Founder", approach: "Approach",
       strategy: "Strategy", strategyDesc: "In-depth diagnosis of context, market and positioning",
-      collaboration: "Collaboration", collaborationDesc: "Close partnership with clients throughout each stage of the process",
+      collaboration: "Guided process", collaborationDesc: "Clear stages and approvals at the right moments, with close support from kickoff to delivery",
       refinement: "Refinement", refinementDesc: "Contemporary visual solutions with a high level of finish",
       founded: "Founded", experience: "Experience", years: "5 years",
       whatWeDo: "What we do", solutions: "Our solutions",
@@ -122,7 +139,7 @@ export const translations = {
         { numero: "05", title: "Social Media", desc: "Monthly management of the brand's Instagram profile focused on organic growth and communication consistency. We develop the editorial plan, produce visual and verbal content and handle monthly posts, keeping the brand active, coherent and present in the digital space.", tags: ["Editorial Planning", "Content Production", "Instagram Management", "Organic Growth", "Applied Visual Identity"] },
       ],
       ctaLabel: "Request a proposal",
-      hugoBio: "Holds a Bachelor's degree in Graphic Design from FAESA (Faculdades Integradas Espírito-Santenses). With 5 years of experience in the branding market, he has been part of the communications team at OAB-ES and worked at advertising and marketing agencies. Through these experiences, he developed ON and OFF pieces, as well as complete and professional visual identities.",
+      hugoBio: "5 years of experience in branding. He was part of the communications team at OAB-ES (the Brazilian Bar Association, Espírito Santo chapter) and worked at advertising and marketing agencies, developing complete visual identities and online and offline pieces. Today he personally leads every Kronica project, from strategy to delivery, for companies in Brazil and the United States. Graphic Design degree from FAESA.",
     },
     metodo: {
       eyebrow: "How we work",
@@ -139,13 +156,22 @@ export const translations = {
     contato: {
       eyebrow: "Tell us about your project",
       title: "Contact form",
-      pageTitle: "Work — Kronica",
+      pageTitle: "Contact | Kronica",
       subtitle: "This information helps us understand your business and the type of project for better guidance before our first conversation.",
       send: "Send project", sending: "Sending...",
       successTitle: "We received your project!", successDesc: "We will review and get back to you shortly with next steps.",
-      errorTitle: "Something went wrong", errorDesc: "We could not submit your form. Please try again or reach out via WhatsApp.",
+      errorTitle: "Something went wrong", errorDesc: "We could not submit your form. Please try again or reach out on Instagram @kronicastudio.",
       fields: {
-        nome: "Name", email: "Email", whatsapp: "WhatsApp", empresa: "Company name",
+        nome: "Name", email: "Email", whatsapp: "WhatsApp or Telegram (with country code)", whatsappPlaceholder: "+1 407 555-0100",
+        canal: "How would you prefer we contact you?",
+        canalOptions: [
+          { value: "whatsapp", label: "WhatsApp" }, { value: "telegram", label: "Telegram" }, { value: "email", label: "Email" },
+        ],
+        pais: "Where does your company operate?",
+        paisOptions: [
+          { value: "brasil", label: "Brazil" }, { value: "eua", label: "United States" }, { value: "outro", label: "Other country" },
+        ],
+        empresa: "Company name",
         instagram: "Company Instagram (if any)",
         tempoDeMercado: "How long has your company been in business?", selectPlaceholder: "Select",
         tempoOptions: [
@@ -169,6 +195,14 @@ export const translations = {
           { value: "20k-50k", label: "R$ 10,000 to R$ 20,000" },
           { value: "50k-150k", label: "R$ 20,000 to R$ 50,000" },
           { value: "mais-150k", label: "Above R$ 50,000" },
+          { value: "prefiro-nao-informar", label: "Prefer not to say" },
+        ],
+        faturamentoOptionsUsd: [
+          { value: "ainda-nao-fatura", label: "Not yet generating revenue" },
+          { value: "ate-10k-usd", label: "Up to US$ 10,000" },
+          { value: "10k-30k-usd", label: "US$ 10,000 to US$ 30,000" },
+          { value: "30k-100k-usd", label: "US$ 30,000 to US$ 100,000" },
+          { value: "mais-100k-usd", label: "Above US$ 100,000" },
           { value: "prefiro-nao-informar", label: "Prefer not to say" },
         ],
         prazo: "Desired timeline",

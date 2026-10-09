@@ -21,6 +21,8 @@ interface FormState {
   nome: string;
   email: string;
   whatsapp: string;
+  canal: string;
+  pais: string;
   empresa: string;
   instagram: string;
   tempoDeMercado: string;
@@ -34,6 +36,8 @@ const initialState: FormState = {
   nome: "",
   email: "",
   whatsapp: "",
+  canal: "",
+  pais: "",
   empresa: "",
   instagram: "",
   tempoDeMercado: "",
@@ -52,8 +56,16 @@ const QualificationForm = () => {
   const { toast } = useToast();
 
   const handleChange = (field: keyof FormState, value: string) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
+    setForm((prev) => {
+      const next = { ...prev, [field]: value };
+      // Ao trocar o país, a moeda do faturamento muda; limpa a resposta anterior
+      if (field === "pais" && prev.pais !== value) next.faturamentoMensal = "";
+      return next;
+    });
   };
+
+  const usaDolar = form.pais === "eua" || form.pais === "outro";
+  const faturamentoOptions = usaDolar ? f.faturamentoOptionsUsd : f.faturamentoOptions;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,7 +84,9 @@ const QualificationForm = () => {
           from_name: "Site Kronica",
           nome: form.nome,
           email: form.email,
-          whatsapp: form.whatsapp,
+          "whatsapp ou telegram": form.whatsapp,
+          "canal preferido": form.canal,
+          "país de atuação": form.pais,
           empresa: form.empresa,
           instagram: form.instagram,
           "tempo de mercado": form.tempoDeMercado,
@@ -128,13 +142,47 @@ const QualificationForm = () => {
           <Label htmlFor="whatsapp" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
             {f.whatsapp}
           </Label>
-          <Input id="whatsapp" required value={form.whatsapp} onChange={(e) => handleChange("whatsapp", e.target.value)} placeholder="(00) 00000-0000" />
+          <Input id="whatsapp" required value={form.whatsapp} onChange={(e) => handleChange("whatsapp", e.target.value)} placeholder={f.whatsappPlaceholder} />
         </div>
         <div className="space-y-2">
           <Label htmlFor="empresa" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
             {f.empresa}
           </Label>
           <Input id="empresa" required value={form.empresa} onChange={(e) => handleChange("empresa", e.target.value)} placeholder={f.empresa} />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <Label htmlFor="canal" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            {f.canal}
+          </Label>
+          <Select value={form.canal} onValueChange={(value) => handleChange("canal", value)}>
+            <SelectTrigger id="canal">
+              <SelectValue placeholder={f.selectPlaceholder} />
+            </SelectTrigger>
+            <SelectContent>
+              {f.canalOptions.map((opt) => (
+                <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="pais" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            {f.pais}
+          </Label>
+          <Select value={form.pais} onValueChange={(value) => handleChange("pais", value)}>
+            <SelectTrigger id="pais">
+              <SelectValue placeholder={f.selectPlaceholder} />
+            </SelectTrigger>
+            <SelectContent>
+              {f.paisOptions.map((opt) => (
+                <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
       </div>
 
@@ -203,7 +251,7 @@ const QualificationForm = () => {
               <SelectValue placeholder={f.selectPlaceholder} />
             </SelectTrigger>
             <SelectContent>
-              {f.faturamentoOptions.map((opt) => (
+              {faturamentoOptions.map((opt) => (
                 <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
               ))}
             </SelectContent>
