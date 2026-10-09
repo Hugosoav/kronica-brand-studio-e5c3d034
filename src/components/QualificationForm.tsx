@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import { trackEvent } from "@/lib/meta-pixel";
 
 // Chave pública do Web3Forms — substitua pela sua chave gerada em https://web3forms.com
 const WEB3FORMS_ACCESS_KEY = "dfd19efc-95a8-4788-8b0f-3cee19c6f585";
@@ -106,6 +107,8 @@ const QualificationForm = () => {
       const result = await response.json();
 
       if (result.success) {
+        // Pixel da Meta: formulário enviado com sucesso
+        trackEvent("Lead");
         toast({
           title: ct.successTitle,
           description: ct.successDesc,

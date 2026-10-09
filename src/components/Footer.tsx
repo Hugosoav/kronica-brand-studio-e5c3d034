@@ -1,6 +1,8 @@
 import { useTheme } from "@/hooks/use-theme";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import { useLocale } from "@/hooks/use-locale";
+import { Link } from "react-router-dom";
+import { trackEvent } from "@/lib/meta-pixel";
 
 const Footer = () => {
   const { theme } = useTheme();
@@ -43,6 +45,7 @@ const Footer = () => {
                     WhatsApp
                   </span>
                   <a href="https://wa.me/5528999161275" target="_blank" rel="noopener noreferrer"
+                  onClick={() => trackEvent("Contact", { method: "whatsapp" })}
                   className="text-base md:text-lg hover:opacity-70 transition-opacity">
 
                     +55 (28) 99916-1275
@@ -103,6 +106,10 @@ const Footer = () => {
           <div className="mt-16 pt-6 border-t border-background/10">
             <p className="text-xs text-background/40">
               © {new Date().getFullYear()} Kronica Studio. Todos os direitos reservados.
+              {" · "}
+              <Link to="/privacidade" className="hover:text-background/70 transition-colors">
+                {t.cookies.policy}
+              </Link>
             </p>
           </div>
         </RevealOnScroll>

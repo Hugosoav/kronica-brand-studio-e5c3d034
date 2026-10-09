@@ -35,6 +35,17 @@ export const translations = {
       ctaLabel: "Solicite uma proposta",
       hugoBio: "5 anos de experiência em branding. Integrou a equipe de comunicação da OAB-ES e passou por agências de publicidade e marketing, desenvolvendo identidades visuais completas e peças on e off-line. Hoje conduz pessoalmente os projetos da Kronica.",
     },
+    cookies: {
+      title: "Aviso de cookies",
+      text: "Usamos cookies da Meta para medir as visitas ao site e o desempenho dos nossos anúncios. Eles só são ativados se você aceitar.",
+      policy: "Política de Privacidade",
+      accept: "Aceitar",
+      reject: "Recusar",
+    },
+    home: {
+      ctaTitle: "Vamos conversar sobre sua marca?",
+      ctaText: "Preencha o formulário com algumas informações sobre o seu negócio. Depois, marcamos uma conversa para entender o projeto e alinhar os próximos passos.",
+    },
     metodo: {
       eyebrow: "Como trabalhamos",
       title: "Metodologia",
@@ -140,6 +151,17 @@ export const translations = {
       ],
       ctaLabel: "Request a proposal",
       hugoBio: "5 years of experience in branding. He was part of the communications team at OAB-ES and worked at advertising and marketing agencies, developing complete visual identities and online and offline pieces. Today he personally leads every Kronica project.",
+    },
+    cookies: {
+      title: "Cookie notice",
+      text: "We use Meta cookies to measure website visits and the performance of our ads. They are only activated if you accept.",
+      policy: "Privacy Policy",
+      accept: "Accept",
+      reject: "Decline",
+    },
+    home: {
+      ctaTitle: "Shall we talk about your brand?",
+      ctaText: "Fill out the form with a few details about your business. Then we will schedule a conversation to understand the project and align the next steps.",
     },
     metodo: {
       eyebrow: "How we work",

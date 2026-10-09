@@ -7,6 +7,9 @@ import Lenis from "@studio-freight/lenis";
  */
 export function useSmoothScroll() {
   useEffect(() => {
+    // Respeita quem prefere menos movimento na tela (configuração do sistema)
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const lenis = new Lenis({
       duration: 1.1,
       easing: (t) => t === 1 ? 1 : 1 - Math.pow(2, -8 * t), // ease out expo suave, sem corte abrupto
