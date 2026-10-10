@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   AnimatePresence,
   motion,
@@ -279,7 +279,48 @@ const MetodologiaScroll = () => {
   const n = steps.length;
 
   const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  const stickyRef = useRef<HTMLDivElement>(null);
+
+  // Celular e tablet: linha do tempo vertical. Notebook e desktop (1024px+): horizontal.
+  const wide = useMedia("(min-width: 1024px)");
+  const roomy = useMedia("(min-width: 768px) and (min-height: 880px)");
+
+  // Altura do conteúdo e da tela, para a seção ocupar só o necessário (sem vão antes/depois)
+  const [contentH, setContentH] = useState(0);
+  const [vh, setVh] = useState(() => (typeof window !== "undefined" ? window.innerHeight : 800));
+  useLayoutEffect(() => {
+    const el = stickyRef.current;
+    if (!el) return;
+    const measure = () => {
+      setContentH(el.offsetHeight);
+      setVh(window.innerHeight);
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [wide]);
+
+  // Quanto a pessoa rola com a seção travada na tela
+  const dist = n * 0.4 * vh;
+  // No desktop o bloco trava centralizado na tela; no celular trava no topo
+  const stickyTop = wide ? Math.max(0, Math.round((vh - contentH) / 2)) : 0;
+
+  const geo = useRef({ dist, stickyTop });
+  geo.current = { dist, stickyTop };
+
+  const { scrollY } = useScroll();
+  const scrollYProgress = useTransform(scrollY, () => {
+    const el = ref.current;
+    const { dist: d, stickyTop: top } = geo.current;
+    if (!el || d <= 0) return 0;
+    const p = (top - el.getBoundingClientRect().top) / d;
+    return Math.min(1, Math.max(0, p));
+  });
 
   // Ponto da rolagem (0 a 1, enquanto a seção está fixa) em que cada etapa acende
   const thresholds = steps.map((_, i) => 0.06 + i * (0.82 / Math.max(1, n - 1)));
@@ -293,9 +334,7 @@ const MetodologiaScroll = () => {
     setActive((prev) => (prev === a ? prev : a));
   });
 
-  // Celular e tablet: linha do tempo vertical. Notebook e desktop (1024px+): horizontal.
-  const wide = useMedia("(min-width: 1024px)");
-  const roomy = useMedia("(min-width: 768px) and (min-height: 880px)");
+  const sectionStyle = { height: contentH ? contentH + dist : `${100 + n * 40}vh` };
 
   if (prefersReducedMotion) {
     return <StaticTimeline steps={steps} eyebrow={m.eyebrow} title={m.title} />;
@@ -307,8 +346,8 @@ const MetodologiaScroll = () => {
 
   if (wide) {
     return (
-      <section ref={ref} className="relative" style={{ height: `${100 + n * 55}vh` }}>
-        <div className="sticky top-0 flex h-[100svh] items-center pt-20">
+      <section ref={ref} className="relative" style={sectionStyle}>
+        <div ref={stickyRef} className="sticky py-12 md:py-16" style={{ top: stickyTop }}>
           <div className="container mx-auto w-full">
             <div className="mb-16 flex items-end justify-between gap-10 xl:mb-20">
               <div>
@@ -337,8 +376,8 @@ const MetodologiaScroll = () => {
   }
 
   return (
-    <section ref={ref} className="relative" style={{ height: `${100 + n * 55}vh` }}>
-      <div className="sticky top-0 flex h-[100svh] items-start pt-[max(5.5rem,12svh)] md:pt-[max(7rem,14svh)]">
+    <section ref={ref} className="relative" style={sectionStyle}>
+      <div ref={stickyRef} className="sticky top-0 pb-12 pt-20 md:pb-16 md:pt-24">
         <div className="container mx-auto grid w-full grid-cols-1 gap-8 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-5 md:flex md:flex-col md:justify-between md:pb-2">
             <div>
