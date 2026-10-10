@@ -17,19 +17,19 @@ const prefersReducedMotion =
   typeof window !== "undefined" &&
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/** Telas altas o bastante para manter abertas as descrições das etapas já concluídas. */
-const useRoomyScreen = () => {
-  const query = "(min-width: 768px) and (min-height: 880px)";
-  const [roomy, setRoomy] = useState(
+/** Acompanha uma media query (ex.: tamanho da tela) e atualiza ao redimensionar. */
+const useMedia = (query: string) => {
+  const [matches, setMatches] = useState(
     () => typeof window !== "undefined" && window.matchMedia(query).matches,
   );
   useEffect(() => {
     const mql = window.matchMedia(query);
-    const onChange = () => setRoomy(mql.matches);
+    const onChange = () => setMatches(mql.matches);
+    onChange();
     mql.addEventListener("change", onChange);
     return () => mql.removeEventListener("change", onChange);
-  }, []);
-  return roomy;
+  }, [query]);
+  return matches;
 };
 
 const pad = (n: string | number) => String(n).padStart(2, "0");
@@ -122,6 +122,111 @@ const StepRow = ({ step, index, isLast, lit, showDesc, progress, range }: StepRo
   );
 };
 
+
+/* Linha do tempo horizontal (desktop): o ponto fica no topo de cada coluna e a linha corre para a direita. */
+const H_GAP = "2.5rem";
+
+interface HStepProps {
+  step: Step;
+  isLast: boolean;
+  lit: boolean;
+  current: boolean;
+  progress: MotionValue<number>;
+  range: [number, number] | null;
+}
+
+const HStep = ({ step, isLast, lit, current, progress, range }: HStepProps) => {
+  const fill = useTransform(progress, range ?? [0, 1], [0, 1]);
+
+  return (
+    <div className="relative pt-10">
+      {!isLast && (
+        <div
+          aria-hidden
+          className="absolute left-[5px] top-[5px] h-px bg-foreground/15"
+          style={{ width: `calc(100% + ${H_GAP})` }}
+        >
+          {range && (
+            <motion.div className="absolute inset-0 origin-left bg-foreground" style={{ scaleX: fill }} />
+          )}
+        </div>
+      )}
+
+      <motion.span
+        aria-hidden
+        className="absolute left-0 top-0 h-[11px] w-[11px] rounded-full border"
+        initial={false}
+        animate={{
+          backgroundColor: lit ? "hsl(var(--foreground))" : "hsl(var(--background))",
+          borderColor: lit ? "hsl(var(--foreground))" : "hsl(var(--foreground) / 0.3)",
+          scale: current ? 1.25 : lit ? 1 : 0.8,
+        }}
+        transition={{ duration: 0.4, ease: EASE }}
+      />
+
+      <motion.div
+        initial={false}
+        animate={{ y: lit ? 0 : 12 }}
+        transition={{ duration: 0.6, ease: EASE }}
+      >
+        <div className="mb-3 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em]">
+          <span className={`transition-colors duration-500 ${lit ? "text-foreground" : "text-muted-foreground/40"}`}>
+            {pad(step.numero)}
+          </span>
+        </div>
+        <p
+          className={`text-2xl font-light leading-tight transition-colors duration-500 xl:text-3xl ${
+            lit ? "text-foreground" : "text-foreground/25"
+          }`}
+        >
+          {step.name}
+        </p>
+        <p
+          className={`mt-1 font-mono text-[10px] uppercase tracking-[0.2em] transition-colors duration-500 ${
+            lit ? "text-muted-foreground" : "text-muted-foreground/30"
+          }`}
+        >
+          {step.subtitle}
+        </p>
+
+        {/* Descrição sempre ocupa o espaço, para nada pular quando acende */}
+        <motion.p
+          initial={false}
+          animate={{ opacity: lit ? 1 : 0, y: lit ? 0 : 8, filter: lit ? "blur(0px)" : "blur(4px)" }}
+          transition={{ duration: 0.5, ease: EASE, delay: lit ? 0.1 : 0 }}
+          className="mt-5 text-sm leading-relaxed text-muted-foreground"
+        >
+          {step.desc}
+        </motion.p>
+      </motion.div>
+    </div>
+  );
+};
+
+const Counter = ({ active, n }: { active: number; n: number }) => (
+  <div className="flex items-baseline gap-3 font-light" aria-hidden>
+    <span
+      className={`relative inline-block h-[1em] overflow-hidden text-6xl leading-none tabular-nums transition-opacity duration-500 lg:text-7xl ${
+        active < 0 ? "opacity-25" : ""
+      }`}
+    >
+      <AnimatePresence mode="popLayout" initial={false}>
+        <motion.span
+          key={active}
+          className="block"
+          initial={{ y: "100%" }}
+          animate={{ y: "0%" }}
+          exit={{ y: "-100%" }}
+          transition={{ duration: 0.5, ease: EASE }}
+        >
+          {pad(Math.max(active + 1, 1))}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+    <span className="font-mono text-sm text-muted-foreground">/ {pad(n)}</span>
+  </div>
+);
+
 const Header = ({ eyebrow, title }: { eyebrow: string; title: string }) => (
   <>
     <span className="mb-4 block text-xs uppercase tracking-[0.3em] text-muted-foreground">{eyebrow}</span>
@@ -188,10 +293,47 @@ const MetodologiaScroll = () => {
     setActive((prev) => (prev === a ? prev : a));
   });
 
-  const roomy = useRoomyScreen();
+  // Celular e tablet: linha do tempo vertical. Notebook e desktop (1024px+): horizontal.
+  const wide = useMedia("(min-width: 1024px)");
+  const roomy = useMedia("(min-width: 768px) and (min-height: 880px)");
 
   if (prefersReducedMotion) {
     return <StaticTimeline steps={steps} eyebrow={m.eyebrow} title={m.title} />;
+  }
+
+  const ranges = steps.map((_, i) =>
+    i < n - 1 ? ([thresholds[i], thresholds[i + 1]] as [number, number]) : null,
+  );
+
+  if (wide) {
+    return (
+      <section ref={ref} className="relative" style={{ height: `${100 + n * 55}vh` }}>
+        <div className="sticky top-0 flex h-[100svh] items-center pt-20">
+          <div className="container mx-auto w-full">
+            <div className="mb-16 flex items-end justify-between gap-10 xl:mb-20">
+              <div>
+                <Header eyebrow={m.eyebrow} title={m.title} />
+              </div>
+              <Counter active={active} n={n} />
+            </div>
+
+            <div className="grid grid-cols-5" style={{ columnGap: H_GAP }}>
+              {steps.map((step, i) => (
+                <HStep
+                  key={step.numero}
+                  step={step}
+                  isLast={i === n - 1}
+                  lit={i <= active}
+                  current={i === active}
+                  progress={scrollYProgress}
+                  range={ranges[i]}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   return (
@@ -203,23 +345,9 @@ const MetodologiaScroll = () => {
               <Header eyebrow={m.eyebrow} title={m.title} />
             </div>
 
-            {/* Contador da etapa atual (só desktop) */}
-            <div className="hidden items-baseline gap-3 font-light md:flex" aria-hidden>
-              <span className={`relative inline-block h-[1em] overflow-hidden text-6xl leading-none tabular-nums transition-opacity duration-500 lg:text-7xl ${active < 0 ? "opacity-25" : ""}`}>
-                <AnimatePresence mode="popLayout" initial={false}>
-                  <motion.span
-                    key={active}
-                    className="block"
-                    initial={{ y: "100%" }}
-                    animate={{ y: "0%" }}
-                    exit={{ y: "-100%" }}
-                    transition={{ duration: 0.5, ease: EASE }}
-                  >
-                    {pad(Math.max(active + 1, 1))}
-                  </motion.span>
-                </AnimatePresence>
-              </span>
-              <span className="font-mono text-sm text-muted-foreground">/ {pad(n)}</span>
+            {/* Contador da etapa atual (tablet) */}
+            <div className="hidden md:block">
+              <Counter active={active} n={n} />
             </div>
           </div>
 
@@ -233,7 +361,7 @@ const MetodologiaScroll = () => {
                 lit={i <= active}
                 showDesc={i === active || (roomy && i < active)}
                 progress={scrollYProgress}
-                range={i < n - 1 ? [thresholds[i], thresholds[i + 1]] : null}
+                range={ranges[i]}
               />
             ))}
           </div>
