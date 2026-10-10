@@ -230,17 +230,22 @@ const Counter = ({ active, n }: { active: number; n: number }) => (
 const Header = ({ eyebrow, title }: { eyebrow: string; title: string }) => (
   <>
     <span className="mb-4 block text-xs uppercase tracking-[0.3em] text-muted-foreground">{eyebrow}</span>
-    <h2 className="overflow-hidden text-3xl font-light text-foreground md:text-4xl lg:text-5xl">
+    {/* Máscara com folga embaixo para não cortar letras como "g" e "p".
+        O gatilho fica no título (não no texto escondido) para a animação sempre disparar. */}
+    <motion.h2
+      className="-mb-[0.2em] overflow-hidden pb-[0.2em] text-3xl font-light text-foreground md:text-4xl lg:text-5xl"
+      initial={prefersReducedMotion ? false : "hidden"}
+      whileInView="shown"
+      viewport={{ once: true, margin: "-60px" }}
+    >
       <motion.span
         className="block"
-        initial={prefersReducedMotion ? false : { y: "100%" }}
-        whileInView={{ y: "0%" }}
-        viewport={{ once: true, margin: "-60px" }}
+        variants={{ hidden: { y: "130%" }, shown: { y: "0%" } }}
         transition={{ duration: 1, ease: EASE }}
       >
         {title}
       </motion.span>
-    </h2>
+    </motion.h2>
   </>
 );
 
