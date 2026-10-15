@@ -78,7 +78,7 @@ export const translations = {
         ],
         empresa: "Nome da empresa",
         instagram: "Instagram da sua empresa (se houver)",
-        tempoDeMercado: "Há quanto tempo sua empresa existe?", selectPlaceholder: "Selecione",
+        tempoDeMercado: "Há quanto tempo sua empresa existe?", selectPlaceholder: "Selecione", selectRequired: "Selecione uma opção",
         tempoOptions: [
           { value: "ainda-nao-abri", label: "Ainda não abri / vou abrir" },
           { value: "menos-1-ano", label: "Menos de 1 ano" },
@@ -96,10 +96,10 @@ export const translations = {
         faturamentoMensal: "Qual faturamento mensal da sua empresa?",
         faturamentoOptions: [
           { value: "ainda-nao-fatura", label: "Ainda não fatura" },
-          { value: "ate-20k", label: "Até R$ 10.000" },
-          { value: "20k-50k", label: "R$ 10.000 a R$ 20.000" },
-          { value: "50k-150k", label: "R$ 20.000 a R$ 50.000" },
-          { value: "mais-150k", label: "Acima de R$ 50.000" },
+          { value: "ate-10k", label: "Até R$ 10.000" },
+          { value: "10k-20k", label: "R$ 10.000 a R$ 20.000" },
+          { value: "20k-50k", label: "R$ 20.000 a R$ 50.000" },
+          { value: "mais-50k", label: "Acima de R$ 50.000" },
           { value: "prefiro-nao-informar", label: "Prefiro não informar" },
         ],
         faturamentoOptionsUsd: [
@@ -195,7 +195,7 @@ export const translations = {
         ],
         empresa: "Company name",
         instagram: "Company Instagram (if any)",
-        tempoDeMercado: "How long has your company been in business?", selectPlaceholder: "Select",
+        tempoDeMercado: "How long has your company been in business?", selectPlaceholder: "Select", selectRequired: "Please select an option",
         tempoOptions: [
           { value: "ainda-nao-abri", label: "Not yet open / about to open" },
           { value: "menos-1-ano", label: "Less than 1 year" },
@@ -213,10 +213,10 @@ export const translations = {
         faturamentoMensal: "What is your company's monthly revenue?",
         faturamentoOptions: [
           { value: "ainda-nao-fatura", label: "Not yet generating revenue" },
-          { value: "ate-20k", label: "Up to R$ 10,000" },
-          { value: "20k-50k", label: "R$ 10,000 to R$ 20,000" },
-          { value: "50k-150k", label: "R$ 20,000 to R$ 50,000" },
-          { value: "mais-150k", label: "Above R$ 50,000" },
+          { value: "ate-10k", label: "Up to R$ 10,000" },
+          { value: "10k-20k", label: "R$ 10,000 to R$ 20,000" },
+          { value: "20k-50k", label: "R$ 20,000 to R$ 50,000" },
+          { value: "mais-50k", label: "Above R$ 50,000" },
           { value: "prefiro-nao-informar", label: "Prefer not to say" },
         ],
         faturamentoOptionsUsd: [

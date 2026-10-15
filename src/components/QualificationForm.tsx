@@ -14,6 +14,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
 import { trackEvent } from "@/lib/meta-pixel";
+import { translations } from "@/lib/i18n";
 
 // Chave pública do Web3Forms — substitua pela sua chave gerada em https://web3forms.com
 const WEB3FORMS_ACCESS_KEY = "dfd19efc-95a8-4788-8b0f-3cee19c6f585";
@@ -48,8 +49,28 @@ const initialState: FormState = {
   prazo: "",
 };
 
+type Option = { readonly value: string; readonly label: string };
+
+// Perguntas de seleção: todas obrigatórias
+const SELECT_FIELDS = [
+  "canal",
+  "pais",
+  "tempoDeMercado",
+  "numeroFuncionarios",
+  "faturamentoMensal",
+  "prazo",
+] as const;
+type SelectField = (typeof SELECT_FIELDS)[number];
+
+// O e-mail sempre chega em português, com o mesmo texto da opção que a pessoa viu
+const pt = translations.pt.contato.fields;
+const labelPt = (options: readonly Option[], value: string) =>
+  options.find((o) => o.value === value)?.label ?? value;
+const orNotInformed = (value: string) => value.trim() || "Não informado";
+
 const QualificationForm = () => {
   const [form, setForm] = useState<FormState>(initialState);
+  const [errors, setErrors] = useState<Partial<Record<SelectField, boolean>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { t, locale } = useLocale();
   const f = t.contato.fields;
@@ -57,6 +78,7 @@ const QualificationForm = () => {
   const { toast } = useToast();
 
   const handleChange = (field: keyof FormState, value: string) => {
+    if (field in errors) setErrors((prev) => ({ ...prev, [field]: false }));
     setForm((prev) => {
       const next = { ...prev, [field]: value };
       // Ao trocar o país, a moeda do faturamento muda; limpa a resposta anterior
@@ -76,6 +98,17 @@ const QualificationForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Confere as perguntas de seleção antes de enviar
+    const missing = SELECT_FIELDS.filter((field) => !form[field]);
+    if (missing.length > 0) {
+      setErrors(Object.fromEntries(missing.map((field) => [field, true])));
+      const first = document.getElementById(missing[0]);
+      first?.scrollIntoView({ behavior: "smooth", block: "center" });
+      first?.focus({ preventScroll: true });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -92,15 +125,19 @@ const QualificationForm = () => {
           nome: form.nome,
           email: form.email,
           "whatsapp ou telegram": form.whatsapp,
-          "canal preferido": form.canal,
-          "país de atuação": form.pais,
+          "canal preferido": labelPt(pt.canalOptions, form.canal),
+          "país de atuação": labelPt(pt.paisOptions, form.pais),
           empresa: form.empresa,
-          instagram: form.instagram,
-          "tempo de mercado": form.tempoDeMercado,
-          "número de funcionários": form.numeroFuncionarios,
+          instagram: orNotInformed(form.instagram),
+          "tempo de mercado": labelPt(pt.tempoOptions, form.tempoDeMercado),
+          "número de funcionários": labelPt(pt.funcionariosOptions, form.numeroFuncionarios),
           "produtos ou serviços": form.produtosServicos,
-          "faturamento mensal": form.faturamentoMensal,
-          "prazo desejado": form.prazo,
+          "faturamento mensal": labelPt(
+            usaDolar ? pt.faturamentoOptionsUsd : pt.faturamentoOptions,
+            form.faturamentoMensal,
+          ),
+          "prazo desejado": labelPt(pt.prazoOptions, form.prazo),
+          "idioma do site": locale === "en" ? "Inglês" : "Português",
         }),
       });
 
@@ -114,6 +151,7 @@ const QualificationForm = () => {
           description: ct.successDesc,
         });
         setForm(initialState);
+        setErrors({});
       } else {
         throw new Error(result.message || "Erro ao enviar formulário");
       }
@@ -167,7 +205,7 @@ const QualificationForm = () => {
             {f.canal}
           </Label>
           <Select value={form.canal} onValueChange={(value) => handleChange("canal", value)}>
-            <SelectTrigger id="canal">
+            <SelectTrigger id="canal" aria-invalid={!!errors.canal} className={errors.canal ? "border-destructive" : undefined}>
               <SelectValue placeholder={f.selectPlaceholder} />
             </SelectTrigger>
             <SelectContent>
@@ -176,6 +214,7 @@ const QualificationForm = () => {
               ))}
             </SelectContent>
           </Select>
+          {errors.canal && <p className="text-xs text-destructive">{f.selectRequired}</p>}
         </div>
 
         <div className="space-y-2">
@@ -183,7 +222,7 @@ const QualificationForm = () => {
             {f.pais}
           </Label>
           <Select value={form.pais} onValueChange={(value) => handleChange("pais", value)}>
-            <SelectTrigger id="pais">
+            <SelectTrigger id="pais" aria-invalid={!!errors.pais} className={errors.pais ? "border-destructive" : undefined}>
               <SelectValue placeholder={f.selectPlaceholder} />
             </SelectTrigger>
             <SelectContent>
@@ -192,6 +231,7 @@ const QualificationForm = () => {
               ))}
             </SelectContent>
           </Select>
+          {errors.pais && <p className="text-xs text-destructive">{f.selectRequired}</p>}
         </div>
       </div>
 
@@ -208,7 +248,7 @@ const QualificationForm = () => {
             {f.tempoDeMercado}
           </Label>
           <Select value={form.tempoDeMercado} onValueChange={(value) => handleChange("tempoDeMercado", value)}>
-            <SelectTrigger id="tempoDeMercado">
+            <SelectTrigger id="tempoDeMercado" aria-invalid={!!errors.tempoDeMercado} className={errors.tempoDeMercado ? "border-destructive" : undefined}>
               <SelectValue placeholder={f.selectPlaceholder} />
             </SelectTrigger>
             <SelectContent>
@@ -217,6 +257,7 @@ const QualificationForm = () => {
               ))}
             </SelectContent>
           </Select>
+          {errors.tempoDeMercado && <p className="text-xs text-destructive">{f.selectRequired}</p>}
         </div>
 
         <div className="space-y-2">
@@ -224,7 +265,7 @@ const QualificationForm = () => {
             {f.numeroFuncionarios}
           </Label>
           <Select value={form.numeroFuncionarios} onValueChange={(value) => handleChange("numeroFuncionarios", value)}>
-            <SelectTrigger id="numeroFuncionarios">
+            <SelectTrigger id="numeroFuncionarios" aria-invalid={!!errors.numeroFuncionarios} className={errors.numeroFuncionarios ? "border-destructive" : undefined}>
               <SelectValue placeholder={f.selectPlaceholder} />
             </SelectTrigger>
             <SelectContent>
@@ -233,6 +274,7 @@ const QualificationForm = () => {
               ))}
             </SelectContent>
           </Select>
+          {errors.numeroFuncionarios && <p className="text-xs text-destructive">{f.selectRequired}</p>}
         </div>
       </div>
 
@@ -256,7 +298,7 @@ const QualificationForm = () => {
             {f.faturamentoMensal}
           </Label>
           <Select value={form.faturamentoMensal} onValueChange={(value) => handleChange("faturamentoMensal", value)}>
-            <SelectTrigger id="faturamentoMensal">
+            <SelectTrigger id="faturamentoMensal" aria-invalid={!!errors.faturamentoMensal} className={errors.faturamentoMensal ? "border-destructive" : undefined}>
               <SelectValue placeholder={f.selectPlaceholder} />
             </SelectTrigger>
             <SelectContent>
@@ -265,6 +307,7 @@ const QualificationForm = () => {
               ))}
             </SelectContent>
           </Select>
+          {errors.faturamentoMensal && <p className="text-xs text-destructive">{f.selectRequired}</p>}
         </div>
 
         <div className="space-y-2">
@@ -272,7 +315,7 @@ const QualificationForm = () => {
             {f.prazo}
           </Label>
           <Select value={form.prazo} onValueChange={(value) => handleChange("prazo", value)}>
-            <SelectTrigger id="prazo">
+            <SelectTrigger id="prazo" aria-invalid={!!errors.prazo} className={errors.prazo ? "border-destructive" : undefined}>
               <SelectValue placeholder={f.selectPlaceholder} />
             </SelectTrigger>
             <SelectContent>
@@ -281,6 +324,7 @@ const QualificationForm = () => {
               ))}
             </SelectContent>
           </Select>
+          {errors.prazo && <p className="text-xs text-destructive">{f.selectRequired}</p>}
         </div>
       </div>
 
