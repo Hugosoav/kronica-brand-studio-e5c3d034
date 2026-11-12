@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import { fetchProjects } from "@/lib/projectsApi";
 import { useQuery } from "@tanstack/react-query";
 import PageTransition from "@/components/PageTransition";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Loader2, ArrowUpRight } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 
@@ -14,6 +14,7 @@ const Projetos = () => {
   });
   const { t } = useLocale();
   const p = t.projetos;
+  const reduceMotion = useReducedMotion();
 
   return (
     <PageTransition>
@@ -29,6 +30,21 @@ const Projetos = () => {
         {/* Projects – aligned grid layout */}
         <section className="pt-12 md:pt-16 pb-16 md:pb-20">
           <div className="container mx-auto">
+            {/* Título da página. Máscara com folga embaixo para não cortar "j" e "p" */}
+            <motion.h1
+              className="mb-[calc(2rem-0.2em)] overflow-hidden pb-[0.2em] text-3xl font-light text-foreground md:mb-[calc(3rem-0.2em)] md:text-4xl lg:text-5xl"
+              initial={reduceMotion ? false : "hidden"}
+              animate="shown"
+            >
+              <motion.span
+                className="block"
+                variants={{ hidden: { y: "130%" }, shown: { y: "0%" } }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+              >
+                {p.selectedProjects}
+              </motion.span>
+            </motion.h1>
+
             {isLoading ? (
               <div className="flex justify-center py-20">
                 <Loader2 className="animate-spin text-muted-foreground" />
