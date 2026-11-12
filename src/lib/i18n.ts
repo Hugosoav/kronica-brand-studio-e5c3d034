@@ -8,6 +8,7 @@ export const translations = {
     cta: "Solicite uma proposta",
     projetos: {
       pageTitle: "Projetos — Kronica",
+      selectedProjects: "Projetos selecionados",
       portfolio: "Portfólio", seeAll: "Ver todos", exploreAll: "Explorar portfólio completo",
       gallery: "Galeria", back: "Voltar", notFound: "Projeto não encontrado",
       backToProjects: "Voltar aos projetos", category: "Categoria", year: "Ano", client: "Cliente", services: "Serviços",
@@ -125,6 +126,7 @@ export const translations = {
     cta: "Request a proposal",
     projetos: {
       pageTitle: "Work — Kronica",
+      selectedProjects: "Selected projects",
       portfolio: "Portfolio", seeAll: "See all", exploreAll: "Explore full portfolio",
       gallery: "Gallery", back: "Back", notFound: "Project not found",
       backToProjects: "Back to projects", category: "Category", year: "Year", client: "Client", services: "Services",
