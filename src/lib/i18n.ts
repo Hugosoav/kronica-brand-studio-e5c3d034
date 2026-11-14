@@ -16,9 +16,10 @@ export const translations = {
     },
     sobre: {
       pageTitle: "Sobre a Kronica", eyebrow: "Sobre o estúdio", title: "Kronica Studio",
-      bio1: "A Kronica é um estúdio independente de branding estratégico. Nosso trabalho abrange branding, consultoria de marca, estratégia, posicionamento e identidades visuais. Atuamos na construção e evolução de marcas, conectando design e estratégia aos objetivos de cada negócio.",
-      bio2: "Grandes negócios são construídos sobre grandes marcas. Por isso, desenvolvemos soluções que ajudam empresas a comunicar seu valor e fortalecer seu posicionamento para criar uma presença consistente no mercado.",
-      bio3: "Trabalhamos ao lado de empreendedores e empresas em diferentes momentos de crescimento. Da criação de uma nova marca ao reposicionamento de negócios já estabelecidos, transformamos desafios e oportunidades em marcas relevantes e preparadas para se destacarem no mercado.",
+      bio1: "A Kronica é um estúdio independente de branding estratégico.",
+      bio2: "Estruturamos marcas como narrativas. O nome vem de crônica, o registro de uma história no tempo em que ela acontece, e é essa a lógica do nosso trabalho. Todo negócio parte de uma história. Observamos essa história, definimos quem a protagoniza, em que cenário ela se passa e o que ela conta, e só então damos a ela forma visual. Cada decisão de marca, do posicionamento à identidade, é pensada como parte de uma mesma narrativa, coerente do primeiro ao último ponto de contato.",
+      bio3: "Atuamos em branding, consultoria de marca, estratégia, posicionamento e identidades visuais, ao lado de empreendedores e empresas em diferentes momentos: da criação de uma marca ao reposicionamento de negócios já estabelecidos.",
+      bio4: "Acreditamos que uma marca é reconhecida pelos valores que sustenta, e que o design é a expressão visível dessas escolhas. Acreditamos também que fidelidade é consequência de coerência, e que coerência exige decisão. Uma história bem estruturada permanece, e é para isso que trabalhamos.",
       ceoFounder: "Fundador", approach: "Abordagem",
       strategy: "Estratégia", strategyDesc: "Diagnóstico aprofundado de contexto, mercado e posicionamento",
       collaboration: "Processo guiado", collaborationDesc: "Etapas claras e validações nos momentos certos do projeto, com acompanhamento próximo do início à entrega",
@@ -50,12 +51,13 @@ export const translations = {
     metodo: {
       eyebrow: "Como trabalhamos",
       title: "Metodologia",
+      intro: "Cinco etapas, da observação à publicação. Cada uma constrói uma parte da narrativa da marca.",
       steps: [
-        { numero: "1", name: "Imersão", subtitle: "Diagnóstico estratégico", desc: "Estudo do briefing, pesquisa de mercado, análise da concorrência e entendimento profundo do negócio e do público-alvo." },
-        { numero: "2", name: "Estratégia", subtitle: "Estratégia de marca", desc: "Definição de atributos, DNA e personalidade da marca, missão, visão e valores, posicionamento frente à concorrência." },
-        { numero: "3", name: "Direção", subtitle: "Direção criativa", desc: "Coleta de referências, moodboard, exploração do território visual e reunião de validação de ideias para definição do design." },
-        { numero: "4", name: "Construção", subtitle: "Desenvolvimento", desc: "Rascunhos, geração de conceitos, refinamento e construção completa do sistema visual sobre o caminho aprovado." },
-        { numero: "5", name: "Publicação", subtitle: "Entrega", desc: "Apresentação do projeto completo, fechamento dos arquivos e entrega dos materiais e documentos do projeto." },
+        { numero: "1", name: "Observação", subtitle: "Diagnóstico estratégico", desc: "Todo projeto começa pela história do negócio. Estudamos o briefing, o mercado, a concorrência e o público-alvo para entender o negócio a fundo antes de qualquer decisão." },
+        { numero: "2", name: "Personagem", subtitle: "Estratégia de marca", desc: "Definimos quem a marca é: atributos, DNA, personalidade, missão, visão e valores. A partir disso, estabelecemos seu posicionamento frente à concorrência." },
+        { numero: "3", name: "Cenário", subtitle: "Direção criativa", desc: "Construímos o universo em que a marca vive. Reunimos referências, montamos o moodboard e exploramos o território visual, validando as ideias com o cliente antes de definir o design." },
+        { numero: "4", name: "Narrativa", subtitle: "Desenvolvimento", desc: "A história ganha forma. Sobre o caminho aprovado, desenvolvemos rascunhos, conceitos e refinamentos até a construção completa do sistema visual." },
+        { numero: "5", name: "Publicação", subtitle: "Entrega", desc: "A marca vai a público. Apresentamos o projeto completo, fechamos os arquivos e entregamos os materiais e documentos do projeto." },
       ],
       ctaLabel: "Conheça a Kronica",
     },
@@ -137,6 +139,7 @@ export const translations = {
       bio1: "Kronica is an independent strategic branding studio. Our work spans branding, brand consultancy, strategy, positioning and visual identities. We build and evolve brands by connecting design and strategy to the goals of each business.",
       bio2: "Great businesses are built on great brands. That is why we develop solutions that help companies communicate their value and strengthen their positioning to create a consistent presence in the market.",
       bio3: "We work alongside entrepreneurs and companies at different stages of growth. From building a new brand to repositioning established businesses, we turn challenges and opportunities into relevant brands prepared to stand out in the market.",
+      bio4: "",
       ceoFounder: "Founder", approach: "Approach",
       strategy: "Strategy", strategyDesc: "In-depth diagnosis of context, market and positioning",
       collaboration: "Guided process", collaborationDesc: "Clear stages and approvals at the right moments, with close support from kickoff to delivery",
@@ -168,6 +171,7 @@ export const translations = {
     metodo: {
       eyebrow: "How we work",
       title: "Methodology",
+      intro: "",
       steps: [
         { numero: "1", name: "Immersion", subtitle: "Strategic diagnosis", desc: "Brief analysis, market research, competitor review and an in-depth understanding of the business and its target audience." },
         { numero: "2", name: "Strategy", subtitle: "Brand strategy", desc: "Definition of brand attributes, DNA and personality, mission, vision and values, and positioning relative to competitors." },
