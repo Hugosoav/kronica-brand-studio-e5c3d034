@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { fetchProjects } from "@/lib/projectsApi";
 import { useQuery } from "@tanstack/react-query";
+import CtaSection from "@/components/CtaSection";
 import PageTransition from "@/components/PageTransition";
 import { motion, useReducedMotion } from "framer-motion";
 import { Loader2, ArrowUpRight } from "lucide-react";
@@ -107,6 +108,8 @@ const Projetos = () => {
             )}
           </div>
         </section>
+
+        <CtaSection />
       </Layout>
     </PageTransition>
   );

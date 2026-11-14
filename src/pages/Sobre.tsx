@@ -3,6 +3,7 @@ import PageTransition from "@/components/PageTransition";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import AnimatedText from "@/components/AnimatedText";
 import { useLocale } from "@/hooks/use-locale";
+import CtaSection from "@/components/CtaSection";
 import SolucoesSection from "@/components/SolucoesSection";
 
 const Sobre = () => {
@@ -45,6 +46,7 @@ const Sobre = () => {
                   <RevealOnScroll delay={0.15}><p>{s.bio1}</p></RevealOnScroll>
                   <RevealOnScroll delay={0.22}><p>{s.bio2}</p></RevealOnScroll>
                   <RevealOnScroll delay={0.30}><p>{s.bio3}</p></RevealOnScroll>
+                  {s.bio4 && <RevealOnScroll delay={0.36}><p>{s.bio4}</p></RevealOnScroll>}
                 </div>
 
                 <RevealOnScroll direction="up" delay={0.1}>
@@ -85,7 +87,8 @@ const Sobre = () => {
           </div>
         </section>
 
-        <SolucoesSection />
+        <SolucoesSection withCta={false} />
+        <CtaSection />
       </Layout>
     </PageTransition>
   );

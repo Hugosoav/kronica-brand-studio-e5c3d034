@@ -227,7 +227,7 @@ const Counter = ({ active, n }: { active: number; n: number }) => (
   </div>
 );
 
-const Header = ({ eyebrow, title }: { eyebrow: string; title: string }) => (
+const Header = ({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) => (
   <>
     <span className="mb-4 block text-xs uppercase tracking-[0.3em] text-muted-foreground">{eyebrow}</span>
     {/* Máscara com folga embaixo para não cortar letras como "g" e "p".
@@ -246,17 +246,18 @@ const Header = ({ eyebrow, title }: { eyebrow: string; title: string }) => (
         {title}
       </motion.span>
     </motion.h2>
+    {intro && <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">{intro}</p>}
   </>
 );
 
 /** Versão estática para quem prefere menos movimento: todas as etapas acesas, sem fixar a seção. */
-const StaticTimeline = ({ steps, eyebrow, title }: { steps: readonly Step[]; eyebrow: string; title: string }) => {
+const StaticTimeline = ({ steps, eyebrow, title, intro }: { steps: readonly Step[]; eyebrow: string; title: string; intro?: string }) => {
   const progress = useScroll().scrollYProgress;
   return (
     <section className="py-12 md:py-16">
       <div className="container mx-auto grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-16">
         <div className="md:col-span-5">
-          <Header eyebrow={eyebrow} title={title} />
+          <Header eyebrow={eyebrow} title={title} intro={intro} />
         </div>
         <div className="md:col-span-7">
           {steps.map((step, i) => (
@@ -342,7 +343,7 @@ const MetodologiaScroll = () => {
   const sectionStyle = { height: contentH ? contentH + dist : `${100 + n * 40}vh` };
 
   if (prefersReducedMotion) {
-    return <StaticTimeline steps={steps} eyebrow={m.eyebrow} title={m.title} />;
+    return <StaticTimeline steps={steps} eyebrow={m.eyebrow} title={m.title} intro={m.intro} />;
   }
 
   const ranges = steps.map((_, i) =>
@@ -356,7 +357,7 @@ const MetodologiaScroll = () => {
           <div className="container mx-auto w-full">
             <div className="mb-16 flex items-end justify-between gap-10 xl:mb-20">
               <div>
-                <Header eyebrow={m.eyebrow} title={m.title} />
+                <Header eyebrow={m.eyebrow} title={m.title} intro={m.intro} />
               </div>
               <Counter active={active} n={n} />
             </div>
@@ -386,7 +387,7 @@ const MetodologiaScroll = () => {
         <div className="container mx-auto grid w-full grid-cols-1 gap-8 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-5 md:flex md:flex-col md:justify-between md:pb-2">
             <div>
-              <Header eyebrow={m.eyebrow} title={m.title} />
+              <Header eyebrow={m.eyebrow} title={m.title} intro={m.intro} />
             </div>
 
             {/* Contador da etapa atual (tablet) */}

@@ -74,7 +74,7 @@ const SolucaoItem = ({
 };
 
 // withTopBorder: linha acima da seção (mantida no Sobre, removida na home)
-const SolucoesSection = ({ withTopBorder = true }: { withTopBorder?: boolean }) => {
+const SolucoesSection = ({ withTopBorder = true, withCta = true }: { withTopBorder?: boolean; withCta?: boolean }) => {
   const { t } = useLocale();
   const s = t.sobre;
 
@@ -104,6 +104,7 @@ const SolucoesSection = ({ withTopBorder = true }: { withTopBorder?: boolean }) 
           ))}
         </div>
 
+        {withCta && (
         <RevealOnScroll direction="up" className="mt-16 md:mt-20 text-center">
           <Link
             to="/contato"
@@ -113,6 +114,7 @@ const SolucoesSection = ({ withTopBorder = true }: { withTopBorder?: boolean }) 
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </RevealOnScroll>
+        )}
       </div>
     </section>
   );
