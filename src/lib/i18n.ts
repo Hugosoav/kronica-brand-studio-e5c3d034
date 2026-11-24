@@ -3,7 +3,7 @@ export type Locale = "pt" | "en";
 export const translations = {
   pt: {
     nav: { home: "Home", sobre: "Sobre", projetos: "Projetos", contato: "Contato" },
-    hero: { title: "MARCAS NO TEMPO", subtitle: "Kronica Studio" },
+    hero: { title: "ESCALAMOS NEGÓCIOS\nATRAVÉS DE MARCAS", subtitle: "Kronica Studio" },
     footer: { tagline: "Nós construímos os fundamentos. Criamos sistemas. Damos forma ao presente. E deixamos espaço para o futuro.", contact: "Contato", followUs: "Siga-nos" },
     cta: "Solicite uma proposta",
     projetos: {
@@ -123,7 +123,7 @@ export const translations = {
   },
   en: {
     nav: { home: "Home", sobre: "About", projetos: "Work", contato: "Contact" },
-    hero: { title: "BRANDS OVER TIME", subtitle: "Kronica Studio" },
+    hero: { title: "WE SCALE BUSINESSES\nTHROUGH BRANDS", subtitle: "Kronica Studio" },
     footer: { tagline: "We build the foundations. We create systems. We shape the present. And we leave room for the future.", contact: "Contact", followUs: "Follow us" },
     cta: "Request a proposal",
     projetos: {
