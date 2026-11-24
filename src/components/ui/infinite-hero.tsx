@@ -92,7 +92,7 @@ export default function InfiniteHero({
         <div className="flex flex-col items-center gap-4 sm:gap-6">
           <h1
             ref={h1Ref}
-            className="tracking-[-0.02em] text-[clamp(2.2rem,12vw,8rem)] py-2 font-light"
+            className="tracking-[-0.02em] text-[clamp(2.2rem,12vw,5rem)] md:text-[clamp(1.5rem,8vw,7rem)] py-2 font-light"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
               backgroundImage: isDark ?
@@ -106,11 +106,17 @@ export default function InfiniteHero({
               lineHeight: 1.15
             }}>
 
-            {title.includes(" ") ? (
-              <>
-                {title.split(" ")[0]}<br />{title.split(" ").slice(1).join(" ")}
-              </>
-            ) : title}
+            {/* "\n" quebra linha em todas as telas; "·" quebra só no celular (mais linhas, letra maior) */}
+            {title.split("\n").map((line, i) => (
+              <span key={i} className="block">
+                {line.split("·").map((part, j, arr) => (
+                  <span key={j} className="block md:inline">
+                    {part}
+                    {j < arr.length - 1 ? " " : ""}
+                  </span>
+                ))}
+              </span>
+            ))}
           </h1>
 
           <p
